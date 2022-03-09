@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
+    [SerializeField] GameObject UnitPrefab;
     private List<GameObject> UnitList = new List<GameObject>();
     public void UnitMoveFunc(int x1,int y1,int x2,int y2)
     {
@@ -13,8 +14,7 @@ public class UnitManager : MonoBehaviour
     }//유닛 이동 명령
 
     public void CreateUnit(int x,int y) {
-        //유닛 생성부 (나중에 유닛 팩토리로 새로 만들 예정)
-        var unit = UnitFactory.getUnit("Unit",x,y);
+        var unit = UnitFactory.getUnit("Unit",x,y,UnitPrefab);
         UnitList.Add(unit);
     }
     public void CreateMoveFunc()
