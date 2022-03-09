@@ -5,8 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
-    //[SerializeField] 
-
+    private List<GameObject> UnitList = new List<GameObject>();
     public void UnitMoveFunc()
     {
 

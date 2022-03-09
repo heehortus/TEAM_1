@@ -4,14 +4,8 @@ using UnityEngine;
 
 public interface UnitInterface
 {
-    public void clickfunc()
-    {
+    public void clickfunc();
 
-    }
-
-    public void Movefuc()
-    {
-
-    }
+    public void Movefuc();
 
 }
