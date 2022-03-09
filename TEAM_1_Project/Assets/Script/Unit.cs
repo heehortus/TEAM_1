@@ -8,8 +8,14 @@ public class Unit : MonoBehaviour, UnitInterface
 	public void clickfunc() {
 
 	}
-    public void Movefuc()
+    public void Movefuc(int x,int y)
     {
 
     }
+
+	public bool checkPos(int a,int b) {
+		if(a == x && b == y)
+			return true;
+		return false;
+	}
 }

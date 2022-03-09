@@ -6,6 +6,6 @@ public interface UnitInterface
 {
     public void clickfunc();
 
-    public void Movefuc();
+    public void Movefuc(int x,int y);
 
 }
