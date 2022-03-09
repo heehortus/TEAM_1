@@ -14,7 +14,7 @@ public class UnitManager : MonoBehaviour
 
     public void CreateUnit(int x,int y) {
         //유닛 생성부 (나중에 유닛 팩토리로 새로 만들 예정)
-        var unit = new GameObject();
+        var unit = UnitFactory.getUnit("Unit",x,y);
         UnitList.Add(unit);
     }
     public void CreateMoveFunc()
