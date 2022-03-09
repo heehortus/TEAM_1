@@ -5,8 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] PlaceManager placeManager;
-    [SerializeField] UnitManager unitManager;
+    [SerializeField] public PlaceManager placeManager;
+    [SerializeField] public UnitManager unitManager;
+    [SerializeField] public SceneManager sceneManager;
+    [SerializeField] public ResourceManager resourceManager;
+    [SerializeField] public InputManager inputManager;
+    [SerializeField] public UIManager uiManager;
     static GameManager m_cInstance; // °ÔÀÓ ¸Å´ÏÀú ½Ì±ÛÅæ ÆĞÅÏ
     static public GameManager GetInstance()
     {
