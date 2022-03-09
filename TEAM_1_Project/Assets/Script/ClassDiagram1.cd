@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAhBAAAAAAAAAAAAAAAAEQ=</HashCode>
+      <FileName>Assets\Script\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnitManager" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\UnitManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceManager" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\PlaceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="UnitInterface" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAA=</HashCode>
+      <FileName>Assets\Script\UnitInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
