@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlaceManager placeManager;
     [SerializeField] UnitManager unitManager;
+
+    
+
+
     static GameManager m_cInstance; 
     static public GameManager GetInstance()
     {
