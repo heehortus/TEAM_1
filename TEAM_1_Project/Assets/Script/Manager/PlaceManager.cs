@@ -17,6 +17,9 @@ public class PlaceManager : MonoBehaviour
 	private const int RowMax = 3;
     private const int ColumnMax = 2;
 
+    public bool[,] _isExistOnPlayerPlace = new bool[RowMax, ColumnMax];
+    public bool[,] _isExistOnEnemyPlace = new bool[RowMax, ColumnMax];
+
     public enum place {player,enemy};
 
     private void Start()
