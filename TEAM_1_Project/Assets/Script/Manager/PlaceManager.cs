@@ -29,7 +29,7 @@ public class PlaceManager : MonoBehaviour
         var pos = place.transform.position;
         var width = placePrefab.GetComponent<BoxCollider2D>().size.x;
         var height = placePrefab.GetComponent<BoxCollider2D>().size.y;
-        pos = new Vector3(pos.x-(width*RowMax + HorizontalInterval*(RowMax-1)/2),pos.y+(height*ColumnMax + VerticalInterval*(ColumnMax-1)/2),0);
+        pos = new Vector3(pos.x-(width*(ColumnMax-1) + HorizontalInterval*(ColumnMax-1))/2,pos.y+(height*(RowMax-1) + VerticalInterval*(RowMax-1))/2,0);
         var _pos = pos;
         List<List<GameObject>> lists;
         place placeenemy;
@@ -50,9 +50,9 @@ public class PlaceManager : MonoBehaviour
                 _place.GetComponent<PlaceObject>().y = j;
                 _place.GetComponent<PlaceObject>().place = placeenemy;
                 lists[i].Add(_place);
-                _place.transform.SetParent(place.transform);
                 _place.transform.position = new Vector3(_pos.x,_pos.y,0);
                 _pos = new Vector3(_pos.x + HorizontalInterval + width, _pos.y);
+                _place.transform.SetParent(place.transform);
             }
             _pos = new Vector3(pos.x,_pos.y - VerticalInterval - height);
         }
