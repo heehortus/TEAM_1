@@ -9,6 +9,7 @@ public class PlaceObject : MonoBehaviour
     public PlaceManager.place place;
     [SerializeField] public int x = 0;
     [SerializeField] public int y = 0;
+    [SerializeField] public bool isEmpty = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,12 @@ public class PlaceObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
-
+        if(isEmpty)
+        {
+            GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
+            isEmpty = false;
+        }
+        
+        
     }
 }
