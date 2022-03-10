@@ -10,7 +10,20 @@ public static class UnitFactory
         else 
             unit = Object.Instantiate(Prefabs); //기본 prefab 생성
 
-        switch(name) {
+        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
+
+        if (place == PlaceManager.place.player)
+        {
+            GameManager.GetInstance().placeManager._isExistOnPlayerPlace[x, y] = true;
+            Debug.Log($"Player 진영 {x} , {y} 에 유닛을 설치했습니다.");
+        }
+        if (place == PlaceManager.place.enemy)
+        {
+            GameManager.GetInstance().placeManager._isExistOnEnemyPlace[x, y] = true;
+            Debug.Log($"Enemy 진영 {x} , {y} 에 유닛을 설치했습니다.");
+        }
+
+        switch (name) {
             case "Unit":
                 unit.AddComponent<Unit>(); //스크립트별로 붙여주기
                 unit.GetComponent<Unit>().setUnitPos(place,x,y);

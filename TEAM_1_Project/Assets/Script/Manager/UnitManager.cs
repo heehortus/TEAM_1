@@ -15,7 +15,24 @@ public class UnitManager : MonoBehaviour
     }//유닛 이동 명령
 
     public void CreateUnit(PlaceManager.place place,int x,int y) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
-        
+
+        if (place == PlaceManager.place.player)
+        {
+            if (GameManager.GetInstance().placeManager._isExistOnPlayerPlace[x, y])
+            {
+                Debug.Log("이미 설치된 공간입니다.");
+                return;
+            }
+        }
+        else if (place == PlaceManager.place.enemy)
+        {         
+            if (GameManager.GetInstance().placeManager._isExistOnEnemyPlace[x, y])
+            {
+                Debug.Log("이미 설치된 공간입니다.");
+                return;
+            }    
+        }
+
         var unit = UnitFactory.getUnit("Unit",x,y,UnitPrefab,place);
         UnitList.Add(unit);
     }
