@@ -10,11 +10,11 @@ public class SceneManager : MonoBehaviour
     public GameObject Unit_Parent;
     void Start()
     {
-        UI_Parent = new GameObject(name = "UI_Parent"); // UIµé ¹­¾î¼­ ÇÏÀÌ¶óÅ°Ã¢¿¡ ÀúÀå
-        Unit_Parent = new GameObject(name = "Unit_Parent"); // Unitµé ¹­¾î¼­ ÇÏÀÌ¶óÅ°Ã¢¿¡ ÀúÀå
+        UI_Parent = new GameObject(name = "UI_Parent"); // UIë“¤ ë¬¶ì–´ì„œ í•˜ì´ë¼í‚¤ì°½ì— ì €ì¥
+        Unit_Parent = new GameObject(name = "Unit_Parent"); // Unitë“¤ ë¬¶ì–´ì„œ í•˜ì´ë¼í‚¤ì°½ì— ì €ì¥
 
-        Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")).transform.SetParent(UI_Parent.transform); // ÅÏ Á¾·á UI ¹öÆ° »ı¼º
-        Instantiate(GameManager.GetInstance().resourceManager.LoadUnit("Unit_Tmp")).transform.parent = Unit_Parent.transform; // ÀÓ½Ã À¯´Ö »ı¼º ( Á¤º¸Ã¢ È®ÀÎ¿ë) 
+        Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")).transform.SetParent(UI_Parent.transform); // í„´ ì¢…ë£Œ UI ë²„íŠ¼ ìƒì„±
+        Instantiate(GameManager.GetInstance().resourceManager.LoadUnit("Unit_Tmp")).transform.parent = Unit_Parent.transform; // ì„ì‹œ ìœ ë‹› ìƒì„± ( ì •ë³´ì°½ í™•ì¸ìš©) 
     }
     
     //UI_Turn_End_Button
