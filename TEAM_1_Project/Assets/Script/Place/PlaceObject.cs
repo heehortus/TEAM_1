@@ -25,12 +25,25 @@ public class PlaceObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isEmpty)
+        if(GameManager.GetInstance().inputManager.Get_ClickerState() == InputManager.E_CLICKERSTATE.CREATEUNIT1)
         {
-            GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
-            isEmpty = false;
+            if (isEmpty)
+            {
+                GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
+                isEmpty = false;
+                Debug.Log("Create 1");
+            }
         }
-        
-        
+        else if (GameManager.GetInstance().inputManager.Get_ClickerState() == InputManager.E_CLICKERSTATE.CREATEUNIT2)
+        {
+            if (isEmpty)
+            {
+                GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
+                isEmpty = false;
+                Debug.Log("Create 2");
+            }
+        }
+
+
     }
 }
