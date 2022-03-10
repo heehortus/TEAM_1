@@ -9,8 +9,8 @@ public class UnitManager : MonoBehaviour
     private List<GameObject> UnitList = new List<GameObject>();
     public void UnitMoveFunc(int x1, int y1, int x2, int y2)
     {
-        var unit = UnitList.Find(a => a.GetComponent<Unit>().checkPos(x1,x2) == true);
-        unit.GetComponent<Unit>().Movefuc(x2,y2);
+        var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(x1,x2) == true);
+        unit.GetComponent<UnitInterface>().Movefuc(x2,y2);
     }//유닛 이동 명령
 
     public void CreateUnit(int x,int y) {
