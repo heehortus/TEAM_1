@@ -7,11 +7,9 @@ public class PlaceObject : MonoBehaviour
 {
     public Transform point;
     public PlaceManager.place place;
-    public int x;
-    public int y;
+    [SerializeField] public int x = 0;
+    [SerializeField] public int y = 0;
     // Start is called before the first frame update
-
-    /*
     void Start()
     {
         SetUpPoint();
@@ -19,24 +17,14 @@ public class PlaceObject : MonoBehaviour
 
     public void SetUpPoint()
     {
-        point = this.transform;
-        for (int i = 0; i < 12; i++)
-        {
-            if(this == GameManager.GetInstance().placeManager.GivePlaceValue(i))
-            {
-                this.x = (i % 4) + 1;
-                this.y = (i / 4) + 1;
-            }
-        }
+        
         
 
     }
-    */
 
     private void OnMouseDown()
     {
-        GameManager.GetInstance().unitManager.CreateUnit(place,x,y);
+        GameManager.GetInstance().unitManager.CreateUnit(place, x, y);
 
     }
-
 }
