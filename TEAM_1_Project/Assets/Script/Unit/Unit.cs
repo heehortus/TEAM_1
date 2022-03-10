@@ -102,6 +102,10 @@ public class Unit : MonoBehaviour, UnitInterface
         {
             isUnitClick = true;
         }
+
+        GameManager.GetInstance().inputManager.SetClickerState(4);
+
+
     }
 	public void clickfunc() {
         if (isUnitClick)
@@ -115,4 +119,7 @@ public class Unit : MonoBehaviour, UnitInterface
 			return true;
 		return false;
 	}
+
+
+
 }

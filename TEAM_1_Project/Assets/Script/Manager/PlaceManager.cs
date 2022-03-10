@@ -11,14 +11,15 @@ public class PlaceManager : MonoBehaviour
     [SerializeField] private GameObject MyPlace;
     [SerializeField] private GameObject EnemyPlace;
 
+    [SerializeField] public int saved_x_point;
+    [SerializeField] public int saved_y_point;
+
     private const float HorizontalInterval = 2;
     private const float VerticalInterval = 2;
 
-	private const int RowMax = 3;
-    private const int ColumnMax = 2;
+	public int RowMax = 3;
+    public int ColumnMax = 2;
 
-    public bool[,] _isExistOnPlayerPlace = new bool[RowMax, ColumnMax];
-    public bool[,] _isExistOnEnemyPlace = new bool[RowMax, ColumnMax];
 
     public enum place {player,enemy};
 
@@ -70,4 +71,14 @@ public class PlaceManager : MonoBehaviour
             return listEnemyPlace[x][y];
         }
     }
+
+    public void SavedPoint(place _place, int x, int y)
+    {
+        if(_place == place.player)
+        {
+            saved_x_point = x;
+            saved_y_point = y;
+        }
+    }
+
 }
