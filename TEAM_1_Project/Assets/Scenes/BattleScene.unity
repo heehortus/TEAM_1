@@ -247,6 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &483190079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -389,6 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &571706105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -599,6 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &720919396
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -927,6 +933,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!1 &1474834197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!1 &1493478285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &1493478288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1241,6 +1253,7 @@ Transform:
   - {fileID: 867938432}
   - {fileID: 531939309}
   - {fileID: 714001804}
+  - {fileID: 2129060360}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1290,6 +1303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &1552976658
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1388,6 +1403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &1617460718
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1538,6 +1555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!1 &1655275693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,6 +1655,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!1 &1734358191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,6 +1755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!1 &1796475943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,10 +1803,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeManager: {fileID: 1115884643}
   unitManager: {fileID: 84842159}
-  inputManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  sceneManager: {fileID: 0}
-  resourceManager: {fileID: 0}
+  inputManager: {fileID: 531939310}
+  uiManager: {fileID: 714001805}
+  sceneManager: {fileID: 867938433}
+  resourceManager: {fileID: 2129060361}
 --- !u!1 &1829466411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  x: 0
+  y: 0
 --- !u!212 &1829466414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1882,3 +1907,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2129060359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2129060360}
+  - component: {fileID: 2129060361}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2129060360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129060359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1545778287}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2129060361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129060359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22632f01a5f9d44495a0bf60cab971a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

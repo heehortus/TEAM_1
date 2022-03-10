@@ -20,14 +20,14 @@ public class InputManager : MonoBehaviour
     public void LeftClick()
     {
         if (!Input.GetMouseButtonDown(0)) return;
-        if (EventSystem.current.IsPointerOverGameObject()) return; // UI Å¬¸¯ÇÏ¸é Á¾·á
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // Ä«¸Ş¶ó¿¡¼­ È­¸éÀ¸·Î ±¤¼±À» ½÷¼­ ¸Â´Â ¹°Ã¼ ÆÇº°
-        if (GameManager.GetInstance().uiManager._popupUIs.Count > 0) Destroy(GameManager.GetInstance().uiManager._popupUIs.Pop()); // ÆË¾÷ UI (ÇöÀç´Â À¯´Ö Á¤º¸) °¡ ¶°ÀÖÀ¸¸é »èÁ¦
+        if (EventSystem.current.IsPointerOverGameObject()) return; // UI í´ë¦­í•˜ë©´ ì¢…ë£Œ
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // ì¹´ë©”ë¼ì—ì„œ í™”ë©´ìœ¼ë¡œ ê´‘ì„ ì„ ì´ì„œ ë§ëŠ” ë¬¼ì²´ íŒë³„
+        if (GameManager.GetInstance().uiManager._popupUIs.Count > 0) Destroy(GameManager.GetInstance().uiManager._popupUIs.Pop()); // íŒì—… UI (í˜„ì¬ëŠ” ìœ ë‹› ì •ë³´) ê°€ ë– ìˆìœ¼ë©´ ì‚­ì œ
         if (hit.collider == null)
         {
             return;
         }
-        Debug.Log($"{hit.collider.name} Å¬¸¯");
+        Debug.Log($"{hit.collider.name} í´ë¦­");
 
     }
     public void RightClick()
@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
         {
             return;
         }
-        if(hit.collider.gameObject.GetComponent<Unit>() != null) // ±¤¼±À» ¸ÂÀº ¹°Ã¼°¡ Unit ÄÄÆ÷³ÍÆ®¸¦ °¡Áö°í ÀÖÀ¸¸é
+        if(hit.collider.gameObject.GetComponent<Unit>() != null) // ê´‘ì„ ì„ ë§ì€ ë¬¼ì²´ê°€ Unit ì»´í¬ë„ŒíŠ¸ë¥¼ ê°€ì§€ê³  ìˆìœ¼ë©´
         {
             GameObject _uiInfo = Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Unit_Info"));
             _uiInfo.transform.SetParent(GameManager.GetInstance().sceneManager.UI_Parent.transform);
