@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour, UnitInterface
     }
 
 	public bool checkPos(int a,int b) {
-		if(a == this.x && b == this.y)
+		if(a == x && b == y)
 			return true;
 		return false;
 	}
