@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Unit : MonoBehaviour, UnitInterface
 {
 	private int x = 0, y = 0;
-	bool isUnitClick;
+    [SerializeField] bool isUnitClick;
 	[SerializeField] int coast;
 	[SerializeField] int level;
 	[SerializeField] Units unit;
@@ -91,12 +92,19 @@ public class Unit : MonoBehaviour, UnitInterface
 	}
 	void OnMouseDown()
     {
-		isUnitClick = true;
+        if(isUnitClick)
+        {
+            isUnitClick = false;
+        }
+        else
+        {
+            isUnitClick = true;
+        }
     }
 	public void clickfunc() {
         if (isUnitClick)
         {
-
+            Movefuc(1, 1);
         }
 	}
     public void Movefuc(int x,int y)
