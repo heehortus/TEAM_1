@@ -6,9 +6,12 @@ using UnityEngine;
 public class PlaceObject : MonoBehaviour
 {
     public Transform point;
-    [SerializeField] int x = 0;
-    [SerializeField] int y = 0;
+    public PlaceManager.place place;
+    public int x;
+    public int y;
     // Start is called before the first frame update
+
+    /*
     void Start()
     {
         SetUpPoint();
@@ -28,13 +31,12 @@ public class PlaceObject : MonoBehaviour
         
 
     }
+    */
 
     private void OnMouseDown()
     {
-        GameManager.GetInstance().unitManager.CreateUnit((int)point.position.x, (int)point.position.y);
+        GameManager.GetInstance().unitManager.CreateUnit(place,x,y);
 
     }
-
-
 
 }

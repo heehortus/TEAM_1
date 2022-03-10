@@ -13,6 +13,11 @@ public class Unit : MonoBehaviour, UnitInterface
 
 	enum Units { boom, stealer, crystal };
 
+	public void setUnitPos(PlaceManager.place place,int x,int y) {
+		var placeobject = GameManager.GetInstance().placeManager.GivePlaceValue(place,x,y);
+		transform.position = placeobject.transform.position;
+	}
+
 	void Unitablity()
     {
         switch (unit)
