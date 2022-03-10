@@ -24,11 +24,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void Update() {
-        //<Test>
-            if(Input.anyKeyDown) {
-                unitManager.CreateUnit(0,0);
-            }
-        //</Test>
     }
 
 }
