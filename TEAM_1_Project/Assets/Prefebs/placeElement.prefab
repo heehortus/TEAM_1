@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  place: 0
   x: 0
   y: 0
 --- !u!61 &815275294773349900
