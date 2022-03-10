@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Unit : MonoBehaviour, UnitInterface
 {
-	private int x = 0, y = 0;
+	protected int x = 0, y = 0;
     [SerializeField] bool isUnitClick;
 	[SerializeField] int coast;
 	[SerializeField] int level;
@@ -16,6 +16,8 @@ public class Unit : MonoBehaviour, UnitInterface
 
 	public void setUnitPos(PlaceManager.place place,int x,int y) {
 		var placeobject = GameManager.GetInstance().placeManager.GivePlaceValue(place,x,y);
+		this.x = x;
+		this.y = y;
 		transform.position = placeobject.transform.position;
 	}
 
@@ -104,13 +106,9 @@ public class Unit : MonoBehaviour, UnitInterface
 	public void clickfunc() {
         if (isUnitClick)
         {
-            Movefuc(1, 1);
+            setUnitPos(PlaceManager.place.player,1, 1);
         }
 	}
-    public void Movefuc(int x,int y)
-    {
-		transform.position = Vector2.MoveTowards(transform.position, new Vector2(x, y), 3);
-    }
 
 	public bool checkPos(int a,int b) {
 		if(a == x && b == y)
