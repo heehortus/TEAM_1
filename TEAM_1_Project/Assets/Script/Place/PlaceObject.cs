@@ -26,6 +26,7 @@ public class PlaceObject : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(!isPlayerPlace) return;
         var click_state = GameManager.GetInstance().inputManager.Get_ClickerState();
         var _unitManager = GameManager.GetInstance().unitManager;
 
