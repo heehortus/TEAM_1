@@ -44,7 +44,6 @@ public class PlaceObject : MonoBehaviour
         else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
             _unitManager.CreateUnit(this, "Unit");
         }
-
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
             Debug.Log(_unitManager._currSelectedUnit);
