@@ -29,7 +29,6 @@ public class Unit : MonoBehaviour, UnitInterface
         }
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.MOVE);
         GameManager.GetInstance().unitManager._currSelectedUnit = this;
-
     }
 	public void clickfunc() {
 	}

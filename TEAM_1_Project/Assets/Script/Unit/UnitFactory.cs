@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class UnitFactory 
 {
-    private static GameObject[] UnitPrefabs = Resources.LoadAll<GameObject>("PreFabs/Units");
-    public static GameObject getUnit(string name, PlaceObject _place,PlaceManager.place place = PlaceManager.place.player) {
+    private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
+    public static GameObject getUnit(string name, PlaceObject _place) {
         GameObject unit;
-        if(UnitPrefabs == null)
-            unit = new GameObject();
-        else 
-            unit = Object.Instantiate(UnitPrefabs[0]); //기본 prefab 생성
+        unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
 
         unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
 
-        if (place == PlaceManager.place.player)
+        if (_place.isPlayerPlace)
         {
             Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }
-        if (place == PlaceManager.place.enemy)
+        else
         {
             Debug.Log($"Enemy 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }

@@ -18,10 +18,10 @@ public class UnitManager : MonoBehaviour
     }//유닛 이동 명령
 
     
-    public GameObject CreateUnit(PlaceManager.place place, PlaceObject _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
+    public GameObject CreateUnit(PlaceObject _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
         GameObject unit = null;
         if(!_place.isEmpty) return null;
-        unit = UnitFactory.getUnit(name, _place,place);
+        unit = UnitFactory.getUnit(name, _place);
         _place.isEmpty = false;
         UnitList.Add(unit);
         return unit;

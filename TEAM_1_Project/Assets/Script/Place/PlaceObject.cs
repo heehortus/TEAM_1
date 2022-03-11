@@ -6,10 +6,11 @@ using UnityEngine;
 public class PlaceObject : MonoBehaviour
 {
     public Transform point;
-    public PlaceManager.place place;
     [SerializeField] public int x = 0;
     [SerializeField] public int y = 0;
     [SerializeField] public bool isEmpty = true;
+
+	public bool isPlayerPlace = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +28,14 @@ public class PlaceObject : MonoBehaviour
     {
         var click_state = GameManager.GetInstance().inputManager.Get_ClickerState();
         var _unitManager = GameManager.GetInstance().unitManager;
+
         if (click_state >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
             click_state <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
         {
-            _unitManager.CreateUnit(place, this, "Unit");
+            _unitManager.CreateUnit(this, "Unit");
             Debug.Log($"Create : {click_state}");
         }
+
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
             Debug.Log(_unitManager._currSelectedUnit._currPlace);
