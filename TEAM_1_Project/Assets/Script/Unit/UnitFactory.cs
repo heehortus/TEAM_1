@@ -33,7 +33,7 @@ public static class UnitFactory
         switch (name) {
             case "Unit":
                 // unit.AddComponent<Unit>(); //스크립트별로 붙여주기
-                unit.GetComponent<Unit>().setUnitPos(place, _place.x, _place.y);
+                unit.GetComponent<Unit>().setUnitPos(place, _place);
                 return unit;
         }
         return null;

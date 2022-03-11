@@ -29,7 +29,8 @@ public class UnitManager : MonoBehaviour
         }
         PlayerPlace[x1,y1] = false;
         PlayerPlace[x2,y2] = true;
-        unit.GetComponent<UnitInterface>().setUnitPos(place,x2,y2);
+        var _place = GameManager.GetInstance().placeManager.GivePlaceValue(place,x2,y2).GetComponent<PlaceObject>();
+        unit.GetComponent<UnitInterface>().setUnitPos(place,_place);
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
     }//유닛 이동 명령
 

@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Unit : MonoBehaviour, UnitInterface
 {
-	protected int x = 0, y = 0;
     [SerializeField] bool isUnitClick;
 	[SerializeField] int coast;
 	[SerializeField] int level;
@@ -16,11 +15,9 @@ public class Unit : MonoBehaviour, UnitInterface
 
 	enum Units { boom, stealer, crystal };
 
-	public void setUnitPos(PlaceManager.place place,int x,int y) {
-		var placeobject = GameManager.GetInstance().placeManager.GivePlaceValue(place,x,y);
-		this.x = x;
-		this.y = y;
-        transform.position = placeobject.transform.position - Vector3.forward;
+	public void setUnitPos(PlaceManager.place place,PlaceObject _place) {
+		_currPlace = _place;
+        transform.position = _currPlace.transform.position - Vector3.forward;
 	}
 
 	void Unitablity()
@@ -109,14 +106,10 @@ public class Unit : MonoBehaviour, UnitInterface
 
     }
 	public void clickfunc() {
-        if (isUnitClick)
-        {
-            setUnitPos(PlaceManager.place.player,1, 1);
-        }
 	}
 
 	public bool checkPos(int a,int b) {
-		if(a == x && b == y)
+		if(a == _currPlace.x && b == _currPlace.y)
 			return true;
 		return false;
 	}
