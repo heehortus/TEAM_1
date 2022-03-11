@@ -14,15 +14,6 @@ public static class UnitFactory
 
         if (place == PlaceManager.place.player)
         {
-            //GameManager.GetInstance().unitManager._isExistOnPlayerPlace[x, y] = true;
-            Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
-        }
-        if (place == PlaceManager.place.enemy)
-        {
-            //GameManager.GetInstance().unitManager._isExistOnEnemyPlace[x, y] = true;
-            Debug.Log($"Enemy 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
-
-
             Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }
         if (place == PlaceManager.place.enemy)
@@ -32,10 +23,10 @@ public static class UnitFactory
 
         switch (name) {
             case "Unit":
-                // unit.AddComponent<Unit>(); //스크립트별로 붙여주기
-                unit.GetComponent<Unit>().setUnitPos(place, _place);
-                return unit;
+                unit.AddComponent<Unit>();
+                break;
         }
-        return null;
+        unit.GetComponent<UnitInterface>().setUnitPos(place, _place);
+        return unit;
     }
 }

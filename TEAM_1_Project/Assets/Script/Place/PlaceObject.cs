@@ -25,65 +25,17 @@ public class PlaceObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isEmpty)
+        var click_state = GameManager.GetInstance().inputManager.Get_ClickerState();
+        if (click_state >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
+            click_state <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
         {
-            GameObject unit = null;
-            if (GameManager.GetInstance().inputManager.Get_ClickerState() >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
-                GameManager.GetInstance().inputManager.Get_ClickerState() <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
-            {
-                unit = GameManager.GetInstance().unitManager.CreateUnit(place, this, (int)GameManager.GetInstance().inputManager.Get_ClickerState());
-                unit.GetComponent<Unit>()._currPlace = this;
-                isEmpty = false;
-                Debug.Log($"Create : {(int)GameManager.GetInstance().inputManager.Get_ClickerState()}");
-            }
-            else if(GameManager.GetInstance().inputManager.Get_ClickerState() == InputManager.E_CLICKERSTATE.MOVE)
-            {
-                Unit _unit = GameManager.GetInstance().unitManager._currSelectedUnit;
-                _unit._currPlace.isEmpty = true;
-                _unit._currPlace = this;
-                _unit.transform.position = transform.position - Vector3.forward;
-                isEmpty = false;
-                GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
-                Debug.Log("Move");
-            }
+             GameManager.GetInstance().unitManager.CreateUnit(place, this, "Unit");
+            Debug.Log($"Create : {click_state}");
         }
-        else
+        else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
-            // 이미 유닛이 있는 공간에 유닛을 배치하려고 하면
-            if ((int)GameManager.GetInstance().inputManager.Get_ClickerState() >= (int)InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
-                (int)GameManager.GetInstance().inputManager.Get_ClickerState() <= (int)InputManager.E_CLICKERSTATE.CREATEUNIT4)
-            {
-                Debug.Log("이미 유닛이 존재하는 공간입니다.");
-                GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
-            }
-            else if (GameManager.GetInstance().inputManager.Get_ClickerState() == InputManager.E_CLICKERSTATE.MOVE)
-            {
-                Debug.Log("이미 유닛이 존재하는 공간입니다.");
-                GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
-            }
+            Debug.Log("Move");
         }
-        
-
-        /*if (GameManager.GetInstance().inputManager.Get_ClickerState() == InputManager.E_CLICKERSTATE.MOVE)
-        {
-            if (isEmpty)
-            {
-                Unit _unit = GameManager.GetInstance().unitManager._currSelectedUnit;
-                _unit._currPlace.isEmpty = true;
-                _unit._currPlace = this;
-                _unit.transform.position = transform.position;
-                isEmpty = false;
-                GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
-
-                //GameManager.GetInstance().unitManager.UnitMoveFunc(place, GameManager.GetInstance().placeManager.saved_x_point, GameManager.GetInstance().placeManager.saved_y_point, this.x, this.y);
-                Debug.Log("Move");
-            }
-            else
-            {
-                Debug.Log("이미 유닛이 있는 공간입니다."); // 나중에 위치 바뀌도록 수정
-            }
-        }
-        */
-        //GameManager.GetInstance().placeManager.SavedPoint(place, x, y);
+        GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
     }
 }

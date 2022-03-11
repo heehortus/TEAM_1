@@ -8,6 +8,6 @@ public interface UnitInterface
 
     public void setUnitPos(PlaceManager.place place,PlaceObject _place);
     
-    public bool checkPos(int a,int b);
+    public bool checkPos(PlaceObject _place);
 
 }
