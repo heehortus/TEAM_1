@@ -12,13 +12,15 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] Units unit;
 	[SerializeField] SpriteRenderer character;
 
+    public PlaceObject _currPlace;
+
 	enum Units { boom, stealer, crystal };
 
 	public void setUnitPos(PlaceManager.place place,int x,int y) {
 		var placeobject = GameManager.GetInstance().placeManager.GivePlaceValue(place,x,y);
 		this.x = x;
 		this.y = y;
-		transform.position = placeobject.transform.position;
+        transform.position = placeobject.transform.position - Vector3.forward;
 	}
 
 	void Unitablity()
@@ -102,9 +104,8 @@ public class Unit : MonoBehaviour, UnitInterface
         {
             isUnitClick = true;
         }
-
-        GameManager.GetInstance().inputManager.SetClickerState(4);
-
+        GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.MOVE);
+        GameManager.GetInstance().unitManager._currSelectedUnit = this;
 
     }
 	public void clickfunc() {

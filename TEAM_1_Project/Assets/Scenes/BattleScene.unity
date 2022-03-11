@@ -201,7 +201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c8b60a0e604a47bb20c91931798ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitPrefab: {fileID: 1569926392765020863, guid: 8dfe5b5a29e7ddb47b5e5a5e40584f45, type: 3}
+  UnitPrefab1: {fileID: 1569926392765020863, guid: 6eccb1f1230f9564594cd0a22da91b34, type: 3}
+  UnitPrefab2: {fileID: 1569926392765020863, guid: 9a620d0921ef40f4299de386afbc7c75, type: 3}
+  UnitPrefab3: {fileID: 1569926392765020863, guid: 9f2ce1083ac43734b8d4070746cd7610, type: 3}
+  UnitPrefab4: {fileID: 1569926392765020863, guid: 8dfe5b5a29e7ddb47b5e5a5e40584f45, type: 3}
+  _currSelectedUnit: {fileID: 0}
 --- !u!1 &202840491
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +863,8 @@ MonoBehaviour:
   placePrefab: {fileID: 815275294773349904, guid: 6a6868c4ef8de417d999d2f71d7dfc9c, type: 3}
   MyPlace: {fileID: 1353923895}
   EnemyPlace: {fileID: 955800090}
+  saved_x_point: 0
+  saved_y_point: 0
   RowMax: 3
   ColumnMax: 2
 --- !u!1 &1249002945
