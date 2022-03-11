@@ -5,9 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
+    public Unit _currSelectedUnit = null;
     
     private List<GameObject> UnitList = new List<GameObject>();
-    public void UnitMoveFunc(Place prev,Place next)
+    public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(prev) == true);
         if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다."); 
@@ -17,7 +18,7 @@ public class UnitManager : MonoBehaviour
     }//유닛 이동 명령
 
     
-    public GameObject CreateUnit(Place _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
+    public GameObject CreateUnit(PlaceObject _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
         GameObject unit = null;
         if(!_place.isEmpty) return null;
         unit = UnitFactory.getUnit(name, _place);
