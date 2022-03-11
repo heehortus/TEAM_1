@@ -5,10 +5,7 @@ public static class UnitFactory
 {
     private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
     public static GameObject getUnit(string name, PlaceObject _place) {
-        GameObject unit;
-        unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
-
-        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
+        GameObject unit = new GameObject();
 
         if (_place.isPlayerPlace)
         {
@@ -21,9 +18,14 @@ public static class UnitFactory
 
         switch (name) {
             case "Unit":
-                unit.AddComponent<Unit>();
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
+                unit.AddComponent<Unit>(); 
+                //나중에 추상화 해야함
                 break;
+            default :
+                return unit;
         }
+        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
         unit.GetComponent<UnitInterface>().setUnitPos(_place);
         return unit;
     }
