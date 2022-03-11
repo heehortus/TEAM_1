@@ -4,11 +4,19 @@ using UnityEngine;
 public static class UnitFactory 
 {
     private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
+
     public static GameObject getUnit(string name, PlaceObject _place) {
+
+
+    public static GameObject getUnit(string name, PlaceObject _place) {
+        GameObject unit = new GameObject();
+    public static GameObject getUnit(string name, Place _place) {
+
         GameObject unit;
         unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
 
         unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
+
 
         if (_place.isPlayerPlace)
         {
@@ -20,10 +28,22 @@ public static class UnitFactory
         }
 
         switch (name) {
-            case "Unit":
-                unit.AddComponent<Unit>();
+            case "BoomUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
+                unit.AddComponent<Boom>();
                 break;
+            case "StealerUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 2"));
+                unit.AddComponent<Stealer>();
+                break;
+            case "SeedUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 3"));
+                unit.AddComponent<Seed>();
+                break;
+            default :
+                return unit;
         }
+        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
         unit.GetComponent<UnitInterface>().setUnitPos(_place);
         return unit;
     }

@@ -29,6 +29,18 @@ public class PlaceObject : MonoBehaviour
         var click_state = GameManager.GetInstance().inputManager.Get_ClickerState();
         var _unitManager = GameManager.GetInstance().unitManager;
 
+        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT1) {
+            _unitManager.CreateUnit(this, "SeedUnit");
+            Debug.Log($"Create : {click_state}");
+        }
+        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT2) {
+            _unitManager.CreateUnit(this, "BoomUnit");
+            Debug.Log($"Create : {click_state}");
+        }
+        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
+            _unitManager.CreateUnit(this, "StealerUnit");
+
+
         if (click_state >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
             click_state <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
         {
