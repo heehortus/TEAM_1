@@ -20,6 +20,15 @@ public class UnitManager : MonoBehaviour
     {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(x1,y1) == true);
         if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다."); 
+        bool[,] PlayerPlace = null;
+        if(place == PlaceManager.place.player) {
+            PlayerPlace = _isExistOnPlayerPlace;
+        }
+        else {
+            PlayerPlace = _isExistOnEnemyPlace;
+        }
+        PlayerPlace[x1,y1] = false;
+        PlayerPlace[x2,y2] = true;
         unit.GetComponent<UnitInterface>().setUnitPos(place,x2,y2);
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
     }//유닛 이동 명령
@@ -29,6 +38,7 @@ public class UnitManager : MonoBehaviour
         GameObject unit = null;
         if (unitNum == 0)
         {
+
             unit = UnitFactory.getUnit("Unit", _place, UnitPrefab1, place);
         }
         if (unitNum == 1)
@@ -42,6 +52,23 @@ public class UnitManager : MonoBehaviour
         if (unitNum == 3)
         {
             unit = UnitFactory.getUnit("Unit", _place, UnitPrefab4, place);
+
+            if (_isExistOnPlayerPlace[x, y])
+            {
+                Debug.Log("이미 설치된 공간입니다.");
+                return;
+            }
+            _isExistOnPlayerPlace[x,y] = true;
+        }
+        else if (place == PlaceManager.place.enemy)
+        {         
+            if (_isExistOnEnemyPlace[x, y])
+            {
+                Debug.Log("이미 설치된 공간입니다.");
+                return;
+            }    
+            _isExistOnEnemyPlace[x,y] = true;
+
         }
         UnitList.Add(unit);
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
