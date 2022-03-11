@@ -10,7 +10,11 @@ public class Boom : Unit
         this.y = 0;
         this.level = 0;
     }
-    
 
+
+    public override void Ability()
+    {
+           
+    }
 
 }

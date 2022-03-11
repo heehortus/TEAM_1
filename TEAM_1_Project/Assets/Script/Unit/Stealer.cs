@@ -10,5 +10,9 @@ public class Stealer : Unit
         this.y = 0;
         this.level = 0;
     }
-    
+
+    public override void Ability()
+    {
+
+    }
 }

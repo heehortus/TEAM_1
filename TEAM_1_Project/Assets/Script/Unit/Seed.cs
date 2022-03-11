@@ -11,5 +11,9 @@ public class Seed : Unit
         this.y = 0;
         this.level = 0;
     }
-    
+
+    public override void Ability()
+    {
+
+    }
 }
