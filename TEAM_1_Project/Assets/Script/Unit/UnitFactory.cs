@@ -14,12 +14,11 @@ public static class UnitFactory
 
         if (place == PlaceManager.place.player)
         {
-            GameManager.GetInstance().unitManager._isExistOnPlayerPlace[x, y] = true;
+
             Debug.Log($"Player 진영 {x} , {y} 에 유닛을 설치했습니다.");
         }
         if (place == PlaceManager.place.enemy)
         {
-            GameManager.GetInstance().unitManager._isExistOnEnemyPlace[x, y] = true;
             Debug.Log($"Enemy 진영 {x} , {y} 에 유닛을 설치했습니다.");
         }
 
