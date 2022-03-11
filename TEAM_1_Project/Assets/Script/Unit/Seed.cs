@@ -11,20 +11,5 @@ public class Seed : Unit
         this.y = 0;
         this.level = 0;
     }
-    void seed()
-    {
-        switch (level)
-        {
-            // �� �Ŵ������� �� ���� �޾ƿ� �� ���� ���� �� �� ���� level�� �����ϵ��� ¥�� ��� �����߽��ϴ�.
-            case 1:
-                coast = 3;
-                break;
-            case 2:
-                coast = 5;
-                break;
-            case 3:
-                coast = 7;
-                break;
-        }
-    }
+    
 }

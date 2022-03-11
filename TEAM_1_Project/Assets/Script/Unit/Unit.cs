@@ -7,8 +7,8 @@ public class Unit : MonoBehaviour, UnitInterface
 {
 	protected int x = 0, y = 0;
     [SerializeField] bool isUnitClick;
-	[SerializeField] int coast;
-	[SerializeField] int level;
+	[SerializeField] protected int coast;
+	[SerializeField] protected int level;
 	[SerializeField] Units unit;
 	[SerializeField] SpriteRenderer character;
 
