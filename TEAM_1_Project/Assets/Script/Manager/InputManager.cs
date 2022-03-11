@@ -9,6 +9,9 @@ public class InputManager : MonoBehaviour
 {
     public enum E_CLICKERSTATE { CREATEUNIT1, CREATEUNIT2, CREATEUNIT3, CREATEUNIT4, MOVE, STANDBY }
     [SerializeField] E_CLICKERSTATE e_CLICKERSTATE = E_CLICKERSTATE.STANDBY;
+    public Unit _currSelectedUnit = null;
+
+    public Place _curSelectedUnitPlace = null;
 
     public void SetClickerState(int idx)
     {
