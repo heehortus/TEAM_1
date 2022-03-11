@@ -11,17 +11,12 @@ public class PlaceManager : MonoBehaviour
     [SerializeField] private GameObject MyPlace;
     [SerializeField] private GameObject EnemyPlace;
 
-    [SerializeField] public int saved_x_point;
-    [SerializeField] public int saved_y_point;
-
     private const float HorizontalInterval = 2;
     private const float VerticalInterval = 2;
 
 	public int RowMax = 3;
     public int ColumnMax = 2;
 
-
-    public enum place {player,enemy};
 
     private void Start()
     {
@@ -36,48 +31,30 @@ public class PlaceManager : MonoBehaviour
         pos = new Vector3(pos.x-(width*(ColumnMax-1) + HorizontalInterval*(ColumnMax-1))/2,pos.y+(height*(RowMax-1) + VerticalInterval*(RowMax-1))/2,0);
         var _pos = pos;
         List<List<GameObject>> lists;
-        place placeenemy;
+        bool placeenemy;
         if(place == MyPlace){
             lists = listMyPlace;
-            placeenemy = PlaceManager.place.player;
+            placeenemy = true;
         }
         else { 
             lists = listEnemyPlace;
-            placeenemy = PlaceManager.place.enemy;
+            placeenemy = false;
         }
 
         for(int i = 0;i<RowMax;i++) {
             lists.Add(new List<GameObject>());
             for(int j = 0;j<ColumnMax;j++) {
                 var _place = Instantiate(placePrefab);
-                _place.GetComponent<PlaceObject>().x = i;
-                _place.GetComponent<PlaceObject>().y = j;
-                _place.GetComponent<PlaceObject>().place = placeenemy;
+                var script = _place.GetComponent<PlaceObject>();
+                script.x = i;
+                script.y = j;
+                script.isPlayerPlace = placeenemy;
                 lists[i].Add(_place);
                 _place.transform.position = new Vector3(_pos.x,_pos.y,0);
                 _pos = new Vector3(_pos.x + HorizontalInterval + width, _pos.y);
                 _place.transform.SetParent(place.transform);
             }
             _pos = new Vector3(pos.x,_pos.y - VerticalInterval - height);
-        }
-    }
-
-    public GameObject GivePlaceValue(place _place,int x,int y)
-    {
-        if(_place == place.player) {
-            return listMyPlace[x][y];
-        }
-        else {
-            return listEnemyPlace[x][y];
-        }
-    }
-
-    public void SavedPoint(place _place, int x, int y)
-    {
-        if(_place == place.player)
-        {
-            saved_x_point = x;
-            saved_y_point = y;
         }
     }
 
