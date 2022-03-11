@@ -8,11 +8,6 @@ public static class UnitFactory
 
         GameObject unit = new GameObject();
 
-        unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
-
-        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
-
-
         if (_place.isPlayerPlace)
         {
             Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
