@@ -17,10 +17,17 @@ public static class UnitFactory
         }
 
         switch (name) {
-            case "Unit":
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
-                unit.AddComponent<Unit>(); 
-                //나중에 추상화 해야함
+            case "BoomUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
+                unit.AddComponent<Boom>();
+                break;
+            case "StealerUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 2"));
+                unit.AddComponent<Stealer>();
+                break;
+            case "SeedUnit":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 3"));
+                unit.AddComponent<Seed>();
                 break;
             default :
                 return unit;
