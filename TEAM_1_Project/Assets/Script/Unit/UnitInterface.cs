@@ -6,8 +6,8 @@ public interface UnitInterface
 {
     public void clickfunc();
 
-    public void setUnitPos(PlaceManager.place place,int x,int y);
+    public void setUnitPos(PlaceObject _place);
     
-    public bool checkPos(int a,int b);
+    public bool checkPos(PlaceObject _place);
 
 }
