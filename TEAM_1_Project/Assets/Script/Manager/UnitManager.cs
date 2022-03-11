@@ -14,6 +14,15 @@ public class UnitManager : MonoBehaviour
     {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(x1,y1) == true);
         if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다."); 
+        bool[,] PlayerPlace = null;
+        if(place == PlaceManager.place.player) {
+            PlayerPlace = _isExistOnPlayerPlace;
+        }
+        else {
+            PlayerPlace = _isExistOnEnemyPlace;
+        }
+        PlayerPlace[x1,y1] = false;
+        PlayerPlace[x2,y2] = true;
         unit.GetComponent<UnitInterface>().setUnitPos(place,x2,y2);
         GameManager.GetInstance().inputManager.SetClickerState(5);
     }//유닛 이동 명령
