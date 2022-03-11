@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class UnitFactory 
 {
-    public static GameObject getUnit(string name,int x,int y,GameObject Prefabs = null,PlaceManager.place place = PlaceManager.place.player) {
+    public static GameObject getUnit(string name, PlaceObject _place, GameObject Prefabs = null, PlaceManager.place place = PlaceManager.place.player) {
         GameObject unit;
         if(Prefabs == null)
             unit = new GameObject();
@@ -14,19 +14,19 @@ public static class UnitFactory
 
         if (place == PlaceManager.place.player)
         {
-            GameManager.GetInstance().unitManager._isExistOnPlayerPlace[x, y] = true;
-            Debug.Log($"Player 진영 {x} , {y} 에 유닛을 설치했습니다.");
+            //GameManager.GetInstance().unitManager._isExistOnPlayerPlace[x, y] = true;
+            Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }
         if (place == PlaceManager.place.enemy)
         {
-            GameManager.GetInstance().unitManager._isExistOnEnemyPlace[x, y] = true;
-            Debug.Log($"Enemy 진영 {x} , {y} 에 유닛을 설치했습니다.");
+            //GameManager.GetInstance().unitManager._isExistOnEnemyPlace[x, y] = true;
+            Debug.Log($"Enemy 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }
 
         switch (name) {
             case "Unit":
-                unit.AddComponent<Unit>(); //스크립트별로 붙여주기
-                unit.GetComponent<Unit>().setUnitPos(place,x,y);
+                // unit.AddComponent<Unit>(); //스크립트별로 붙여주기
+                unit.GetComponent<Unit>().setUnitPos(place, _place.x, _place.y);
                 return unit;
         }
         return null;
