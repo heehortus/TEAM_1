@@ -31,7 +31,7 @@ public class PlaceObject : MonoBehaviour
             if (GameManager.GetInstance().inputManager.Get_ClickerState() >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
                 GameManager.GetInstance().inputManager.Get_ClickerState() <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
             {
-                unit = GameManager.GetInstance().unitManager.CreateUnit(place, this);
+                unit = GameManager.GetInstance().unitManager.CreateUnit(place, this, (int)GameManager.GetInstance().inputManager.Get_ClickerState());
                 unit.GetComponent<Unit>()._currPlace = this;
                 isEmpty = false;
                 Debug.Log($"Create : {(int)GameManager.GetInstance().inputManager.Get_ClickerState()}");

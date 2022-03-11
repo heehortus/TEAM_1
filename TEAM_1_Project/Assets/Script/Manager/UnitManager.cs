@@ -5,7 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
-    [SerializeField] GameObject UnitPrefab;
+    [SerializeField] GameObject UnitPrefab1;
+    [SerializeField] GameObject UnitPrefab2;
+    [SerializeField] GameObject UnitPrefab3;
+    [SerializeField] GameObject UnitPrefab4;
+
     public bool[,] _isExistOnPlayerPlace = new bool[3, 2];
     public bool[,] _isExistOnEnemyPlace = new bool[3, 2];
 
@@ -21,9 +25,24 @@ public class UnitManager : MonoBehaviour
     }//유닛 이동 명령
 
     
-    public GameObject CreateUnit(PlaceManager.place place, PlaceObject _place) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
-
-        var unit = UnitFactory.getUnit("Unit", _place, UnitPrefab, place);
+    public GameObject CreateUnit(PlaceManager.place place, PlaceObject _place, int unitNum) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
+        GameObject unit = null;
+        if (unitNum == 0)
+        {
+            unit = UnitFactory.getUnit("Unit", _place, UnitPrefab1, place);
+        }
+        if (unitNum == 1)
+        {
+            unit = UnitFactory.getUnit("Unit", _place, UnitPrefab2, place);
+        }
+        if (unitNum == 2)
+        {
+            unit = UnitFactory.getUnit("Unit", _place, UnitPrefab3, place);
+        }
+        if (unitNum == 3)
+        {
+            unit = UnitFactory.getUnit("Unit", _place, UnitPrefab4, place);
+        }
         UnitList.Add(unit);
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
         return unit;
