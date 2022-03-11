@@ -10,9 +10,9 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] int level;
 	[SerializeField] SpriteRenderer character;
 
-    public PlaceObject _currPlace;
+    public PlaceObject _currPlace { get; private set;}
 
-	public void setUnitPos(PlaceManager.place place,PlaceObject _place) {
+	public void setUnitPos(PlaceObject _place) {
 		_currPlace = _place;
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}

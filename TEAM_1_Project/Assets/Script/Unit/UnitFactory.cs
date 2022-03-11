@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class UnitFactory 
 {
-    public static GameObject getUnit(string name, PlaceObject _place, GameObject Prefabs = null, PlaceManager.place place = PlaceManager.place.player) {
+    private static GameObject[] UnitPrefabs = Resources.LoadAll<GameObject>("PreFabs/Units");
+    public static GameObject getUnit(string name, PlaceObject _place,PlaceManager.place place = PlaceManager.place.player) {
         GameObject unit;
-        if(Prefabs == null)
+        if(UnitPrefabs == null)
             unit = new GameObject();
         else 
-            unit = Object.Instantiate(Prefabs); //기본 prefab 생성
+            unit = Object.Instantiate(UnitPrefabs[0]); //기본 prefab 생성
 
         unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
 
@@ -26,7 +27,7 @@ public static class UnitFactory
                 unit.AddComponent<Unit>();
                 break;
         }
-        unit.GetComponent<UnitInterface>().setUnitPos(place, _place);
+        unit.GetComponent<UnitInterface>().setUnitPos(_place);
         return unit;
     }
 }
