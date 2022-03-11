@@ -41,7 +41,7 @@ public class PlaceObject : MonoBehaviour
                 Unit _unit = GameManager.GetInstance().unitManager._currSelectedUnit;
                 _unit._currPlace.isEmpty = true;
                 _unit._currPlace = this;
-                _unit.transform.position = transform.position;
+                _unit.transform.position = transform.position - Vector3.forward;
                 isEmpty = false;
                 GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
                 Debug.Log("Move");

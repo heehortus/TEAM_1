@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour, UnitInterface
 		var placeobject = GameManager.GetInstance().placeManager.GivePlaceValue(place,x,y);
 		this.x = x;
 		this.y = y;
-		transform.position = placeobject.transform.position;
+        transform.position = placeobject.transform.position - Vector3.forward;
 	}
 
 	void Unitablity()
