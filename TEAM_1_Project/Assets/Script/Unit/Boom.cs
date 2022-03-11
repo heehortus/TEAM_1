@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Boom : Unit
 {
-    public void SetUp()
-    {
-        this.x = 0;
-        this.y = 0;
-        this.level = 0;
-    }
 
-
-    public override void Ability()
-    {
-           
-    }
 
 }

@@ -4,16 +4,4 @@ using UnityEngine;
 
 public class Seed : Unit
 {
-    // Start is called before the first frame update
-    public void SetUp()
-    {
-        this.x = 0;
-        this.y = 0;
-        this.level = 0;
-    }
-
-    public override void Ability()
-    {
-
-    }
 }
