@@ -11,10 +11,19 @@ public class UnitManager : MonoBehaviour
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(prev) == true);
-        if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다."); 
-        unit.GetComponent<UnitInterface>().setUnitPos(next);
-        prev.isEmpty = true;
-        next.isEmpty = false;
+        if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다.");
+        if (next.isEmpty)
+        {
+            unit.GetComponent<UnitInterface>().setUnitPos(next);
+            prev.isEmpty = true;
+            next.isEmpty = false;
+        }
+        else
+        {
+            var next_unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(next) == true);
+            unit.GetComponent<UnitInterface>().setUnitPos(next);
+            next_unit.GetComponent<UnitInterface>().setUnitPos(prev);
+        }
     }//유닛 이동 명령
 
     
