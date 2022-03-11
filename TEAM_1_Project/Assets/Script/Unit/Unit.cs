@@ -10,11 +10,12 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] int level;
 	[SerializeField] SpriteRenderer character;
 
-    public PlaceObject _currPlace { get; private set;}
+    public Place _currPlace;
 
-	public void setUnitPos(PlaceObject _place) {
-		_currPlace = _place;
-        transform.position = _currPlace.transform.position - Vector3.forward;
+	public void setUnitPos(Place _place) {
+		_currPlace = new Place(_place);
+        var _curPlaceTransform = GameManager.GetInstance().placeManager.GetPlace(_currPlace).transform;
+        transform.position = _curPlaceTransform.position - Vector3.forward;
 	}
 
 	void OnMouseDown()
@@ -28,12 +29,12 @@ public class Unit : MonoBehaviour, UnitInterface
             isUnitClick = true;
         }
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.MOVE);
-        GameManager.GetInstance().unitManager._currSelectedUnit = this;
+        GameManager.GetInstance().inputManager._currSelectedUnit = this;
     }
 	public void clickfunc() {
 	}
 
-	public bool checkPos(PlaceObject place) {
+	public bool checkPos(Place place) {
 		if(place == _currPlace)
 			return true;
 		return false;

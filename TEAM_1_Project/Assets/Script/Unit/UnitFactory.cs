@@ -4,8 +4,15 @@ using UnityEngine;
 public static class UnitFactory 
 {
     private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
+
     public static GameObject getUnit(string name, PlaceObject _place) {
         GameObject unit = new GameObject();
+    public static GameObject getUnit(string name, Place _place) {
+        GameObject unit;
+        unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //기본 prefab 생성
+
+        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
+
 
         if (_place.isPlayerPlace)
         {
