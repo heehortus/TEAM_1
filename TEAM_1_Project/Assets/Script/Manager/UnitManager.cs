@@ -53,21 +53,21 @@ public class UnitManager : MonoBehaviour
         {
             unit = UnitFactory.getUnit("Unit", _place, UnitPrefab4, place);
 
-            if (_isExistOnPlayerPlace[x, y])
+            if (_isExistOnPlayerPlace[_place.x, _place.y])
             {
                 Debug.Log("이미 설치된 공간입니다.");
-                return;
+                return null;
             }
-            _isExistOnPlayerPlace[x,y] = true;
+            _isExistOnPlayerPlace[_place.x, _place.y] = true;
         }
         else if (place == PlaceManager.place.enemy)
         {         
-            if (_isExistOnEnemyPlace[x, y])
+            if (_isExistOnEnemyPlace[_place.x, _place.y])
             {
                 Debug.Log("이미 설치된 공간입니다.");
-                return;
+                return null;
             }    
-            _isExistOnEnemyPlace[x,y] = true;
+            _isExistOnEnemyPlace[_place.x, _place.y] = true;
 
         }
         UnitList.Add(unit);
