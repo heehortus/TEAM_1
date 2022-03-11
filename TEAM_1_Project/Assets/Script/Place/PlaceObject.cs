@@ -39,13 +39,6 @@ public class PlaceObject : MonoBehaviour
         }
         else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
             _unitManager.CreateUnit(this, "StealerUnit");
-
-
-        if (click_state >= InputManager.E_CLICKERSTATE.CREATEUNIT1 &&
-            click_state <= InputManager.E_CLICKERSTATE.CREATEUNIT4)
-        {
-            _unitManager.CreateUnit(this, "Unit");
-            Debug.Log($"Create : {click_state}");
         }
 
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
