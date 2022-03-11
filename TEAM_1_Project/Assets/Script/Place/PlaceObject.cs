@@ -40,10 +40,13 @@ public class PlaceObject : MonoBehaviour
         else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
             _unitManager.CreateUnit(this, "StealerUnit");
         }
+        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
+            _unitManager.CreateUnit(this, "Unit");
+        }
 
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
-            Debug.Log(_unitManager._currSelectedUnit._currPlace);
+            Debug.Log(_unitManager._currSelectedUnit);
             _unitManager.UnitMoveFunc(_unitManager._currSelectedUnit._currPlace,this);
             Debug.Log("Move");
         }

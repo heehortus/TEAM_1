@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Unit : MonoBehaviour, UnitInterface
 {
     [SerializeField] bool isUnitClick;
@@ -10,7 +9,7 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] int level;
 	[SerializeField] SpriteRenderer character;
 
-    public PlaceObject _currPlace { get; private set;}
+    [SerializeField] public PlaceObject _currPlace { get; private set;}
 
 	public void setUnitPos(PlaceObject _place) {
 		_currPlace = _place;

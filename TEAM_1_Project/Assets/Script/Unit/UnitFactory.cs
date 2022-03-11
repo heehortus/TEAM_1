@@ -6,7 +6,7 @@ public static class UnitFactory
     private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
     public static GameObject getUnit(string name, PlaceObject _place) {
 
-        GameObject unit = new GameObject();
+        GameObject unit = null;
 
         if (_place.isPlayerPlace)
         {
@@ -18,6 +18,11 @@ public static class UnitFactory
         }
 
         switch (name) {
+            case "Unit" :
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
+                unit.AddComponent<Unit>();
+                break;
+
             case "BoomUnit":
                 unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
                 unit.AddComponent<Boom>();
