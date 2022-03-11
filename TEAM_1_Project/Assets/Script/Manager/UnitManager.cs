@@ -28,6 +28,7 @@ public class UnitManager : MonoBehaviour
                 Debug.Log("이미 설치된 공간입니다.");
                 return;
             }
+            _isExistOnPlayerPlace[x,y] = true;
         }
         else if (place == PlaceManager.place.enemy)
         {         
@@ -36,6 +37,7 @@ public class UnitManager : MonoBehaviour
                 Debug.Log("이미 설치된 공간입니다.");
                 return;
             }    
+            _isExistOnEnemyPlace[x,y] = true;
         }
 
         var unit = UnitFactory.getUnit("Unit",x,y,UnitPrefab,place);
