@@ -39,7 +39,9 @@ public static class UnitFactory
                 return unit;
         }
         unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
-        unit.GetComponent<UnitInterface>().setUnitPos(_place);
+        var script = unit.GetComponent<UnitInterface>();
+        script.setUnitPos(_place);
+        script.setSprite();
         return unit;
     }
 }

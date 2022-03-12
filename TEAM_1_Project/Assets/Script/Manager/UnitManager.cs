@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
-    public Unit _currSelectedUnit = null;
     
     private List<GameObject> UnitList = new List<GameObject>();
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
