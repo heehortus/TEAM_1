@@ -10,4 +10,5 @@ public interface UnitInterface
     
     public bool checkPos(PlaceObject _place);
 
+    public void setSprite();
 }

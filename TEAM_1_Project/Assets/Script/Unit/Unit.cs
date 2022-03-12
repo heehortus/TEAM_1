@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour, UnitInterface
     [SerializeField] bool isUnitClick;
 	[SerializeField] int coast;
 	[SerializeField] int level;
-	[SerializeField] SpriteRenderer character;
+	protected Sprite character = null;
 
     [SerializeField] public PlaceObject _currPlace { get; private set;}
 
@@ -16,6 +16,11 @@ public class Unit : MonoBehaviour, UnitInterface
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
 
+    public void setSprite() {
+        if(character != null) {
+            GetComponent<SpriteRenderer>().sprite = character;
+        }
+    }
 	void OnMouseDown()
     {
         if(isUnitClick)
