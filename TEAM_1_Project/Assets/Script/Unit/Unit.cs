@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour, UnitInterface
     [SerializeField] bool isUnitClick;
 	[SerializeField] int coast;
 	[SerializeField] int level;
-	protected Sprite character = null;
+	[SerializeField] public SpriteRenderer character;
 
     [SerializeField] public PlaceObject _currPlace { get; private set;}
 
@@ -16,12 +16,12 @@ public class Unit : MonoBehaviour, UnitInterface
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
 
-    public void setSprite() {
-        if(character != null) {
-            GetComponent<SpriteRenderer>().sprite = character;
-        }
+    private void Start()
+    {
+        character = gameObject.GetComponent<SpriteRenderer>();
     }
-	void OnMouseDown()
+
+    void OnMouseDown()
     {
         if(isUnitClick)
         {
@@ -35,12 +35,17 @@ public class Unit : MonoBehaviour, UnitInterface
         GameManager.GetInstance().inputManager._currSelectedUnit = this;
     }
 	public void clickfunc() {
-	}
+    }
 
 	public bool checkPos(PlaceObject place) {
 		if(place == _currPlace)
 			return true;
 		return false;
 	}
+
+    public void setSprite()
+    {
+
+    }
 
 }

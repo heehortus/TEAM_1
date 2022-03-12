@@ -85,7 +85,10 @@ public class InputManager : MonoBehaviour
             GameObject _uiInfo = Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Unit_Info"));
             _uiInfo.transform.SetParent(GameManager.GetInstance().sceneManager.UI_Parent.transform);
             GameManager.GetInstance().uiManager._popupUIs.Push(_uiInfo);
-            _uiInfo.GetComponentInChildren<Image>().gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.GetInstance().uiManager._uiInfoOffset;
+            Image _iamge = _uiInfo.GetComponentInChildren<Image>();
+            _iamge.gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.GetInstance().uiManager._uiInfoOffset;
+            _iamge.sprite = hit.collider.gameObject.GetComponent<Unit>().character.sprite;
+            _iamge.color = hit.collider.gameObject.GetComponent<Unit>().character.color;
         }
     }
 }
