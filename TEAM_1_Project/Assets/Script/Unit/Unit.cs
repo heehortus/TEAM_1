@@ -43,4 +43,9 @@ public class Unit : MonoBehaviour, UnitInterface
 		return false;
 	}
 
+    public void setSprite()
+    {
+
+    }
+
 }

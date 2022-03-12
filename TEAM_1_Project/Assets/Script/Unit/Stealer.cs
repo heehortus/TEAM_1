@@ -5,6 +5,7 @@ using UnityEngine;
 public class Stealer : Unit
 {
 	void Awake() {
-		character = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
+        character = gameObject.GetComponent<SpriteRenderer>();
+        character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
 	}
 }
