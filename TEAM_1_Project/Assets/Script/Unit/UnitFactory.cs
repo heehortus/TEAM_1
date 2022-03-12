@@ -19,7 +19,7 @@ public static class UnitFactory
 
         switch (name) {
             case "Unit" :
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 4")); //나중에 다 추상화 할 예정
                 unit.AddComponent<Unit>();
                 break;
 
