@@ -7,36 +7,10 @@ using UnityEngine.UI;
 [System.Serializable]
 public class InputManager : MonoBehaviour
 {
-    public enum E_CLICKERSTATE { CREATEUNIT1, CREATEUNIT2, CREATEUNIT3, CREATEUNIT4, MOVE, STANDBY }
+    public enum E_CLICKERSTATE { CREATEUNIT, MOVE, STANDBY }
     public E_CLICKERSTATE e_CLICKERSTATE {get;set;}
     public Unit _currSelectedUnit = null;
-    public void SetClickerState(int idx)
-    {
-        switch (idx)
-        {
-            case 0:
-                e_CLICKERSTATE = E_CLICKERSTATE.CREATEUNIT1;
-                break;
-            case 1:
-                e_CLICKERSTATE = E_CLICKERSTATE.CREATEUNIT2;
-                break;
-            case 2:
-                e_CLICKERSTATE = E_CLICKERSTATE.CREATEUNIT3;
-                break;
-            case 3:
-                e_CLICKERSTATE = E_CLICKERSTATE.CREATEUNIT4;
-                break;
-            case 4:
-                e_CLICKERSTATE = E_CLICKERSTATE.MOVE;
-                break;
-            case 5:
-                e_CLICKERSTATE = E_CLICKERSTATE.STANDBY;
-                break;
-            default:
-                break;
-        }
-    }
-
+    public ChooseUnitButton _currSelectedButton = null;
     public E_CLICKERSTATE Get_ClickerState()
     {
         return e_CLICKERSTATE;

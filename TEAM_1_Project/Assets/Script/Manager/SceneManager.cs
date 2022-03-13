@@ -31,17 +31,8 @@ public class SceneManager : MonoBehaviour
         if(!placeObject.isPlayerPlace) return;
         var click_state = _inputManager.e_CLICKERSTATE;
 
-        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT1) {
-            _unitManager.CreateUnit(placeObject, "SeedUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT2) {
-            _unitManager.CreateUnit(placeObject, "BoomUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
-            _unitManager.CreateUnit(placeObject, "StealerUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
-            _unitManager.CreateUnit(placeObject, "Unit");
+        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
+            _unitManager.CreateUnit(placeObject, _inputManager._currSelectedButton._unitName);
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
