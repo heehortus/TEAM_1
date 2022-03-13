@@ -25,4 +25,15 @@ public class ResourceManager : MonoBehaviour
         }
         return go;
     }
+
+    public Sprite LoadSprite(string spriteName) {
+        Sprite sp = Resources.Load<Sprite>($"Sprites/{spriteName}");
+        if (sp == null)
+        {
+            Debug.Log($"Failed to Load : {spriteName}");
+            return null;
+        }
+        return sp;
+
+    }
 }

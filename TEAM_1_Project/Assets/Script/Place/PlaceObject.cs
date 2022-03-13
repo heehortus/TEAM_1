@@ -23,33 +23,4 @@ public class PlaceObject : MonoBehaviour
         
 
     }
-
-    private void OnMouseDown()
-    {
-        var click_state = GameManager.GetInstance().inputManager.Get_ClickerState();
-        var _unitManager = GameManager.GetInstance().unitManager;
-
-        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT1) {
-            _unitManager.CreateUnit(this, "SeedUnit");
-            Debug.Log($"Create : {click_state}");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT2) {
-            _unitManager.CreateUnit(this, "BoomUnit");
-            Debug.Log($"Create : {click_state}");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
-            _unitManager.CreateUnit(this, "StealerUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
-            _unitManager.CreateUnit(this, "Unit");
-        }
-
-        else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
-        {
-            Debug.Log(_unitManager._currSelectedUnit);
-            _unitManager.UnitMoveFunc(_unitManager._currSelectedUnit._currPlace,this);
-            Debug.Log("Move");
-        }
-        GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.STANDBY);
-    }
 }

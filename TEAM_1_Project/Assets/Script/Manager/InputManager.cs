@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     public enum E_CLICKERSTATE { CREATEUNIT1, CREATEUNIT2, CREATEUNIT3, CREATEUNIT4, MOVE, STANDBY }
-    [SerializeField] E_CLICKERSTATE e_CLICKERSTATE = E_CLICKERSTATE.STANDBY;
-
+    public E_CLICKERSTATE e_CLICKERSTATE {get;set;}
+    public Unit _currSelectedUnit = null;
     public void SetClickerState(int idx)
     {
         switch (idx)
@@ -64,6 +64,11 @@ public class InputManager : MonoBehaviour
         }
         Debug.Log($"{hit.collider.name} 클릭");
 
+        var _SceneManager = GameManager.GetInstance().sceneManager;
+
+		if(hit.collider.gameObject.GetComponent<PlaceObject>() != null) {
+            _SceneManager.onClickPlaceObject(hit.collider.gameObject);    
+        }
     }
     public void RightClick()
     {
@@ -80,7 +85,10 @@ public class InputManager : MonoBehaviour
             GameObject _uiInfo = Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Unit_Info"));
             _uiInfo.transform.SetParent(GameManager.GetInstance().sceneManager.UI_Parent.transform);
             GameManager.GetInstance().uiManager._popupUIs.Push(_uiInfo);
-            _uiInfo.GetComponentInChildren<Image>().gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.GetInstance().uiManager._uiInfoOffset;
+            Image _iamge = _uiInfo.GetComponentInChildren<Image>();
+            _iamge.gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.GetInstance().uiManager._uiInfoOffset;
+            _iamge.sprite = hit.collider.gameObject.GetComponent<Unit>().character.sprite;
+            _iamge.color = hit.collider.gameObject.GetComponent<Unit>().character.color;
         }
     }
 }

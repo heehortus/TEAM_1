@@ -5,9 +5,9 @@ using UnityEngine;
 public class Unit : MonoBehaviour, UnitInterface
 {
     [SerializeField] bool isUnitClick;
-	[SerializeField] protected int coast;
-	[SerializeField] protected int level;
-	[SerializeField] SpriteRenderer character;
+	[SerializeField] int coast;
+	[SerializeField] int level;
+	[SerializeField] public SpriteRenderer character;
 
     [SerializeField] public PlaceObject _currPlace { get; private set;}
 
@@ -15,11 +15,13 @@ public class Unit : MonoBehaviour, UnitInterface
 		_currPlace = _place;
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
-    public virtual void Ability()
-    {
 
+    private void Start()
+    {
+        character = gameObject.GetComponent<SpriteRenderer>();
     }
-	void OnMouseDown()
+
+    void OnMouseDown()
     {
         if(isUnitClick)
         {
@@ -30,15 +32,20 @@ public class Unit : MonoBehaviour, UnitInterface
             isUnitClick = true;
         }
         GameManager.GetInstance().inputManager.SetClickerState((int)InputManager.E_CLICKERSTATE.MOVE);
-        GameManager.GetInstance().unitManager._currSelectedUnit = this;
+        GameManager.GetInstance().inputManager._currSelectedUnit = this;
     }
 	public void clickfunc() {
-	}
+    }
 
 	public bool checkPos(PlaceObject place) {
 		if(place == _currPlace)
 			return true;
 		return false;
 	}
+
+    public void setSprite()
+    {
+
+    }
 
 }

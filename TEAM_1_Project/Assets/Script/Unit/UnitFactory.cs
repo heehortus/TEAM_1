@@ -19,7 +19,7 @@ public static class UnitFactory
 
         switch (name) {
             case "Unit" :
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 4")); //나중에 다 추상화 할 예정
                 unit.AddComponent<Unit>();
                 break;
 
@@ -39,7 +39,9 @@ public static class UnitFactory
                 return unit;
         }
         unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
-        unit.GetComponent<UnitInterface>().setUnitPos(_place);
+        var script = unit.GetComponent<UnitInterface>();
+        script.setUnitPos(_place);
+        script.setSprite();
         return unit;
     }
 }
