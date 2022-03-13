@@ -11,8 +11,8 @@ public class PlaceManager : MonoBehaviour
     [SerializeField] private GameObject MyPlace;
     [SerializeField] private GameObject EnemyPlace;
 
-    private const float HorizontalInterval = 2;
-    private const float VerticalInterval = 2;
+    private const float HorizontalInterval = 1;
+    private const float VerticalInterval = 1;
 
 	public int RowMax = 3;
     public int ColumnMax = 2;
