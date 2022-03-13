@@ -5,8 +5,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour, UnitInterface
 {
     [SerializeField] bool isUnitClick;
-	[SerializeField] int coast;
-	[SerializeField] int level;
+	[SerializeField] protected int coast;
+	[SerializeField] protected int level;
 	[SerializeField] SpriteRenderer character;
 
     [SerializeField] public PlaceObject _currPlace { get; private set;}
@@ -15,7 +15,10 @@ public class Unit : MonoBehaviour, UnitInterface
 		_currPlace = _place;
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
+    public virtual void Ability()
+    {
 
+    }
 	void OnMouseDown()
     {
         if(isUnitClick)
