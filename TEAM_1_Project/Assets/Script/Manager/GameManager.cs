@@ -20,9 +20,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (m_cInstance != null) return;
-        m_cInstance = this;
-        DontDestroyOnLoad(gameObject.transform.parent);
+        if (m_cInstance == null)
+        {
+            m_cInstance = this;
+            DontDestroyOnLoad(this.transform.parent);
+        }
+        else
+        {
+            if (this != m_cInstance)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
+    }
+    private void Start()
+    {
         m_cInstance.placeManager.Init();
         m_cInstance.unitManager.Init();
         m_cInstance.inputManager.Init();
@@ -30,7 +43,6 @@ public class GameManager : MonoBehaviour
         m_cInstance.sceneManager.Init();
         m_cInstance.resourceManager.Init();
     }
-
     public void Update() {
         m_cInstance.placeManager.OnUpdate();
         m_cInstance.unitManager.OnUpdate();
