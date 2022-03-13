@@ -26,6 +26,7 @@ public class SceneManager : MonoBehaviour
         
     }
 
+
     void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
         var _placeManager = GameManager.GetInstance().placeManager;
 
