@@ -26,6 +26,14 @@ public class SceneManager : MonoBehaviour
         
     }
 
+    void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
+        var _placeManager = GameManager.GetInstance().placeManager;
+
+        var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
+        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit");
+        
+    }
+
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
         if(!placeObject.isPlayerPlace) return;

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlaceManager : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> listPlace = new List<GameObject>();
+    private List<GameObject> listPlace = new List<GameObject>();
 
     [SerializeField] private GameObject placePrefab;
     [SerializeField] private GameObject MyPlace;
@@ -60,6 +60,16 @@ public class PlaceManager : MonoBehaviour
             }
             _pos = new Vector3(pos.x,_pos.y - VerticalInterval - height);
         }
+    }
+
+    public GameObject getPlaceObject(bool _isPlayerPlace,int x,int y) {
+        foreach(var item in listPlace) {
+            var script = item.GetComponent<PlaceObject>();
+            if((script.x == x)&&(script.y == y)&&(script.isPlayerPlace == _isPlayerPlace)) {
+                return item;
+            }
+        }
+        return null;
     }
 
 }
