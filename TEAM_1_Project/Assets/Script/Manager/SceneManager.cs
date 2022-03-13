@@ -26,22 +26,21 @@ public class SceneManager : MonoBehaviour
         
     }
 
+    void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
+        var _placeManager = GameManager.GetInstance().placeManager;
+
+        var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
+        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit");
+        
+    }
+
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
         if(!placeObject.isPlayerPlace) return;
         var click_state = _inputManager.e_CLICKERSTATE;
 
-        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT1) {
-            _unitManager.CreateUnit(placeObject, "SeedUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT2) {
-            _unitManager.CreateUnit(placeObject, "BoomUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
-            _unitManager.CreateUnit(placeObject, "StealerUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
-            _unitManager.CreateUnit(placeObject, "Unit");
+        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
+            _unitManager.CreateUnit(placeObject, _inputManager._currSelectedButton._unitName);
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
