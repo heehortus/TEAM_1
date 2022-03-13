@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
         get {return _CLICKERSTATE;}
         set {
             _CLICKERSTATE = value;
-            if(value == E_CLICKERSTATE.CREATEUNIT) {
+            if(value != E_CLICKERSTATE.STANDBY) {
                 GameManager.GetInstance().placeManager.display(true);
             }
             else {
