@@ -26,6 +26,12 @@ public class SceneManager : MonoBehaviour
         
     }
 
+    public void changeTurn() {
+        currTurn += 1;
+        GameManager.GetInstance().uiManager.changeTurn(currTurn);
+        Debug.Log($"현재 턴 : {currTurn}");
+    }
+
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
         if(!placeObject.isPlayerPlace) return;
