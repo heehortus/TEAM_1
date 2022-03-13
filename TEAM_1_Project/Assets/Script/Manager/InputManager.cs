@@ -8,7 +8,19 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     public enum E_CLICKERSTATE { CREATEUNIT, MOVE, STANDBY }
-    public E_CLICKERSTATE e_CLICKERSTATE {get;set;}
+    private E_CLICKERSTATE _CLICKERSTATE;
+    public E_CLICKERSTATE e_CLICKERSTATE {
+        get {return _CLICKERSTATE;}
+        set {
+            _CLICKERSTATE = value;
+            if(value != E_CLICKERSTATE.STANDBY) {
+                GameManager.GetInstance().placeManager.display(true);
+            }
+            else {
+                GameManager.GetInstance().placeManager.display(false);
+            }
+        }
+    }
     public Unit _currSelectedUnit = null;
     public ChooseUnitButton _currSelectedButton = null;
     public E_CLICKERSTATE Get_ClickerState()
