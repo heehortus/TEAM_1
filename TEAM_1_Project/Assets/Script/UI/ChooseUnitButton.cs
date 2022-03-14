@@ -9,6 +9,12 @@ public class ChooseUnitButton : MonoBehaviour
     [SerializeField] Player _player;
     private void OnMouseDown()
     {
+        if (GameManager.GetInstance().battleManager._isBattle)
+        {
+            Debug.Log("전투 중엔 유닛을 선택할 수 없습니다.");
+            GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            return;
+        }
         bool _isPlayerHaveUnit;
         _player._unitDic.TryGetValue(_unitName, out _isPlayerHaveUnit);
         if (!_isPlayerHaveUnit)

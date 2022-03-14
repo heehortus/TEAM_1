@@ -23,6 +23,12 @@ public class Unit : MonoBehaviour, UnitInterface
 
     void OnMouseDown()
     {
+        if (GameManager.GetInstance().battleManager._isBattle)
+        {
+            Debug.Log("전투 중엔 유닛을 이동할 수 없습니다.");
+            GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            return;
+        }
         if(isUnitClick)
         {
             isUnitClick = false;
