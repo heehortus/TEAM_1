@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+    public void Init()
+    {
+
+    }
+    public void OnUpdate()
+    {
+
+    }
     public GameObject LoadUI(string uiName)
     {
         GameObject go = Resources.Load<GameObject>($"Prefabs/UI/{uiName}");
