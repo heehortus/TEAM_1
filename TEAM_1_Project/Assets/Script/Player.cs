@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
         _unitDic.Add("SeedUnit", true);
         _unitDic.Add("BoomUnit", true);
         _unitDic.Add("StealerUnit", true);
-        _unitDic.Add("Unit", true); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
+        _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
     }
     private void Awake()
     {
