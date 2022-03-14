@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c8b60a0e604a47bb20c91931798ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currSelectedUnit: {fileID: 0}
+  isPlace: 0
 --- !u!1 &202840491
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fee834aa263249a4bd731642fb6bc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_CLICKERSTATE: 5
+  _currSelectedUnit: {fileID: 0}
 --- !u!1 &580798263
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nickName: 
   _maxHP: 0
-  _currHP: 0
+  _currHP: 3
   _maxResource: 0
   _currResource: 0
 --- !u!4 &673121055
