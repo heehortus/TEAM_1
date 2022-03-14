@@ -8,19 +8,14 @@ public class Stealer : Unit
     RaycastHit2D[] hit;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
-    static Stealer stealer;
+
     [SerializeField] public bool isSteal;
     public bool isPlayer;
     PlaceObject _place;
     void Awake() {
         character = gameObject.GetComponent<SpriteRenderer>();
         character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
-        stealer = this;
 	}
-    static public Stealer GetInstance()
-    {
-        return stealer;
-    }
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -34,30 +29,18 @@ public class Stealer : Unit
     }
     public override void Ability()
     {
+        Seed old_seed = new Seed();
         if (sprite.flipX == true)
         {
             hit = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), Vector2.right, 10, LayerMask.GetMask("Seed"));
             Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right * 10, new Color(0, 1, 0));
             for (int i = 0; i < hit.Length; i++)
             {
-                RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Player")
-                {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
-                }
-                else if (hit == null)
-                {
-                    Player.GetInstance()._currHP -= attackpower;
-                }
+                
+                GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(old_seed);
+                isSteal = true;
+                
+                
             }
 
         }
@@ -71,20 +54,12 @@ public class Stealer : Unit
                 RaycastHit2D hits = hit[i];
                 if (hits.collider != null && hits.collider.gameObject.tag == "Enemy")
                 {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(old_seed);
+                    isSteal = true;
                 }
                 else if (hit == null)
                 {
-                    Player.GetInstance()._currHP -= attackpower;
+                    
                 }
             }
         }
@@ -108,5 +83,12 @@ public class Stealer : Unit
         }
     }
 
+    public int Rip_Seed(Seed seed)
+    {
+        int result;
+        result = seed.myresource;
+        seed.OnDestroy();
+        return result;
+    }
 
 }
