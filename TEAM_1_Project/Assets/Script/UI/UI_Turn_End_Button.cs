@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class UI_Turn_End_Button : MonoBehaviour
 {
-    int turn = 1;
+    public int turn = 1;
     public void ButtonClicked()
     {
-        turn++;
-        GameManager.GetInstance().uiManager.changeTurn(turn);
+        if (GameManager.GetInstance().battleManager._isBattle)
+        {
+            Debug.Log("전투 중 입니다.");
+            return;
+        }
+        GameManager.GetInstance().battleManager.StartBattle();
     }
 
     public void Clear()
