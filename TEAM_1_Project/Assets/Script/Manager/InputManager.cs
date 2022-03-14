@@ -53,7 +53,14 @@ public class InputManager : MonoBehaviour
         var _SceneManager = GameManager.GetInstance().sceneManager;
 
 		if(hit.collider.gameObject.GetComponent<PlaceObject>() != null) {
-            _SceneManager.onClickPlaceObject(hit.collider.gameObject);    
+            if (GameManager.GetInstance().battleManager._isBattle)
+            {
+                Debug.Log("전투 중엔 유닛을 배치할 수 없습니다.");
+            }
+            else
+            {
+                _SceneManager.onClickPlaceObject(hit.collider.gameObject);
+            }      
         }
     }
     public void RightClick()
