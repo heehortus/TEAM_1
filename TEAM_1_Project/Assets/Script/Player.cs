@@ -13,17 +13,6 @@ public class Player : MonoBehaviour
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
     void Start()
     {
-
-
-    }
-    private void Awake()
-    {
-        player = this;
-    }
-    static public Player GetInstance()
-    {
-        return player;
-
         _unitDic.Add("SeedUnit1", true);
         _unitDic.Add("SeedUnit2", false);
         _unitDic.Add("SeedUnit3", false);
@@ -38,6 +27,14 @@ public class Player : MonoBehaviour
 
         _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
 
+    }
+    private void Awake()
+    {
+        player = this;
+    }
+    static public Player GetInstance()
+    {
+        return player;   
     }
     void Update()
     {
