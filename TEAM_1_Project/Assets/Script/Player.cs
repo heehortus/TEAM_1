@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        
+        if(_maxHP == 0)
+        {
+
+        }
     }
 }

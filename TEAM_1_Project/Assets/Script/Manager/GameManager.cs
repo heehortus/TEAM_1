@@ -12,6 +12,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] public SceneManager sceneManager;
     [SerializeField] public ResourceManager resourceManager;
     [SerializeField] public BattleManager battleManager;
+    
+    public enum E_GAMESTATE { GAMING, VICTORY, DEFEAT, STANDBY};
+    [SerializeField] public E_GAMESTATE gameState = E_GAMESTATE.GAMING;
+
+    public void SetGameState(int idx)
+    {
+        switch(idx)
+        {
+            case 0: 
+                gameState = E_GAMESTATE.GAMING;
+                break;
+            case 1:
+                gameState = E_GAMESTATE.VICTORY;
+                break;
+            case 2:
+                gameState = E_GAMESTATE.DEFEAT;
+                break;
+            case 3:
+                gameState = E_GAMESTATE.STANDBY;
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+
+
+
 
     static GameManager m_cInstance;
     static public GameManager GetInstance()
