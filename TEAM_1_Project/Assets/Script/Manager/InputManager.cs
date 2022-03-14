@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
         {
             return;
         }
-        Debug.Log($"{hit.collider.name} 클릭");
+        //Debug.Log($"{hit.collider.name} 클릭");
 
         var _SceneManager = GameManager.GetInstance().sceneManager;
 

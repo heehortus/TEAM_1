@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 2
-  _unitName: SeedUnit
+  _unitName: SeedUnit3
   _player: {fileID: 673121054}
 --- !u!1 &460743516
 GameObject:
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
-  _unitName: BoomUnit
+  _unitName: BoomUnit1
   _player: {fileID: 673121054}
 --- !u!212 &460743520
 SpriteRenderer:
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
-  _unitName: SeedUnit
+  _unitName: SeedUnit1
   _player: {fileID: 673121054}
 --- !u!1 &814135509
 GameObject:
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 1
-  _unitName: BoomUnit
+  _unitName: BoomUnit2
   _player: {fileID: 673121054}
 --- !u!212 &814135513
 SpriteRenderer:
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 1
-  _unitName: SeedUnit
+  _unitName: SeedUnit2
   _player: {fileID: 673121054}
 --- !u!1 &1338771048
 GameObject:
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 2
-  _unitName: BoomUnit
+  _unitName: BoomUnit3
   _player: {fileID: 673121054}
 --- !u!212 &1338771052
 SpriteRenderer:
@@ -1515,7 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
-  _unitName: StealerUnit
+  _unitName: StealerUnit1
   _player: {fileID: 673121054}
 --- !u!212 &1512906040
 SpriteRenderer:
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 1
-  _unitName: StealerUnit
+  _unitName: StealerUnit2
   _player: {fileID: 673121054}
 --- !u!212 &1919544490
 SpriteRenderer:
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 2
-  _unitName: StealerUnit
+  _unitName: StealerUnit3
   _player: {fileID: 673121054}
 --- !u!212 &1999413898
 SpriteRenderer:

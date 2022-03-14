@@ -12,9 +12,18 @@ public class Player : MonoBehaviour
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
     void Start()
     {
-        _unitDic.Add("SeedUnit", true);
-        _unitDic.Add("BoomUnit", true);
-        _unitDic.Add("StealerUnit", true);
+        _unitDic.Add("SeedUnit1", true);
+        _unitDic.Add("SeedUnit2", false);
+        _unitDic.Add("SeedUnit3", false);
+
+        _unitDic.Add("BoomUnit1", true);
+        _unitDic.Add("BoomUnit2", false);
+        _unitDic.Add("BoomUnit3", false);
+
+        _unitDic.Add("StealerUnit1", true);
+        _unitDic.Add("StealerUnit2", false);
+        _unitDic.Add("StealerUnit3", false);
+
         _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
     }
 

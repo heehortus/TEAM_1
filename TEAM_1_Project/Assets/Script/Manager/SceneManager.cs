@@ -36,7 +36,7 @@ public class SceneManager : MonoBehaviour
         var _placeManager = GameManager.GetInstance().placeManager;
 
         var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
-        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit");
+        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1");
         
     }
 
