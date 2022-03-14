@@ -10,8 +10,9 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
-    
-    [SerializeField] public GameObject Player {get;}
+
+    [SerializeField] public Player Player { get; }
+    [SerializeField] public Player Enemy { get; }
 
     public void Init()
     {
@@ -33,10 +34,12 @@ public class SceneManager : MonoBehaviour
         if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.VICTORY)
         {
             Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+            GameManager.GetInstance().SetGameState(3);
         }
         else if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.DEFEAT)
         {
             Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+            GameManager.GetInstance().SetGameState(3);
         }
     }
 

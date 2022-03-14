@@ -8,7 +8,7 @@ public class Stealer : Unit
     SpriteRenderer sprite;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
-    static Stealer stealer;
+
     [SerializeField] public bool isSteal;
     public bool isPlayer;
     GameObject target_place;
@@ -16,12 +16,7 @@ public class Stealer : Unit
     void Awake() {
         character = gameObject.GetComponent<SpriteRenderer>();
         character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
-        stealer = this;
 	}
-    static public Stealer GetInstance()
-    {
-        return stealer;
-    }
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -35,51 +30,35 @@ public class Stealer : Unit
     }
     public override void Ability()
     {
-        if (sprite.flipX == true)
+        
+        if (sprite.flipX == true) // 적군이 아군에게
         {
             for(int i = 2; i<4; i++)
             {
+
                 target_place = _place.getPlaceObject(false, i, this._currPlace.y);
                 var pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit);
+                    isSteal = true;
                 }
             }
-
         }
-        else if (sprite.flipX == false)
+        else if (sprite.flipX == false) // 아군이 적군에게
         {
-            for (int i = 2; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                target_place = _place.getPlaceObject(false, i, this._currPlace.y);
+                target_place = _place.getPlaceObject(true, i, this._currPlace.y);
                 var pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit);
+                    isSteal = true;
                 }
             }
-
         }
     }
     public void Level()
@@ -101,5 +80,12 @@ public class Stealer : Unit
         }
     }
 
+    public int Rip_Seed(Seed seed)
+    {
+        int result;
+        result = seed.myresource;
+        seed.OnDestroy();
+        return result;
+    }
 
 }
