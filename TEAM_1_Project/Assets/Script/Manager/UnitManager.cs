@@ -5,7 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
-    
+
+    public void Init()
+    {
+
+    }
+    public void OnUpdate()
+    {
+
+    }
     private List<GameObject> UnitList = new List<GameObject>();
     public bool isPlace;
     public static UnitManager Inst { get; private set; }

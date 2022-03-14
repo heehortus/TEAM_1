@@ -10,7 +10,8 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
-    void Start()
+
+    public void Init()
     {
         _inputManager = GameManager.GetInstance().inputManager;
         _unitManager = GameManager.GetInstance().unitManager;
@@ -18,11 +19,22 @@ public class SceneManager : MonoBehaviour
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
         Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+
+        InitEnemyPlace();
     }
-    
+
     //UI_Turn_End_Button
-    void Update()
+    public void OnUpdate()
     {
+
+    }
+
+
+    void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
+        var _placeManager = GameManager.GetInstance().placeManager;
+
+        var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
+        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit");
         
     }
 
@@ -30,17 +42,8 @@ public class SceneManager : MonoBehaviour
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
         var click_state = _inputManager.e_CLICKERSTATE;
 
-        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT1) {
-            _unitManager.CreateUnit(placeObject, "SeedUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT2) {
-            _unitManager.CreateUnit(placeObject, "BoomUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT3) {
-            _unitManager.CreateUnit(placeObject, "StealerUnit");
-        }
-        else if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT4) {
-            _unitManager.CreateUnit(placeObject, "Unit");
+        if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
+            _unitManager.CreateUnit(placeObject, _inputManager._currSelectedButton._unitName);
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
@@ -49,4 +52,5 @@ public class SceneManager : MonoBehaviour
         }
         _inputManager.e_CLICKERSTATE =  InputManager.E_CLICKERSTATE.STANDBY;
     }
+
 }

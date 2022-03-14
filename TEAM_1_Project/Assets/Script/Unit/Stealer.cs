@@ -41,9 +41,8 @@ public class Stealer : Unit
             for (int i = 0; i < hit.Length; i++)
             {
                 RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Enemy")
+                if (hits.collider != null && hits.collider.gameObject.tag == "Player")
                 {
-                    Debug.Log("dd");
                     if (stealCoast < Seed.Inst.ReturnCoast())
                     {
                         Player.GetInstance()._currResource += stealCoast;
@@ -72,7 +71,6 @@ public class Stealer : Unit
                 RaycastHit2D hits = hit[i];
                 if (hits.collider != null && hits.collider.gameObject.tag == "Enemy")
                 {
-                    Debug.Log("dd");
                     if (stealCoast < Seed.Inst.ReturnCoast())
                     {
                         Player.GetInstance()._currResource += stealCoast;
