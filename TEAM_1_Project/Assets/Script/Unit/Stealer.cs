@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Stealer : Unit
 {
+    static PlaceManager _place = GameManager.GetInstance().placeManager;
     SpriteRenderer sprite;
-    RaycastHit2D[] hit;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
     static Stealer stealer;
     [SerializeField] public bool isSteal;
     public bool isPlayer;
-    PlaceObject _place;
+    GameObject target_place;
+
     void Awake() {
         character = gameObject.GetComponent<SpriteRenderer>();
         character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
@@ -36,12 +37,12 @@ public class Stealer : Unit
     {
         if (sprite.flipX == true)
         {
-            hit = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), Vector2.right, 10, LayerMask.GetMask("Seed"));
-            Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right * 10, new Color(0, 1, 0));
-            for (int i = 0; i < hit.Length; i++)
+            for(int i = 2; i<4; i++)
             {
-                RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Player")
+                target_place = _place.getPlaceObject(false, i, this._currPlace.y);
+                var pl = target_place.GetComponent<PlaceObject>();
+                GameObject target_unit = UnitManager.Inst.GetUnit(pl);
+                if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
                     if (stealCoast < Seed.Inst.ReturnCoast())
                     {
@@ -53,23 +54,18 @@ public class Stealer : Unit
                         Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
                         isSteal = true;
                     }
-                }
-                else if (hit == null)
-                {
-                    Player.GetInstance()._currHP -= attackpower;
                 }
             }
 
         }
         else if (sprite.flipX == false)
         {
-            isPlayer = true;
-            hit = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), Vector2.right, 10, LayerMask.GetMask("Seed"));
-            Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right * 10, new Color(0, 1, 0));
-            for (int i = 0; i < hit.Length; i++) 
+            for (int i = 2; i < 4; i++)
             {
-                RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Enemy")
+                target_place = _place.getPlaceObject(false, i, this._currPlace.y);
+                var pl = target_place.GetComponent<PlaceObject>();
+                GameObject target_unit = UnitManager.Inst.GetUnit(pl);
+                if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
                     if (stealCoast < Seed.Inst.ReturnCoast())
                     {
@@ -82,11 +78,8 @@ public class Stealer : Unit
                         isSteal = true;
                     }
                 }
-                else if (hit == null)
-                {
-                    Player.GetInstance()._currHP -= attackpower;
-                }
             }
+
         }
     }
     public void Level()

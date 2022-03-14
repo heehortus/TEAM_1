@@ -8,7 +8,7 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] protected int coast;
 	[SerializeField] protected int level;
 	[SerializeField] public SpriteRenderer character;
-
+    SpriteRenderer sprite;
     [SerializeField] public PlaceObject _currPlace { get; private set;}
 
 	public void setUnitPos(PlaceObject _place) {
@@ -19,9 +19,24 @@ public class Unit : MonoBehaviour, UnitInterface
     private void Start()
     {
         character = gameObject.GetComponent<SpriteRenderer>();
+        isPlayer();
+        if (gameObject.tag == "Player")
+            sprite.flipX = false;
+        else if (gameObject.tag == "Enemy")
+            sprite.flipX = true;
     }
     public virtual void Ability()
     {
+
+    }
+    void isPlayer()
+    {
+        if (UnitManager.Inst.isPlace)
+        {
+            gameObject.tag = "Player";
+        }
+        else
+            gameObject.tag = "Enemy";
 
     }
     void OnMouseDown()
