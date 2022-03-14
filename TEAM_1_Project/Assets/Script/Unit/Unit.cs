@@ -57,4 +57,9 @@ public class Unit : MonoBehaviour, UnitInterface
 
     }
 
+    public void OnDestroy()
+    {
+        Destroy(gameObject);
+    }
+
 }
