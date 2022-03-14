@@ -27,12 +27,12 @@ public class InputManager : MonoBehaviour
     {
         return e_CLICKERSTATE;
     }
-    void Start()
+    public void Init()
     {
         
     }
 
-    void Update()
+    public void OnUpdate()
     {
         LeftClick();
         RightClick();

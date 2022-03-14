@@ -10,7 +10,8 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
-    void Start()
+
+    public void Init()
     {
         _inputManager = GameManager.GetInstance().inputManager;
         _unitManager = GameManager.GetInstance().unitManager;
@@ -18,12 +19,14 @@ public class SceneManager : MonoBehaviour
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
         Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+
+        InitEnemyPlace();
     }
-    
+
     //UI_Turn_End_Button
-    void Update()
+    public void OnUpdate()
     {
-        
+
     }
 
 
@@ -50,4 +53,5 @@ public class SceneManager : MonoBehaviour
         }
         _inputManager.e_CLICKERSTATE =  InputManager.E_CLICKERSTATE.STANDBY;
     }
+
 }

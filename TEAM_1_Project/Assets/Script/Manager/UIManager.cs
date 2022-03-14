@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public void Init()
+    {
+
+    }
+    public void OnUpdate()
+    {
+
+    }
     [SerializeField] GameObject TurnObject;
     public int _uiInfoOffset = 50;
     public Stack<GameObject> _popupUIs = new Stack<GameObject>();

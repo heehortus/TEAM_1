@@ -20,10 +20,36 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        m_cInstance = this;
+        if (m_cInstance == null)
+        {
+            m_cInstance = this;
+            DontDestroyOnLoad(this.transform.parent);
+        }
+        else
+        {
+            if (this != m_cInstance)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
     }
-
+    private void Start()
+    {
+        m_cInstance.placeManager.Init();
+        m_cInstance.unitManager.Init();
+        m_cInstance.inputManager.Init();
+        m_cInstance.uiManager.Init();
+        m_cInstance.sceneManager.Init();
+        m_cInstance.resourceManager.Init();
+    }
     public void Update() {
+        m_cInstance.placeManager.OnUpdate();
+        m_cInstance.unitManager.OnUpdate();
+        m_cInstance.inputManager.OnUpdate();
+        m_cInstance.uiManager.OnUpdate();
+        m_cInstance.sceneManager.OnUpdate();
+        m_cInstance.resourceManager.OnUpdate();
     }
 
 }

@@ -17,11 +17,15 @@ public class PlaceManager : MonoBehaviour
 	public int RowMax = 3;
     public int ColumnMax = 2;
 
-
-    private void Start()
+    public void Init()
     {
         setPlaceObject(MyPlace);
         setPlaceObject(EnemyPlace);
+    }
+
+    public void OnUpdate()
+    {
+        
     }
 
     public void display(bool chk) {
