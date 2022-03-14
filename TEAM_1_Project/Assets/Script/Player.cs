@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public int _currHP;
     public int _maxResource;
     public int _currResource;
-    static Player player;
+    static Player player = null;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
     void Start()
     {
@@ -22,22 +22,24 @@ public class Player : MonoBehaviour
     }
     static public Player GetInstance()
     {
+        if(player != null) {
+            player = new Player();
+
+            player._unitDic.Add("SeedUnit1", true);
+            player._unitDic.Add("SeedUnit2", false);
+            player._unitDic.Add("SeedUnit3", false);
+
+            player._unitDic.Add("BoomUnit1", true);
+            player._unitDic.Add("BoomUnit2", false);
+            player._unitDic.Add("BoomUnit3", false);
+
+            player._unitDic.Add("StealerUnit1", true);
+            player._unitDic.Add("StealerUnit2", false);
+            player._unitDic.Add("StealerUnit3", false);
+
+            player._unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
+        }
         return player;
-
-        _unitDic.Add("SeedUnit1", true);
-        _unitDic.Add("SeedUnit2", false);
-        _unitDic.Add("SeedUnit3", false);
-
-        _unitDic.Add("BoomUnit1", true);
-        _unitDic.Add("BoomUnit2", false);
-        _unitDic.Add("BoomUnit3", false);
-
-        _unitDic.Add("StealerUnit1", true);
-        _unitDic.Add("StealerUnit2", false);
-        _unitDic.Add("StealerUnit3", false);
-
-        _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
-
     }
     void Update()
     {
