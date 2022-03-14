@@ -10,6 +10,8 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
+    
+    [SerializeField] public GameObject Player {get;}
 
     public void Init()
     {
