@@ -20,7 +20,7 @@ public class UnitManager : MonoBehaviour
     void Awake() => Inst = this;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
-        var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(prev) == true);
+        var unit = GetUnit(prev);
         if(unit == null) throw new System.Exception("해당 위치에 유닛이 존재하지 않습니다.");
         if (next.isEmpty)
         {
@@ -30,7 +30,7 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
-            var next_unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(next) == true);
+            var next_unit = GetUnit(next);
             unit.GetComponent<UnitInterface>().setUnitPos(next);
             next_unit.GetComponent<UnitInterface>().setUnitPos(prev);
         }
@@ -44,6 +44,11 @@ public class UnitManager : MonoBehaviour
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit);
+        return unit;
+    }
+
+    public GameObject GetUnit(PlaceObject _place) {
+        var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(_place) == true);
         return unit;
     }
 
