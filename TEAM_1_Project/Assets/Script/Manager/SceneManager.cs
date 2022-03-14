@@ -26,7 +26,14 @@ public class SceneManager : MonoBehaviour
     //UI_Turn_End_Button
     public void OnUpdate()
     {
-
+        if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.VICTORY)
+        {
+            Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+        }
+        else if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.DEFEAT)
+        {
+            Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+        }
     }
 
 
