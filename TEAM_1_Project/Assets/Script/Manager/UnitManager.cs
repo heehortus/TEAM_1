@@ -15,6 +15,9 @@ public class UnitManager : MonoBehaviour
 
     }
     private List<GameObject> UnitList = new List<GameObject>();
+    public bool isPlace;
+    public static UnitManager Inst { get; private set; }
+    void Awake() => Inst = this;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(prev) == true);
@@ -38,6 +41,7 @@ public class UnitManager : MonoBehaviour
         GameObject unit = null;
         if(!_place.isEmpty) return null;
         unit = UnitFactory.getUnit(name, _place);
+        isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit);
         return unit;
