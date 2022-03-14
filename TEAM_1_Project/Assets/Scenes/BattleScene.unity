@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c8b60a0e604a47bb20c91931798ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlace: 0
 --- !u!1 &202840491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1778,7 @@ MonoBehaviour:
   sceneManager: {fileID: 867938433}
   resourceManager: {fileID: 2129060361}
   battleManager: {fileID: 61734736}
+  gameState: 0
 --- !u!1 &1883697463
 GameObject:
   m_ObjectHideFlags: 0
