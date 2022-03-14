@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ac58495bace294ea5d198b8a6ac7ff, type: 3}
   m_Name: Boom
   m_EditorClassIdentifier: 
-  unitDate: []
+  unitDate:
+  - name: BaseBoom
+    coast: 1
+    attackpower: 3
+    sprites: {fileID: 3241342184767919654, guid: 505c1a8b030685a4897dd47f5f3fba46, type: 3}

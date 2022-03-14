@@ -18,7 +18,9 @@ public class SceneManager : MonoBehaviour
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
-        Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+        GameObject _turnEndButton = Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
+        _turnEndButton.transform.SetParent(UI_Parent.transform);
+        _turnEndButton.name = "UI_Turn_End_Button";
 
         InitEnemyPlace();
     }
@@ -41,13 +43,12 @@ public class SceneManager : MonoBehaviour
         var _placeManager = GameManager.GetInstance().placeManager;
 
         var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
-        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit");
+        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1");
         
     }
 
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
-        if(!placeObject.isPlayerPlace) return;
         var click_state = _inputManager.e_CLICKERSTATE;
 
         if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour, UnitInterface
 {
     [SerializeField] bool isUnitClick;
-	[SerializeField] int coast;
-	[SerializeField] int level;
+	[SerializeField] protected int coast;
+	[SerializeField] protected int level;
 	[SerializeField] public SpriteRenderer character;
 
     [SerializeField] public PlaceObject _currPlace { get; private set;}
@@ -20,9 +20,18 @@ public class Unit : MonoBehaviour, UnitInterface
     {
         character = gameObject.GetComponent<SpriteRenderer>();
     }
+    public virtual void Ability()
+    {
 
+    }
     void OnMouseDown()
     {
+        if (GameManager.GetInstance().battleManager._isBattle)
+        {
+            Debug.Log("전투 중엔 유닛을 이동할 수 없습니다.");
+            GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            return;
+        }
         if(isUnitClick)
         {
             isUnitClick = false;

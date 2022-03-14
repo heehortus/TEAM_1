@@ -19,4 +19,12 @@ public class UIManager : MonoBehaviour
     public void changeTurn(int turn) {
         TurnObject.GetComponent<TurnDisplay>().changeTurn(turn);
     }
+    public void ChangeBattleToPlace()
+    {
+        TurnObject.GetComponent<TurnDisplay>().ChangeBattleToPlace();
+    }
+    public void ChangePlaceToBattle()
+    {
+        TurnObject.GetComponent<TurnDisplay>().ChangePlaceToBattle();
+    }
 }

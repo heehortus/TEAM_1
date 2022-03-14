@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public UIManager uiManager;
     [SerializeField] public SceneManager sceneManager;
     [SerializeField] public ResourceManager resourceManager;
+    [SerializeField] public BattleManager battleManager;
     
     public enum E_GAMESTATE { GAMING, VICTORY, DEFEAT, STANDBY};
     [SerializeField] public E_GAMESTATE gameState = E_GAMESTATE.GAMING;
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+
+
 
 
 
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
         m_cInstance.uiManager.Init();
         m_cInstance.sceneManager.Init();
         m_cInstance.resourceManager.Init();
+        m_cInstance.battleManager.Init();
     }
     public void Update() {
         m_cInstance.placeManager.OnUpdate();
@@ -77,6 +82,7 @@ public class GameManager : MonoBehaviour
         m_cInstance.uiManager.OnUpdate();
         m_cInstance.sceneManager.OnUpdate();
         m_cInstance.resourceManager.OnUpdate();
+        m_cInstance.battleManager.OnUpdate();
     }
 
 }

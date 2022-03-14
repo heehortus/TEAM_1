@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Boom : Unit
 {
-
+    public override void Ability()
+    {
+        
+    }
 
 }
