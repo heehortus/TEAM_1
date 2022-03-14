@@ -33,34 +33,36 @@ public class Stealer : Unit
         
         if (sprite.flipX == true) // 적군이 아군에게
         {
-            for(int i = 2; i<4; i++)
+            for (int i = 0; i < 2; i++) 
             {
-
-                target_place = _place.getPlaceObject(false, i, this._currPlace.y);
+                target_place = _place.getPlaceObject(true, this._currPlace.x, i);
                 var pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit);
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
                     isSteal = true;
                 }
             }
         }
         else if (sprite.flipX == false) // 아군이 적군에게
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 2; i < 4; i++) 
             {
-                target_place = _place.getPlaceObject(true, i, this._currPlace.y);
-                var pl = target_place.GetComponent<PlaceObject>();
+                target_place = _place.getPlaceObject(false, this._currPlace.x, i);
+                PlaceObject pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
-                if (target_unit.layer == LayerMask.NameToLayer("Seed"))
+                if (target_unit.GetComponent<Seed>() != null) 
                 {
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit);
+                    Seed seed = target_unit.GetComponent<Seed>();
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(seed);
                     isSteal = true;
                 }
             }
         }
     }
+
+    //if (target_unit.layer == LayerMask.NameToLayer("Seed"))
     public void Level()
     {
         switch (level)
