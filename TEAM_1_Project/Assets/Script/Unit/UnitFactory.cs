@@ -23,15 +23,21 @@ public static class UnitFactory
                 unit.AddComponent<Unit>();
                 break;
 
-            case "BoomUnit":
+            case "BoomUnit1":
+            case "BoomUnit2":
+            case "BoomUnit3":
                 unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
                 unit.AddComponent<Boom>();
                 break;
-            case "StealerUnit":
+            case "StealerUnit1":
+            case "StealerUnit2":
+            case "StealerUnit3":
                 unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 2"));
                 unit.AddComponent<Stealer>();
                 break;
-            case "SeedUnit":
+            case "SeedUnit1":
+            case "SeedUnit2":
+            case "SeedUnit3":
                 unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 3"));
                 unit.AddComponent<Seed>();
                 break;
