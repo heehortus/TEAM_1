@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Stealer : Unit
 {
+    static PlaceManager _place = GameManager.GetInstance().placeManager;
     SpriteRenderer sprite;
-    RaycastHit2D[] hit;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
-    static Stealer stealer;
+
     [SerializeField] public bool isSteal;
     public bool isPlayer;
-    PlaceObject _place;
+    GameObject target_place;
+
     void Awake() {
         character = gameObject.GetComponent<SpriteRenderer>();
         character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
-        stealer = this;
 	}
-    static public Stealer GetInstance()
-    {
-        return stealer;
-    }
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -34,61 +30,39 @@ public class Stealer : Unit
     }
     public override void Ability()
     {
-        if (sprite.flipX == true)
+        
+        if (sprite.flipX == true) // 적군이 아군에게
         {
-            hit = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), Vector2.right, 10, LayerMask.GetMask("Seed"));
-            Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right * 10, new Color(0, 1, 0));
-            for (int i = 0; i < hit.Length; i++)
+            for (int i = 0; i < 2; i++) 
             {
-                RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Player")
+                target_place = _place.getPlaceObject(true, this._currPlace.x, i);
+                var pl = target_place.GetComponent<PlaceObject>();
+                GameObject target_unit = UnitManager.Inst.GetUnit(pl);
+                if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
-                }
-                else if (hit == null)
-                {
-                    Player.GetInstance()._currHP -= attackpower;
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
+                    isSteal = true;
                 }
             }
-
         }
-        else if (sprite.flipX == false)
+        else if (sprite.flipX == false) // 아군이 적군에게
         {
-            isPlayer = true;
-            hit = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), Vector2.right, 10, LayerMask.GetMask("Seed"));
-            Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right * 10, new Color(0, 1, 0));
-            for (int i = 0; i < hit.Length; i++) 
+            for (int i = 2; i < 4; i++) 
             {
-                RaycastHit2D hits = hit[i];
-                if (hits.collider != null && hits.collider.gameObject.tag == "Enemy")
+                target_place = _place.getPlaceObject(false, this._currPlace.x, i);
+                PlaceObject pl = target_place.GetComponent<PlaceObject>();
+                GameObject target_unit = UnitManager.Inst.GetUnit(pl);
+                if (target_unit.GetComponent<Seed>() != null) 
                 {
-                    if (stealCoast < Seed.Inst.ReturnCoast())
-                    {
-                        Player.GetInstance()._currResource += stealCoast;
-                        isSteal = true;
-                    }
-                    else
-                    {
-                        Player.GetInstance()._currResource += Seed.Inst.ReturnCoast();
-                        isSteal = true;
-                    }
-                }
-                else if (hit == null)
-                {
-                    Player.GetInstance()._currHP -= attackpower;
+                    Seed seed = target_unit.GetComponent<Seed>();
+                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(seed);
+                    isSteal = true;
                 }
             }
         }
     }
+
+    //if (target_unit.layer == LayerMask.NameToLayer("Seed"))
     public void Level()
     {
         switch (level)
@@ -108,5 +82,12 @@ public class Stealer : Unit
         }
     }
 
+    public int Rip_Seed(Seed seed)
+    {
+        int result;
+        result = seed.myresource;
+        seed.OnDestroy();
+        return result;
+    }
 
 }
