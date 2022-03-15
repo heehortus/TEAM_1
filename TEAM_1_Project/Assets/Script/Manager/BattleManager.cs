@@ -28,6 +28,7 @@ public class BattleManager : MonoBehaviour
     {
         BattleLogic();
         yield return new WaitForSeconds(_battleTime);
+        GameManager.unitManager.doBattle();
         EndBattle();
     }
     void BattleLogic()

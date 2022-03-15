@@ -63,6 +63,12 @@ public class UnitManager : MonoBehaviour
             return null;
     }
 
+    public void doBattle() {
+        foreach(var item in UnitList) {
+            item.Ability();
+        }
+    }
+
     public void CreateMoveFunc()
     {
 
