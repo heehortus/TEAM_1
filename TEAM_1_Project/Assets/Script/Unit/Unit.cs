@@ -8,7 +8,6 @@ public class Unit : MonoBehaviour, UnitInterface
 	[SerializeField] protected int coast;
 	[SerializeField] protected int level;
 	[SerializeField] public SpriteRenderer character;
-    SpriteRenderer sprite;
     [SerializeField] public PlaceObject _currPlace { get; private set;}
 
 	public void setUnitPos(PlaceObject _place) {
@@ -16,14 +15,14 @@ public class Unit : MonoBehaviour, UnitInterface
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
 
-    private void Start()
+    protected void Init()
     {
         character = gameObject.GetComponent<SpriteRenderer>();
         isPlayer();
         if (gameObject.tag == "Player")
-            sprite.flipX = false;
+            character.flipX = false;
         else if (gameObject.tag == "Enemy")
-            sprite.flipX = true;
+            character.flipX = true;
     }
     public virtual void Ability()
     {
@@ -41,10 +40,10 @@ public class Unit : MonoBehaviour, UnitInterface
     }
     void OnMouseDown()
     {
-        if (GameManager.GetInstance().battleManager._isBattle)
+        if (GameManager.battleManager._isBattle)
         {
             Debug.Log("전투 중엔 유닛을 이동할 수 없습니다.");
-            GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
             return;
         }
         if(isUnitClick)
@@ -55,8 +54,8 @@ public class Unit : MonoBehaviour, UnitInterface
         {
             isUnitClick = true;
         }
-        GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.MOVE;
-        GameManager.GetInstance().inputManager._currSelectedUnit = this;
+        GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.MOVE;
+        GameManager.inputManager._currSelectedUnit = this;
     }
 	public void clickfunc() {
     }

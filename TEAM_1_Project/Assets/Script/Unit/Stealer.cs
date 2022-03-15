@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Stealer : Unit
 {
-    static PlaceManager _place = GameManager.GetInstance().placeManager;
-    SpriteRenderer sprite;
+    static PlaceManager _place = GameManager.placeManager;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
 
@@ -13,13 +12,10 @@ public class Stealer : Unit
     public bool isPlayer;
     GameObject target_place;
 
-    void Awake() {
-        character = gameObject.GetComponent<SpriteRenderer>();
-        character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
-	}
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        base.Init();
+        character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
         Level();
     }
@@ -31,7 +27,7 @@ public class Stealer : Unit
     public override void Ability()
     {
         
-        if (sprite.flipX == true) // 적군이 아군에게
+        if (character.flipX == true) // 적군이 아군에게
         {
             for (int i = 0; i < 2; i++) 
             {
@@ -40,22 +36,27 @@ public class Stealer : Unit
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
+                    GameManager.sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
                     isSteal = true;
                 }
             }
         }
-        else if (sprite.flipX == false) // 아군이 적군에게
+        else if (character.flipX == false) // 아군이 적군에게
         {
             for (int i = 2; i < 4; i++) 
             {
                 target_place = _place.getPlaceObject(false, this._currPlace.x, i);
+                if (target_place == null)
+                {
+                    Debug.Log("??");
+                    return;
+                }
                 PlaceObject pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.GetComponent<Seed>() != null) 
                 {
                     Seed seed = target_unit.GetComponent<Seed>();
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(seed);
+                    GameManager.sceneManager.Player._currResource += Rip_Seed(seed);
                     isSteal = true;
                 }
             }

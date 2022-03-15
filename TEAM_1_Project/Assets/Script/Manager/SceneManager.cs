@@ -16,12 +16,12 @@ public class SceneManager : MonoBehaviour
 
     public void Init()
     {
-        _inputManager = GameManager.GetInstance().inputManager;
-        _unitManager = GameManager.GetInstance().unitManager;
+        _inputManager = GameManager.inputManager;
+        _unitManager = GameManager.unitManager;
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
-        GameObject _turnEndButton = Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
+        GameObject _turnEndButton = Instantiate(GameManager.resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
         _turnEndButton.transform.SetParent(UI_Parent.transform);
         _turnEndButton.name = "UI_Turn_End_Button";
 
@@ -33,19 +33,19 @@ public class SceneManager : MonoBehaviour
     {
         if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.VICTORY)
         {
-            Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+            Instantiate(GameManager.resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
             GameManager.GetInstance().SetGameState(3);
         }
         else if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.DEFEAT)
         {
-            Instantiate(GameManager.GetInstance().resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+            Instantiate(GameManager.resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
             GameManager.GetInstance().SetGameState(3);
         }
     }
 
 
     void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
-        var _placeManager = GameManager.GetInstance().placeManager;
+        var _placeManager = GameManager.placeManager;
 
         var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
         _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1");

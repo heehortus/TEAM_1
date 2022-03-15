@@ -32,9 +32,9 @@ public class BattleManager : MonoBehaviour
     }
     void BattleLogic()
     {
-        GameManager.GetInstance().inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
-        GameManager.GetInstance().placeManager.display(false);
-        GameManager.GetInstance().uiManager.ChangePlaceToBattle();
+        GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+        GameManager.placeManager.display(false);
+        GameManager.uiManager.ChangePlaceToBattle();
         Debug.Log("전투 시작!");
     }
     void EndBattle()
@@ -44,7 +44,7 @@ public class BattleManager : MonoBehaviour
 
         ref int _turn = ref GameObject.Find("UI_Turn_End_Button").GetComponentInChildren<UI_Turn_End_Button>().turn;
         _turn++;
-        GameManager.GetInstance().uiManager.changeTurn(_turn);
-        GameManager.GetInstance().uiManager.ChangeBattleToPlace();
+        GameManager.uiManager.changeTurn(_turn);
+        GameManager.uiManager.ChangeBattleToPlace();
     }
 }

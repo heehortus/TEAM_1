@@ -5,14 +5,22 @@ using UnityEngine;
 [System.Serializable]
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public PlaceManager placeManager;
-    [SerializeField] public UnitManager unitManager;
-    [SerializeField] public InputManager inputManager;
-    [SerializeField] public UIManager uiManager;
-    [SerializeField] public SceneManager sceneManager;
-    [SerializeField] public ResourceManager resourceManager;
-    [SerializeField] public BattleManager battleManager;
-    
+    [SerializeField] PlaceManager _placeManager;
+    [SerializeField] UnitManager _unitManager;
+    [SerializeField] InputManager _inputManager;
+    [SerializeField] UIManager _uiManager;
+    [SerializeField] SceneManager _sceneManager;
+    [SerializeField] ResourceManager _resourceManager;
+    [SerializeField] BattleManager _battleManager;
+
+    public static PlaceManager placeManager { get { return m_cInstance._placeManager; } }
+    public static UnitManager unitManager { get { return m_cInstance._unitManager; } }
+    public static InputManager inputManager { get { return m_cInstance._inputManager; } }
+    public static UIManager uiManager { get { return m_cInstance._uiManager; } }
+    public static SceneManager sceneManager { get { return m_cInstance._sceneManager; } }
+    public static ResourceManager resourceManager { get { return m_cInstance._resourceManager; } }
+    public static BattleManager battleManager { get { return m_cInstance._battleManager; } }
+
     public enum E_GAMESTATE { GAMING, VICTORY, DEFEAT, STANDBY};
     [SerializeField] public E_GAMESTATE gameState = E_GAMESTATE.GAMING;
 
@@ -67,22 +75,22 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        m_cInstance.placeManager.Init();
-        m_cInstance.unitManager.Init();
-        m_cInstance.inputManager.Init();
-        m_cInstance.uiManager.Init();
-        m_cInstance.sceneManager.Init();
-        m_cInstance.resourceManager.Init();
-        m_cInstance.battleManager.Init();
+        placeManager.Init();
+        unitManager.Init();
+        inputManager.Init();
+        uiManager.Init();
+        sceneManager.Init();
+        resourceManager.Init();
+        battleManager.Init();
     }
     public void Update() {
-        m_cInstance.placeManager.OnUpdate();
-        m_cInstance.unitManager.OnUpdate();
-        m_cInstance.inputManager.OnUpdate();
-        m_cInstance.uiManager.OnUpdate();
-        m_cInstance.sceneManager.OnUpdate();
-        m_cInstance.resourceManager.OnUpdate();
-        m_cInstance.battleManager.OnUpdate();
+        placeManager.OnUpdate();
+        unitManager.OnUpdate();
+        inputManager.OnUpdate();
+        uiManager.OnUpdate();
+        sceneManager.OnUpdate();
+        resourceManager.OnUpdate();
+        battleManager.OnUpdate();
     }
 
 }
