@@ -5,7 +5,7 @@ using UnityEngine;
 public class Seed : Unit
 {
     public int myresource { get; set; } = 1;
-    private int maxLevel {get;} = 3;
+    private const int maxLevel = 3;
     public override void Ability()
     {
         if(myresource == maxLevel) {
