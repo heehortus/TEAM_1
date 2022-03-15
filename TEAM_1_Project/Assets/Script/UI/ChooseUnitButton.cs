@@ -16,7 +16,7 @@ public class ChooseUnitButton : MonoBehaviour
             return;
         }
         bool _isPlayerHaveUnit;
-        Player.GetInstance()._unitDic.TryGetValue(_unitName, out _isPlayerHaveUnit);
+        _player._unitDic.TryGetValue(_unitName, out _isPlayerHaveUnit);
         if (!_isPlayerHaveUnit)
         {
             Debug.Log("아직 획득하지 못한 유닛입니다.");

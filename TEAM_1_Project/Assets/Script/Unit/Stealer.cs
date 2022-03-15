@@ -5,7 +5,6 @@ using UnityEngine;
 public class Stealer : Unit
 {
     static PlaceManager _place = GameManager.GetInstance().placeManager;
-    SpriteRenderer sprite;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
 
@@ -13,13 +12,10 @@ public class Stealer : Unit
     public bool isPlayer;
     GameObject target_place;
 
-    void Awake() {
-        character = gameObject.GetComponent<SpriteRenderer>();
-        character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
-	}
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        base.Init();
+        character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
         level = 1;
         Level();
     }
@@ -31,7 +27,7 @@ public class Stealer : Unit
     public override void Ability()
     {
         
-        if (sprite.flipX == true) // 적군이 아군에게
+        if (character.flipX == true) // 적군이 아군에게
         {
             for (int i = 0; i < 2; i++) 
             {
@@ -45,11 +41,16 @@ public class Stealer : Unit
                 }
             }
         }
-        else if (sprite.flipX == false) // 아군이 적군에게
+        else if (character.flipX == false) // 아군이 적군에게
         {
             for (int i = 2; i < 4; i++) 
             {
                 target_place = _place.getPlaceObject(false, this._currPlace.x, i);
+                if (target_place == null)
+                {
+                    Debug.Log("??");
+                    return;
+                }
                 PlaceObject pl = target_place.GetComponent<PlaceObject>();
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.GetComponent<Seed>() != null) 

@@ -14,11 +14,7 @@ public class Seed : Unit
     }
     private void Start()
     {
-        character = gameObject.GetComponent<SpriteRenderer>();
-        if (UnitManager.Inst.isPlace)
-            gameObject.tag = "Player";
-        else
-            gameObject.tag = "Enemy";
+        base.Init();
     }
 
     

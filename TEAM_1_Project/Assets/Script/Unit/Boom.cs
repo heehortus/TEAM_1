@@ -8,5 +8,8 @@ public class Boom : Unit
     {
         
     }
-
+    private void Start()
+    {
+        base.Init();
+    }
 }
