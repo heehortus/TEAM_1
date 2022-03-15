@@ -39,7 +39,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     }
     void isPlayer()
     {
-        if (UnitManager.Inst.isPlace)
+        if (_currPlace.isPlayerPlace)
         {
             gameObject.tag = "Player";
         }
