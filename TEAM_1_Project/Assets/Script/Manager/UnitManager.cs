@@ -5,16 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class UnitManager : MonoBehaviour
 {
-
     public void Init()
     {
 
     }
     public void OnUpdate()
     {
-
+        // 정렬 확인하기 위한 임시 코드
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UnitList.Sort();
+            foreach(Unit _unit in UnitList)
+            {
+                Debug.Log($"{_unit.gameObject.name} : {_unit._speed}");
+            }
+        }
     }
-    private List<GameObject> UnitList = new List<GameObject>();
+    private List<Unit> UnitList = new List<Unit>();
     public bool isPlace;
     public static UnitManager Inst { get; private set; }
     void Awake() => Inst = this;
@@ -34,6 +41,7 @@ public class UnitManager : MonoBehaviour
             unit.GetComponent<UnitInterface>().setUnitPos(next);
             next_unit.GetComponent<UnitInterface>().setUnitPos(prev);
         }
+        GameManager.sceneManager._currMoveCount++;
     }//유닛 이동 명령
 
     
@@ -43,13 +51,13 @@ public class UnitManager : MonoBehaviour
         unit = UnitFactory.getUnit(name, _place);
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
-        UnitList.Add(unit);
+        UnitList.Add(unit.GetComponent<Unit>());
         return unit;
     }
 
     public GameObject GetUnit(PlaceObject _place) {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(_place) == true);
-        return unit;
+        return unit.gameObject;
     }
 
     public void CreateMoveFunc()

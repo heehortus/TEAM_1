@@ -14,6 +14,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] public Player Player { get; }
     [SerializeField] public Player Enemy { get; }
 
+    public int _maxMoveCount = 1;
+    public int _currMoveCount = 0;
     public void Init()
     {
         _inputManager = GameManager.inputManager;
@@ -48,7 +50,8 @@ public class SceneManager : MonoBehaviour
         var _placeManager = GameManager.placeManager;
 
         var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
-        _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1");
+        Unit _enemy = _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1").GetComponent<Unit>();
+        _enemy._unitCamp = Define.UnitCamp.enemyUnit;
         
     }
 
@@ -61,6 +64,12 @@ public class SceneManager : MonoBehaviour
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {
+            if (_currMoveCount > _maxMoveCount - 1)
+            {
+                Debug.Log("현재 턴에서는 더이상 유닛을 이동시킬 수 없습니다.");
+                _inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+                return;
+            }
             _unitManager.UnitMoveFunc(_inputManager._currSelectedUnit._currPlace,placeObject);
             Debug.Log("Move");
         }
