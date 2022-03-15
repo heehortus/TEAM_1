@@ -11,8 +11,8 @@ public class SceneManager : MonoBehaviour
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
 
-    [SerializeField] public Player Player { get; }
-    [SerializeField] public Player Enemy { get; }
+    [SerializeField] public Player Player;
+    [SerializeField] public Player Enemy;
 
     public int _maxMoveCount = 1;
     public int _currMoveCount = 0;
