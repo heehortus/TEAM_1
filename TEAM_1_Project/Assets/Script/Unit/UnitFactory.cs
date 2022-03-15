@@ -48,6 +48,7 @@ public static class UnitFactory
         var script = unit.GetComponent<UnitInterface>();
         script.setUnitPos(_place);
         script.setSprite();
+        unit.GetComponent<Unit>()._unitCamp = Define.UnitCamp.playerUnit;
         return unit;
     }
 }

@@ -59,7 +59,15 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                _SceneManager.onClickPlaceObject(hit.collider.gameObject);
+                if (!hit.collider.gameObject.GetComponent<PlaceObject>().isPlayerPlace)
+                {
+                    Debug.Log("상대방의 진영입니다.");
+                    e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+                }
+                else
+                {
+                    _SceneManager.onClickPlaceObject(hit.collider.gameObject);
+                }              
             }      
         }
     }
