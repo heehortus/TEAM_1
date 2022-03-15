@@ -57,7 +57,10 @@ public class UnitManager : MonoBehaviour
 
     public GameObject GetUnit(PlaceObject _place) {
         var unit = UnitList.Find(a => a.GetComponent<UnitInterface>().checkPos(_place) == true);
-        return unit.gameObject;
+        if (unit != null)
+            return unit.gameObject;
+        else
+            return null;
     }
 
     public void CreateMoveFunc()
