@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stealer : Unit
 {
-    static PlaceManager _place = GameManager.GetInstance().placeManager;
+    static PlaceManager _place = GameManager.placeManager;
     [SerializeField] int attackpower;
     [SerializeField] int stealCoast;
 
@@ -15,7 +15,7 @@ public class Stealer : Unit
     private void Start()
     {
         base.Init();
-        character.sprite = GameManager.GetInstance().resourceManager.LoadSprite("squirrel");
+        character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
         Level();
     }
@@ -36,7 +36,7 @@ public class Stealer : Unit
                 GameObject target_unit = UnitManager.Inst.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
+                    GameManager.sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
                     isSteal = true;
                 }
             }
@@ -56,7 +56,7 @@ public class Stealer : Unit
                 if (target_unit.GetComponent<Seed>() != null) 
                 {
                     Seed seed = target_unit.GetComponent<Seed>();
-                    GameManager.GetInstance().sceneManager.Player._currResource += Rip_Seed(seed);
+                    GameManager.sceneManager.Player._currResource += Rip_Seed(seed);
                     isSteal = true;
                 }
             }

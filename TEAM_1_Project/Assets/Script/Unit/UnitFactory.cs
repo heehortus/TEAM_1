@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class UnitFactory 
 {
-    private static ResourceManager _resourceManager = GameManager.GetInstance().resourceManager;
+    private static ResourceManager _resourceManager = GameManager.resourceManager;
     public static GameObject getUnit(string name, PlaceObject _place) {
 
         GameObject unit = null;
@@ -44,7 +44,7 @@ public static class UnitFactory
             default :
                 return unit;
         }
-        unit.transform.SetParent(GameManager.GetInstance().sceneManager.Unit_Parent.transform);
+        unit.transform.SetParent(GameManager.sceneManager.Unit_Parent.transform);
         var script = unit.GetComponent<UnitInterface>();
         script.setUnitPos(_place);
         script.setSprite();

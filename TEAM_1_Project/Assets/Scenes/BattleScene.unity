@@ -1771,13 +1771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d6889fe475a449b955302ca715e38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeManager: {fileID: 1115884643}
-  unitManager: {fileID: 84842159}
-  inputManager: {fileID: 531939310}
-  uiManager: {fileID: 714001805}
-  sceneManager: {fileID: 867938433}
-  resourceManager: {fileID: 2129060361}
-  battleManager: {fileID: 61734736}
+  _placeManager: {fileID: 1115884643}
+  _unitManager: {fileID: 84842159}
+  _inputManager: {fileID: 531939310}
+  _uiManager: {fileID: 714001805}
+  _sceneManager: {fileID: 867938433}
+  _resourceManager: {fileID: 2129060361}
+  _battleManager: {fileID: 61734736}
   gameState: 0
 --- !u!1 &1883697463
 GameObject:
