@@ -76,4 +76,10 @@ public class SceneManager : MonoBehaviour
         _inputManager.e_CLICKERSTATE =  InputManager.E_CLICKERSTATE.STANDBY;
     }
 
+    public Player getPlayer(PlaceObject placeObject) {
+        if(placeObject.isPlayerPlace) {
+            return Player;
+        }
+        return Enemy;
+    }
 }

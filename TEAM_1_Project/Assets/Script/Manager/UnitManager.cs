@@ -23,8 +23,6 @@ public class UnitManager : MonoBehaviour
     }
     private List<Unit> UnitList = new List<Unit>();
     public bool isPlace;
-    public static UnitManager Inst { get; private set; }
-    void Awake() => Inst = this;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = GetUnit(prev);

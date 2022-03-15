@@ -32,10 +32,10 @@ public class Stealer : Unit
             {
                 target_place = _place.getPlaceObject(true, this._currPlace.x, i);
                 var pl = target_place.GetComponent<PlaceObject>();
-                GameObject target_unit = UnitManager.Inst.GetUnit(pl);
+                GameObject target_unit = GameManager.unitManager.GetUnit(pl);
                 if (target_unit.layer == LayerMask.NameToLayer("Seed"))
                 {
-                    GameManager.sceneManager.Player._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
+                    GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
                     isSteal = true;
                 }
             }
@@ -46,12 +46,12 @@ public class Stealer : Unit
             for (int i = 0; i < 2; i++) 
             {
                 target_place = _place.getPlaceObject(false, this._currPlace.x, i);
-                target_unit = UnitManager.Inst.GetUnit(target_place.GetComponent<PlaceObject>());
+                target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             }
             if (target_unit.GetComponent<Seed>() != null)
             {
                 Seed seed = target_unit.GetComponent<Seed>();
-                GameManager.sceneManager.Player._currResource += Rip_Seed(seed);
+                GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
                 isSteal = true;
             }
         }
