@@ -82,12 +82,10 @@ public class SceneManager : MonoBehaviour
         }
         return Enemy;
     }
-    public Player getEnemy()
-    {
-        return Enemy;
-    }
-    public Player Players()
-    {
+    public Player getEnemy(PlaceObject placeObject) {
+        if(placeObject.isPlayerPlace) {
+            return Enemy;
+        }
         return Player;
     }
 }

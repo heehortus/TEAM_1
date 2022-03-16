@@ -49,11 +49,11 @@ public class Stealer : Unit
             else if (target_unit2.GetComponent<Boom>() != null)
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
-                GameManager.sceneManager.Players()._currHP -= boom.damage;
+                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= boom.damage;
             }
             else if(target_unit == null)
             {
-                GameManager.sceneManager.Players()._currHP -= attackpower;
+                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= attackpower;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
@@ -74,7 +74,7 @@ public class Stealer : Unit
             }
             if (target_unit2 == null)
             {
-                GameManager.sceneManager.getEnemy()._currHP -= attackpower;
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
             else if (target_unit2.GetComponent<Seed>() != null)
             {
@@ -85,7 +85,7 @@ public class Stealer : Unit
             else if(target_unit2.GetComponent<Boom>() != null)
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
-                GameManager.sceneManager.getEnemy()._currHP -= boom.damage;
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= boom.damage;
             }
         }
     }
