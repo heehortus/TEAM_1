@@ -27,7 +27,7 @@ public class SceneManager : MonoBehaviour
         _turnEndButton.transform.SetParent(UI_Parent.transform);
         _turnEndButton.name = "UI_Turn_End_Button";
 
-        InitEnemyPlace();
+        //InitEnemyPlace();
     }
 
     //UI_Turn_End_Button
