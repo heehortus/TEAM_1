@@ -10,7 +10,7 @@ public class Seed : Unit
     {
         if(myresource == maxLevel) {
             GameManager.sceneManager.getPlayer(_currPlace)._currResource += myresource;
-            Destroy(this);
+            GameManager.unitManager.DeleteUnit(this);
         }
         myresource += 1;
     }
