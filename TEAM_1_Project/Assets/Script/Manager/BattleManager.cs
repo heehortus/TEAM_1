@@ -47,6 +47,7 @@ public class BattleManager : MonoBehaviour
         _turn++;
         GameManager.uiManager.changeTurn(_turn);
         GameManager.uiManager.ChangeBattleToPlace();
+        GameManager.uiManager.ChangeInfoBar();
         GameManager.sceneManager._currMoveCount = 0;
     }
 }
