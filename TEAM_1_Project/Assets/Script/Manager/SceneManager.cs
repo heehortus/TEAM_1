@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
 
-    [SerializeField] public Player Player;
+    [SerializeField] public Player Player; 
     [SerializeField] public Player Enemy;
 
     public int _maxMoveCount = 1;
@@ -74,6 +74,12 @@ public class SceneManager : MonoBehaviour
             Debug.Log("Move");
         }
         _inputManager.e_CLICKERSTATE =  InputManager.E_CLICKERSTATE.STANDBY;
+    }
+    public Player getPlayer(bool isPlayer) {
+        if(isPlayer) {
+            return Player;
+        }
+        return Enemy;
     }
 
     public Player getPlayer(PlaceObject placeObject) {
