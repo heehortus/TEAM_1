@@ -21,7 +21,7 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
-    public List<Unit> UnitList = new List<Unit>();
+    private List<Unit> UnitList = new List<Unit>();
     public bool isPlace;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
@@ -73,8 +73,9 @@ public class UnitManager : MonoBehaviour
         }   
     }
 
-    public void CreateMoveFunc()
-    {
-
+    public void DeleteUnit(Unit _unit) {
+        UnitList.Remove(_unit);
+        _unit.OnDestroy();
     }
+
 }
