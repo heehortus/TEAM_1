@@ -114,9 +114,9 @@ public class Stealer : Unit
     {
         int result;
         result = seed.myresource;
-        seed.OnDestroy();
         int index = GameManager.unitManager.UnitList.FindIndex(a => a == seed);
         GameManager.unitManager.UnitList.RemoveAt(index);
+        seed.OnDestroy();
         return result;
     }
 

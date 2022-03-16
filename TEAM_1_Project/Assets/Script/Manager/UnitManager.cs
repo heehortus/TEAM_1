@@ -35,6 +35,10 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
+            if (prev == next)
+            {
+                return;
+            }
             var next_unit = GetUnit(next);
             unit.GetComponent<UnitInterface>().setUnitPos(next);
             next_unit.GetComponent<UnitInterface>().setUnitPos(prev);
@@ -62,9 +66,11 @@ public class UnitManager : MonoBehaviour
     }
 
     public void doBattle() {
-        foreach(var item in UnitList) {
-            item.Ability();
-        }
+        UnitList.Sort();
+        for(int i = 0; i < UnitList.Count; i++)
+        {
+            UnitList[i].Ability();
+        }   
     }
 
     public void CreateMoveFunc()
