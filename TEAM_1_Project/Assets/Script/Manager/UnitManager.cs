@@ -21,7 +21,7 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
-    private List<Unit> UnitList = new List<Unit>();
+    public List<Unit> UnitList = new List<Unit>();
     public bool isPlace;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {

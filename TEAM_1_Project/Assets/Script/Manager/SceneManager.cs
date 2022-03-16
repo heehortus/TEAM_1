@@ -82,4 +82,12 @@ public class SceneManager : MonoBehaviour
         }
         return Enemy;
     }
+    public Player getEnemy()
+    {
+        return Enemy;
+    }
+    public Player Players()
+    {
+        return Player;
+    }
 }

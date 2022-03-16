@@ -28,31 +28,64 @@ public class Stealer : Unit
         
         if (character.flipX == true) // 적군이 아군에게
         {
-            for (int i = 0; i < 2; i++) 
+            var target_unit = gameObject;
+            var target_unit2 = gameObject;
+            for (int i = 0; i < 2; i++)
             {
                 target_place = _place.getPlaceObject(true, this._currPlace.x, i);
-                var pl = target_place.GetComponent<PlaceObject>();
-                GameObject target_unit = GameManager.unitManager.GetUnit(pl);
-                if (target_unit.layer == LayerMask.NameToLayer("Seed"))
+                target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                if (target_unit != null)
                 {
-                    GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(target_unit.GetComponent<Seed>());
-                    isSteal = true;
+                    target_unit2 = target_unit;
+                    break;
                 }
+            }
+            if (target_unit2.GetComponent<Seed>() != null)
+            {
+                Seed seed = target_unit2.GetComponent<Seed>();
+                GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
+                isSteal = true;
+            }
+            else if (target_unit2.GetComponent<Boom>() != null)
+            {
+                Boom boom = target_unit2.GetComponent<Boom>();
+                GameManager.sceneManager.Players()._currHP -= boom.damage;
+            }
+            else if(target_unit == null)
+            {
+                GameManager.sceneManager.Players()._currHP -= attackpower;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
         {
             var target_unit = gameObject;
+            var target_unit2 = gameObject;
             for (int i = 0; i < 2; i++) 
             {
                 target_place = _place.getPlaceObject(false, this._currPlace.x, i);
                 target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                if (target_unit != null)
+                {
+                    target_unit2 = target_unit;
+                    break;
+                }
+                else if (target_unit == null)
+                    target_unit2 = target_unit;
             }
-            if (target_unit.GetComponent<Seed>() != null)
+            if (target_unit2 == null)
             {
-                Seed seed = target_unit.GetComponent<Seed>();
+                GameManager.sceneManager.getEnemy()._currHP -= attackpower;
+            }
+            else if (target_unit2.GetComponent<Seed>() != null)
+            {
+                Seed seed = target_unit2.GetComponent<Seed>();
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
                 isSteal = true;
+            }
+            else if(target_unit2.GetComponent<Boom>() != null)
+            {
+                Boom boom = target_unit2.GetComponent<Boom>();
+                GameManager.sceneManager.getEnemy()._currHP -= boom.damage;
             }
         }
     }
@@ -82,6 +115,8 @@ public class Stealer : Unit
         int result;
         result = seed.myresource;
         seed.OnDestroy();
+        int index = GameManager.unitManager.UnitList.FindIndex(a => a == seed);
+        GameManager.unitManager.UnitList.RemoveAt(index);
         return result;
     }
 
