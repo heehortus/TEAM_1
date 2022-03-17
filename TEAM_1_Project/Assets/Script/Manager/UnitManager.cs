@@ -23,6 +23,7 @@ public class UnitManager : MonoBehaviour
     }
     private List<Unit> UnitList = new List<Unit>();
     public bool isPlace;
+    public bool isSteal;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = GetUnit(prev);
@@ -67,14 +68,28 @@ public class UnitManager : MonoBehaviour
 
     public void doBattle() {
         UnitList.Sort();
+
         for(int i = 0; i < UnitList.Count; i++)
         {
-            UnitList[i].Ability();
-        }   
+            Debug.Log(isSteal);
+            if (isSteal)
+            {
+                UnitList[i - 1].Ability();
+                Debug.Log("실행됨");
+                isSteal = false;
+                UnitList.RemoveAt(UnitList.Count-1);
+                Debug.Log("dddadw");
+            }
+            else
+                UnitList[i].Ability();
+        }
+        Debug.Log("FOR문 나옴");
+       
     }
 
     public void DeleteUnit(Unit _unit) {
         UnitList.Remove(_unit);
+        UnitList.Add(_unit);
         _unit.OnDestroy();
     }
 

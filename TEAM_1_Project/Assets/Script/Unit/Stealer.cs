@@ -25,7 +25,7 @@ public class Stealer : Unit
     }
     public override void Ability()
     {
-        
+        Debug.Log("스틸러 실행됨");
         if (character.flipX == true) // 적군이 아군에게
         {
             var target_unit = gameObject;
@@ -40,20 +40,23 @@ public class Stealer : Unit
                     break;
                 }
             }
+            Debug.Log(target_unit2);
             if (target_unit2.GetComponent<Seed>() != null)
             {
                 Seed seed = target_unit2.GetComponent<Seed>();
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
-                isSteal = true;
+                GameManager.unitManager.isSteal = true;
             }
             else if (target_unit2.GetComponent<Boom>() != null)
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
-                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= boom.damage;
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= Rip_Boom(boom);
+                GameManager.unitmanager.isSteal =true
             }
             else if(target_unit == null)
             {
-                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= attackpower;
+                Debug.Log("ddddasd");
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
@@ -80,12 +83,12 @@ public class Stealer : Unit
             {
                 Seed seed = target_unit2.GetComponent<Seed>();
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
-                isSteal = true;
+                GameManager.unitManager.isSteal = true;
             }
             else if(target_unit2.GetComponent<Boom>() != null)
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= boom.damage;
+                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
             }
         }
     }
@@ -115,6 +118,13 @@ public class Stealer : Unit
         int result;
         result = seed.myresource;
         GameManager.unitManager.DeleteUnit(seed);
+        return result;
+    }
+    public int Rip_Boom(Boom boom)
+    {
+        int result;
+        result = boom.damage;
+        GameManager.unitManager.DeleteUnit(boom);
         return result;
     }
 
