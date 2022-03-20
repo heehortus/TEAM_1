@@ -67,7 +67,7 @@ public class InputManager : MonoBehaviour
                 else
                 {*/
                     _SceneManager.onClickPlaceObject(hit.collider.gameObject);
-                //}              
+                //}  
             }      
         }
     }

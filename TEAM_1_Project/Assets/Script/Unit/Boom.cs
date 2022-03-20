@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boom : Unit
 {
-    public int damage { get; set; }
+    public int damage { get; set; } = 1;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
     public override void Ability()
