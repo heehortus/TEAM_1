@@ -55,7 +55,6 @@ public class Stealer : Unit
             }
             else if(target_unit == null)
             {
-                Debug.Log("ddddasd");
                 GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
         }

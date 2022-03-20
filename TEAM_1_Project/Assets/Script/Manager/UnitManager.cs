@@ -88,6 +88,7 @@ public class UnitManager : MonoBehaviour
     }
 
     public void DeleteUnit(Unit _unit) {
+        _unit._currPlace.isEmpty = true;
         UnitList.Remove(_unit);
         UnitList.Add(_unit);
         _unit.OnDestroy();
