@@ -53,7 +53,7 @@ public class Stealer : Unit
             }
             else if(target_unit == null)
             {
-                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= attackpower;
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
