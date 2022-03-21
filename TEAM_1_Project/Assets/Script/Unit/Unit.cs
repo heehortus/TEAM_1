@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     {
         if (_speed == other._speed)
             return 0;
-        return (_speed > other._speed) ? 1 : -1;
+        return (_speed < other._speed) ? 1 : -1;
     }
 	public void setUnitPos(PlaceObject _place) {
 		_currPlace = _place;

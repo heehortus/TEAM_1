@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
         uiManager.Init();
         resourceManager.Init();
         battleManager.Init();
+
+        sceneManager.Player._currResource = 10; // 처음 제공하는 자원 (임시)
+        uiManager.ChangeInfoBar();
     }
     public void Update() {
         placeManager.OnUpdate();

@@ -18,29 +18,34 @@ public static class UnitFactory
         }
 
         switch (name) {
-            case "Unit" :
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 4")); //나중에 다 추상화 할 예정
-                unit.AddComponent<Unit>();
+            case "SeedUnit1":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Seed1"));
                 break;
-
-            case "BoomUnit1":
-            case "BoomUnit2":
-            case "BoomUnit3":
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 1")); //나중에 다 추상화 할 예정
-                unit.AddComponent<Boom>();
+            case "SeedUnit2":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Seed2"));
+                break;
+            case "SeedUnit3":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Seed3"));
                 break;
             case "StealerUnit1":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Stealer1"));
+                break;
             case "StealerUnit2":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Stealer2"));
+                break;
             case "StealerUnit3":
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 2"));
-                unit.AddComponent<Stealer>();
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Stealer3"));
                 break;
-            case "SeedUnit1":
-            case "SeedUnit2":
-            case "SeedUnit3":
-                unit = Object.Instantiate(_resourceManager.LoadUnit("Unit_Tmp 3"));
-                unit.AddComponent<Seed>();
+            case "BoomUnit1":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Boom1"));
                 break;
+            case "BoomUnit2":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Boom2"));
+                break;
+            case "BoomUnit3":
+                unit = Object.Instantiate(_resourceManager.LoadUnit("Boom3"));
+                break;
+                  
             default :
                 return unit;
         }
