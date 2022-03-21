@@ -331,6 +331,7 @@ MonoBehaviour:
   _currHP: 15
   _maxResource: 20
   _currResource: 0
+  _possibleStage: 000000000000
   _selectStage: 0
 --- !u!1 &105809903
 GameObject:
@@ -2251,6 +2252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1413470962}
+  - component: {fileID: 1413470963}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -2276,6 +2278,33 @@ Transform:
   m_Father: {fileID: 33269826}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1413470963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413470961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8cfd884eb426e4db9cca255b55c236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seeds:
+  - {fileID: 0}
+  - {fileID: 715954860}
+  - {fileID: 1249002949}
+  - {fileID: 202840495}
+  _stealers:
+  - {fileID: 0}
+  - {fileID: 1512906039}
+  - {fileID: 1919544489}
+  - {fileID: 1999413897}
+  _booms:
+  - {fileID: 0}
+  - {fileID: 460743519}
+  - {fileID: 814135512}
+  - {fileID: 1338771051}
 --- !u!1 &1461199109
 GameObject:
   m_ObjectHideFlags: 0

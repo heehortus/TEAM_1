@@ -426,6 +426,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _stageImgs:
+  - {fileID: 0}
+  - {fileID: 1301706776}
+  - {fileID: 1195902597}
+  - {fileID: 1864958824}
+  - {fileID: 561656801}
+  - {fileID: 2044906560}
 --- !u!114 &319277894
 MonoBehaviour:
   m_ObjectHideFlags: 0
