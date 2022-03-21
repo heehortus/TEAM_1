@@ -49,4 +49,36 @@ public class UIManager : MonoBehaviour
         ResourceBar.value = Player._currResource;//자원량 변경
         obj.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Seads : " + Player._currResource.ToString();//표시 값 변경
     }
+
+    public void ShowUnitInfo(GameObject unit, GameObject unitInfo)
+    {
+        TextMeshProUGUI _text = unitInfo.GetComponentInChildren<TextMeshProUGUI>();
+        if (unit.GetComponent<Boom>() != null)
+        {
+            Boom _boom = unit.GetComponent<Boom>();
+            _text.text = $"Type : Boom\n" +
+                         $"Name :{_boom._name}\n" +
+                         $"Level :{_boom.level}\n" +
+                         $"Speed :{_boom._speed}\n" +
+                         $"Damage :{_boom.damage}";
+        }
+        else if (unit.GetComponent<Seed>() != null)
+        {
+            Seed _seed = unit.GetComponent<Seed>();
+            _text.text = $"Type : Seed\n" +
+                         $"Name :{_seed._name}\n" +
+                         $"Level :{_seed.level}\n" +
+                         $"Speed :{_seed._speed}\n" +
+                         $"Resource :{_seed.myresource}";
+        }
+        else if (unit.GetComponent<Stealer>() != null)
+        {
+            Stealer _stealer = unit.GetComponent<Stealer>();
+            _text.text = $"Type : Stealer\n" +
+                         $"Name :{_stealer._name}\n" +
+                         $"Speed :{_stealer._speed}\n" +
+                         $"Level :{_stealer.level}\n" +
+                         $"Power :{_stealer.attackpower}";
+        }
+    }
 }

@@ -18,14 +18,14 @@ public class SceneManager : MonoBehaviour
     public int _currMoveCount = 0;
     public void Init()
     {
+        Player = GameObject.Find("Player").GetComponent<Player>();
+
         _inputManager = GameManager.inputManager;
         _unitManager = GameManager.unitManager;
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
-        GameObject _turnEndButton = Instantiate(GameManager.resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
-        _turnEndButton.transform.SetParent(UI_Parent.transform);
-        _turnEndButton.name = "UI_Turn_End_Button";
+        CreateUI();
 
         //InitEnemyPlace();
     }
@@ -45,7 +45,20 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    void CreateUI()
+    {
+        GameObject _turnEndButton = Instantiate(GameManager.resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
+        _turnEndButton.transform.SetParent(UI_Parent.transform);
+        _turnEndButton.name = "UI_Turn_End_Button"; 
 
+        GameObject _setting = Instantiate(GameManager.resourceManager.LoadUI("UI_Setting"));
+        _setting.transform.SetParent(UI_Parent.transform);
+        _setting.name = "UI_Setting";
+
+        GameObject _currStage = Instantiate(GameManager.resourceManager.LoadUI("UI_CurrStage"));
+        _currStage.transform.SetParent(UI_Parent.transform);
+        _currStage.name = "UI_CurrStage";
+    }
     void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
         var _placeManager = GameManager.placeManager;
 
