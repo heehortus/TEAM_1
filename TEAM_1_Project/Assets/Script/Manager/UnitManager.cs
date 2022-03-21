@@ -55,6 +55,15 @@ public class UnitManager : MonoBehaviour
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit.GetComponent<Unit>());
+        if (_place.isPlayerPlace)
+        {
+            GameManager.sceneManager.Player._currResource -= GameManager.inputManager._currSelectedButton._cost;
+            GameManager.uiManager.ChangeInfoBar();
+        }
+        else
+        {
+            // TODO
+        }
         return unit;
     }
 

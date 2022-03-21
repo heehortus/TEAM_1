@@ -73,6 +73,12 @@ public class SceneManager : MonoBehaviour
         var click_state = _inputManager.e_CLICKERSTATE;
 
         if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
+            if(GameManager.sceneManager.Player._currResource< _inputManager._currSelectedButton._cost)
+            {
+                Debug.Log("자원이 부족합니다.");
+                _inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+                return;
+            }
             _unitManager.CreateUnit(placeObject, _inputManager._currSelectedButton._unitName);
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
