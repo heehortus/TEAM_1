@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stealer : Unit
 {
     static PlaceManager _place = GameManager.placeManager;
-    [SerializeField] int attackpower;
+    [SerializeField] public int attackpower;
     [SerializeField] int stealCoast;
 
     [SerializeField] public bool isSteal;
@@ -51,7 +51,7 @@ public class Stealer : Unit
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
                 GameManager.sceneManager.getEnemy(_currPlace)._currHP -= Rip_Boom(boom);
-                GameManager.unitmanager.isSteal =true
+                GameManager.unitManager.isSteal = true;
             }
             else if(target_unit == null)
             {

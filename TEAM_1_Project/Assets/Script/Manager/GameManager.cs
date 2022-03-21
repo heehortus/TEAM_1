@@ -62,24 +62,15 @@ public class GameManager : MonoBehaviour
         if (m_cInstance == null)
         {
             m_cInstance = this;
-            DontDestroyOnLoad(this.transform.parent);
         }
-        else
-        {
-            if (this != m_cInstance)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-        
     }
     private void Start()
     {
         placeManager.Init();
         unitManager.Init();
         inputManager.Init();
-        uiManager.Init();
         sceneManager.Init();
+        uiManager.Init();
         resourceManager.Init();
         battleManager.Init();
     }
@@ -87,8 +78,8 @@ public class GameManager : MonoBehaviour
         placeManager.OnUpdate();
         unitManager.OnUpdate();
         inputManager.OnUpdate();
-        uiManager.OnUpdate();
         sceneManager.OnUpdate();
+        uiManager.OnUpdate();
         resourceManager.OnUpdate();
         battleManager.OnUpdate();
     }

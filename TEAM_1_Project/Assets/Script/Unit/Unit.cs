@@ -7,9 +7,10 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 {
     [SerializeField] bool isUnitClick;
 	[SerializeField] protected int coast;
-	[SerializeField] protected int level;
+	[SerializeField] public int level;
 	[SerializeField] public SpriteRenderer character;
     [SerializeField] public PlaceObject _currPlace { get; private set;}
+    public string _name = "TmpName";
     public int _speed;
     public Define.UnitCamp _unitCamp;
 

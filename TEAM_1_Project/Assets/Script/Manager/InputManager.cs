@@ -90,6 +90,7 @@ public class InputManager : MonoBehaviour
             _iamge.gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.uiManager._uiInfoOffset;
             _iamge.sprite = hit.collider.gameObject.GetComponent<Unit>().character.sprite;
             _iamge.color = hit.collider.gameObject.GetComponent<Unit>().character.color;
+            GameManager.uiManager.ShowUnitInfo(hit.collider.gameObject, _uiInfo);
         }
     }
 }

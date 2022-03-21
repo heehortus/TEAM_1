@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public int _maxResource;
     public int _currResource;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
+
+    public int _selectStage;
     void Start()
     {
 
