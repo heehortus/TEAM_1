@@ -21,6 +21,7 @@ public class StageScene : MonoBehaviour
                 _stageImgs[i].color = Color.red;
             }
         }
+        _player._currHP = _player._maxHP;
     }
     public void PushStageButton(int num)
     {
