@@ -55,6 +55,15 @@ public class UnitManager : MonoBehaviour
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit.GetComponent<Unit>());
+        if (_place.isPlayerPlace)
+        {
+            GameManager.sceneManager.Player._currResource -= GameManager.inputManager._currSelectedButton._cost;
+            GameManager.uiManager.ChangeInfoBar();
+        }
+        else
+        {
+            // TODO
+        }
         return unit;
     }
 
@@ -88,6 +97,7 @@ public class UnitManager : MonoBehaviour
     }
 
     public void DeleteUnit(Unit _unit) {
+        _unit._currPlace.isEmpty = true;
         UnitList.Remove(_unit);
         UnitList.Add(_unit);
         _unit.OnDestroy();

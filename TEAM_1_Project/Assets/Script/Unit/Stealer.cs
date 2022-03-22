@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Stealer : Unit
 {
-    static PlaceManager _place = GameManager.placeManager;
-    [SerializeField] int attackpower;
+    [SerializeField] public int attackpower;
     [SerializeField] int stealCoast;
 
     [SerializeField] public bool isSteal;
@@ -14,7 +13,7 @@ public class Stealer : Unit
     private void Start()
     {
         base.Init();
-        character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
+        //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
         Level();
     }
@@ -32,7 +31,7 @@ public class Stealer : Unit
             var target_unit2 = gameObject;
             for (int i = 0; i < 2; i++)
             {
-                target_place = _place.getPlaceObject(true, this._currPlace.x, i);
+                target_place = GameManager.placeManager.getPlaceObject(true, this._currPlace.x, i);
                 target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
                 if (target_unit != null)
                 {
@@ -55,7 +54,6 @@ public class Stealer : Unit
             }
             else if(target_unit == null)
             {
-                Debug.Log("ddddasd");
                 GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
         }
@@ -65,7 +63,7 @@ public class Stealer : Unit
             var target_unit2 = gameObject;
             for (int i = 0; i < 2; i++) 
             {
-                target_place = _place.getPlaceObject(false, this._currPlace.x, i);
+                target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
                 target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
                 if (target_unit != null)
                 {

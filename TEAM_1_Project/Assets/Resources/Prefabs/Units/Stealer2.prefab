@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8086196622529840630}
   - component: {fileID: 806254757579777717}
   - component: {fileID: 4861737381441772171}
-  m_Layer: 3
-  m_Name: Unit_Tmp 3
+  - component: {fileID: -7809547604615109980}
+  m_Layer: 0
+  m_Name: Stealer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9245283, g: 0.22241008, b: 0.28289133, a: 1}
+  m_Color: {r: 0.8396226, g: 0.761158, b: 0.20990565, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,3 +102,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7809547604615109980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569926392765020863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed9892a250dad940b469ae88c0759d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUnitClick: 0
+  coast: 5
+  level: 0
+  character: {fileID: 0}
+  _name: Stealer2
+  _speed: 12
+  _unitCamp: 0
+  attackpower: 3
+  stealCoast: 3
+  isSteal: 0
+  isPlayer: 0

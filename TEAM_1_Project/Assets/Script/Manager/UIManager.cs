@@ -36,6 +36,28 @@ public class UIManager : MonoBehaviour
         var EnemyInfo = InfoBar.transform.GetChild(1);
         _ChangeInfoBar(playerInfo,true);
         _ChangeInfoBar(EnemyInfo,false);
+
+        Player _player = GameManager.sceneManager.getPlayer(true);
+        Player _enemy = GameManager.sceneManager.getPlayer(false);
+        if (_player._currHP <= 0 || _enemy._currHP <= 0)
+        {
+            if (_player._currHP <= 0 && _enemy._currHP == 0)
+            {
+                if (_player._currResource >= _enemy._currResource)
+                {
+                    GameManager.GetInstance().SetGameState(1);
+                }
+                else GameManager.GetInstance().SetGameState(2);
+            }
+            else if (_player._currHP <= 0)
+            {
+                GameManager.GetInstance().SetGameState(2);
+            }
+            else if (_enemy._currHP <= 0)
+            {
+                GameManager.GetInstance().SetGameState(1);
+            }
+        }
     }
 
     private void _ChangeInfoBar(Transform obj,bool isPlayer) {
@@ -48,5 +70,38 @@ public class UIManager : MonoBehaviour
         ResourceBar.maxValue = Player._maxResource;//최대 자원량 변경
         ResourceBar.value = Player._currResource;//자원량 변경
         obj.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Seads : " + Player._currResource.ToString();//표시 값 변경
+
+    }
+
+    public void ShowUnitInfo(GameObject unit, GameObject unitInfo)
+    {
+        TextMeshProUGUI _text = unitInfo.GetComponentInChildren<TextMeshProUGUI>();
+        if (unit.GetComponent<Boom>() != null)
+        {
+            Boom _boom = unit.GetComponent<Boom>();
+            _text.text = $"Type : Boom\n" +
+                         $"Name :{_boom._name}\n" +
+                         $"Level :{_boom.level}\n" +
+                         $"Speed :{_boom._speed}\n" +
+                         $"Damage :{_boom.damage}";
+        }
+        else if (unit.GetComponent<Seed>() != null)
+        {
+            Seed _seed = unit.GetComponent<Seed>();
+            _text.text = $"Type : Seed\n" +
+                         $"Name :{_seed._name}\n" +
+                         $"Level :{_seed.level}\n" +
+                         $"Speed :{_seed._speed}\n" +
+                         $"Resource :{_seed.myresource}";
+        }
+        else if (unit.GetComponent<Stealer>() != null)
+        {
+            Stealer _stealer = unit.GetComponent<Stealer>();
+            _text.text = $"Type : Stealer\n" +
+                         $"Name :{_stealer._name}\n" +
+                         $"Speed :{_stealer._speed}\n" +
+                         $"Level :{_stealer.level}\n" +
+                         $"Power :{_stealer.attackpower}";
+        }
     }
 }

@@ -30,9 +30,9 @@ public class PlaceManager : MonoBehaviour
 
     public void display(bool chk) {
         foreach(var item in listPlace) {
-            if(item.GetComponent<PlaceObject>().isPlayerPlace) {
+            //if(item.GetComponent<PlaceObject>().isPlayerPlace) {
                 item.GetComponent<SpriteRenderer>().enabled = chk;
-            }
+            //}
         }
     }
 

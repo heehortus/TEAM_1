@@ -59,15 +59,15 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-               // if (!hit.collider.gameObject.GetComponent<PlaceObject>().isPlayerPlace)
-                //{
-                 //   Debug.Log("상대방의 진영입니다.");
-                 //   e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
-               // }
-               // else
-               // {
+                /*if (!hit.collider.gameObject.GetComponent<PlaceObject>().isPlayerPlace)
+                {
+                    Debug.Log("상대방의 진영입니다.");
+                    e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+                }
+                else
+                {*/
                     _SceneManager.onClickPlaceObject(hit.collider.gameObject);
-              //  }              
+                //}  
             }      
         }
     }
@@ -90,6 +90,7 @@ public class InputManager : MonoBehaviour
             _iamge.gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.uiManager._uiInfoOffset;
             _iamge.sprite = hit.collider.gameObject.GetComponent<Unit>().character.sprite;
             _iamge.color = hit.collider.gameObject.GetComponent<Unit>().character.color;
+            GameManager.uiManager.ShowUnitInfo(hit.collider.gameObject, _uiInfo);
         }
     }
 }
