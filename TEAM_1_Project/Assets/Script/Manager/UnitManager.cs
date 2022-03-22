@@ -22,8 +22,11 @@ public class UnitManager : MonoBehaviour
         }
     }
     private List<Unit> UnitList = new List<Unit>();
+    private List<Unit> UnitRemoveList = new List<Unit>();
     public bool isPlace;
-    public bool isSteal;
+    public bool isSteal = false;
+    public int count = 0;
+    int unitRemoveCount;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
         var unit = GetUnit(prev);
@@ -77,30 +80,26 @@ public class UnitManager : MonoBehaviour
 
     public void doBattle() {
         UnitList.Sort();
-
-        for(int i = 0; i < UnitList.Count; i++)
+        int unitCount = UnitList.Count;
+        Debug.Log(count);
+        for (int i = 0; i < unitCount; i++)
         {
-            Debug.Log(isSteal);
-            if (isSteal)
-            {
-                UnitList[i - 1].Ability();
-                Debug.Log("실행됨");
-                isSteal = false;
-                UnitList.RemoveAt(UnitList.Count-1);
-                Debug.Log("dddadw");
-            }
-            else
-                UnitList[i].Ability();
+            UnitList[i].Ability();
         }
-        Debug.Log("FOR문 나옴");
-       
+        for (int i = 0; i < unitRemoveCount; i++)
+        {
+            UnitList.Remove(UnitRemoveList[i]);
+            UnitRemoveList[i].OnDestroy();
+        }
+        UnitRemoveList.Clear();
+        unitRemoveCount = 0;
     }
 
     public void DeleteUnit(Unit _unit) {
         _unit._currPlace.isEmpty = true;
-        UnitList.Remove(_unit);
-        UnitList.Add(_unit);
-        _unit.OnDestroy();
+        Debug.Log("DDS");
+        UnitRemoveList.Add(_unit);
+        unitRemoveCount += 1;
     }
 
 }
