@@ -24,9 +24,10 @@ public class Stealer : Unit
     }
     public override void Ability()
     {
-        Debug.Log("스틸러 실행됨");
         if (character.flipX == true) // 적군이 아군에게
         {
+            Debug.Log("적군스틸러 실행됨");
+            Debug.Log("적군스틸러 실행됨2");
             var target_unit = gameObject;
             var target_unit2 = gameObject;
             for (int i = 0; i < 2; i++)
@@ -39,9 +40,9 @@ public class Stealer : Unit
                     break;
                 }
             }
-            Debug.Log(target_unit2);
             if (target_unit2.GetComponent<Seed>() != null)
             {
+                Debug.Log("Dd");
                 Seed seed = target_unit2.GetComponent<Seed>();
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
                 GameManager.unitManager.isSteal = true;
@@ -49,18 +50,21 @@ public class Stealer : Unit
             else if (target_unit2.GetComponent<Boom>() != null)
             {
                 Boom boom = target_unit2.GetComponent<Boom>();
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= Rip_Boom(boom);
+                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
                 GameManager.unitManager.isSteal = true;
             }
             else if(target_unit == null)
             {
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
+                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= attackpower;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
         {
+            Debug.Log("아군스틸러 실행됨");
+            Debug.Log("아군스틸러 실행됨2");
             var target_unit = gameObject;
             var target_unit2 = gameObject;
+            Debug.Log("플레이어");
             for (int i = 0; i < 2; i++) 
             {
                 target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
@@ -79,6 +83,7 @@ public class Stealer : Unit
             }
             else if (target_unit2.GetComponent<Seed>() != null)
             {
+                Debug.Log("플레이어");
                 Seed seed = target_unit2.GetComponent<Seed>();
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
                 GameManager.unitManager.isSteal = true;

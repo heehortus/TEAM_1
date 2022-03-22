@@ -82,7 +82,6 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 	public bool checkPos(PlaceObject place) {
         if (place == _currPlace)
         {
-            Debug.Log("dd");
             return true;
         }
 		return false;
