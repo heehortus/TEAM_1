@@ -6,6 +6,7 @@ public class BattleManager : MonoBehaviour
 {
 
     float _battleTime = 1.0f;
+    int _basicallyProvideResource = 1;
 
     public bool _isBattle = false;
     public void Init()
@@ -29,8 +30,12 @@ public class BattleManager : MonoBehaviour
     IEnumerator BattleCoroutine()
     {
         BattleLogic();
-        yield return new WaitForSeconds(_battleTime);
-        GameManager.unitManager.doBattle();
+        for(int i = 0; i < GameManager.unitManager.UnitList.Count; i++)
+        {
+            yield return new WaitForSeconds(GameManager.unitManager.doBattle(i));
+            GameManager.uiManager.ChangeInfoBar();
+        }
+        GameManager.unitManager.RemoveUnits();
         EndBattle();
     }
     void BattleLogic()
@@ -47,9 +52,21 @@ public class BattleManager : MonoBehaviour
 
         ref int _turn = ref GameObject.Find("UI_Turn_End_Button").GetComponentInChildren<UI_Turn_End_Button>().turn;
         _turn++;
+        ProvideResource();
+        UpdateUI(ref _turn);
+        GameManager.sceneManager._currMoveCount = 0;
+    }
+    void UpdateUI(ref int _turn)
+    {
         GameManager.uiManager.changeTurn(_turn);
         GameManager.uiManager.ChangeBattleToPlace();
         GameManager.uiManager.ChangeInfoBar();
-        GameManager.sceneManager._currMoveCount = 0;
+    }
+    void ProvideResource()
+    {
+        Player player = GameManager.sceneManager.getPlayer(true);
+        Player enemy = GameManager.sceneManager.getPlayer(false);
+        player._currResource = Mathf.Clamp(player._currResource + _basicallyProvideResource, 0, player._maxResource);
+        enemy._currResource = Mathf.Clamp(enemy._currResource + _basicallyProvideResource, 0, enemy._maxResource);
     }
 }
