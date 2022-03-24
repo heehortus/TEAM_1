@@ -5,6 +5,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public int currTurn;
+    public int basicResource = 10;
     InputManager _inputManager;
     UnitManager _unitManager;
 
@@ -20,6 +21,7 @@ public class SceneManager : MonoBehaviour
     {
         Player = GameObject.Find("Player").GetComponent<Player>();
 
+        Enemy._currResource = basicResource;
         _inputManager = GameManager.inputManager;
         _unitManager = GameManager.unitManager;
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
