@@ -78,23 +78,6 @@ public class UnitManager : MonoBehaviour
             return null;
     }
 
-    public void doBattle() {
-        UnitList.Sort();
-        int unitCount = UnitList.Count;
-        Debug.Log(count);
-        for (int i = 0; i < unitCount; i++)
-        {
-            if (!UnitList[i].valid) continue;
-            UnitList[i].Ability();
-        }
-        for (int i = 0; i < unitRemoveCount; i++)
-        {
-            UnitList.Remove(UnitRemoveList[i]);
-            UnitRemoveList[i].OnDestroy();
-        }
-        UnitRemoveList.Clear();
-        unitRemoveCount = 0;
-    }
     public float doBattle(int idx)
     {
         if (!UnitList[idx].valid) return 0;

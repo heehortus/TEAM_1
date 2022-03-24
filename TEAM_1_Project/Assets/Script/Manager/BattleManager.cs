@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
         GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
         GameManager.placeManager.display(false);
         GameManager.uiManager.ChangePlaceToBattle();
+        GameManager.unitManager.UnitList.Sort();
         Debug.Log("전투 시작!");
     }
     void EndBattle()
