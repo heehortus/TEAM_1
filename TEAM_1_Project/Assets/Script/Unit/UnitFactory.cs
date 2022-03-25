@@ -53,7 +53,14 @@ public static class UnitFactory
         var script = unit.GetComponent<UnitInterface>();
         script.setUnitPos(_place);
         script.setSprite();
-        unit.GetComponent<Unit>()._unitCamp = Define.UnitCamp.playerUnit;
+        if (_place.isPlayerPlace)
+        {
+            unit.GetComponent<Unit>()._unitCamp = Define.UnitCamp.playerUnit;
+        }
+        else
+        {
+            unit.GetComponent<Unit>()._unitCamp = Define.UnitCamp.enemyUnit;
+        }
         return unit;
     }
 }

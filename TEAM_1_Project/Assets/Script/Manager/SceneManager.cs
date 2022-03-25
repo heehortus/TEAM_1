@@ -5,6 +5,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public int currTurn;
+    public int basicResource = 10;
     InputManager _inputManager;
     UnitManager _unitManager;
 

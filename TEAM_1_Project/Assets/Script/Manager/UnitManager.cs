@@ -21,7 +21,7 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
-    private List<Unit> UnitList = new List<Unit>();
+    public List<Unit> UnitList = new List<Unit>();
     private List<Unit> UnitRemoveList = new List<Unit>();
     public bool isPlace;
     public bool isSteal = false;
@@ -76,14 +76,13 @@ public class UnitManager : MonoBehaviour
             return null;
     }
 
-    public void doBattle() {
-        UnitList.Sort();
-        int unitCount = UnitList.Count;
-        Debug.Log(count);
-        for (int i = 0; i < unitCount; i++)
-        {
-            UnitList[i].Ability();
-        }
+    public float doBattle(int idx)
+    {
+        if (!UnitList[idx].valid) return 0;
+        return UnitList[idx].Ability();
+    }
+    public void RemoveUnits()
+    {
         for (int i = 0; i < unitRemoveCount; i++)
         {
             UnitList.Remove(UnitRemoveList[i]);
@@ -95,7 +94,7 @@ public class UnitManager : MonoBehaviour
 
     public void DeleteUnit(Unit _unit) {
         _unit._currPlace.isEmpty = true;
-        Debug.Log("DDS");
+        //Debug.Log("DDS");
         UnitRemoveList.Add(_unit);
         unitRemoveCount += 1;
     }

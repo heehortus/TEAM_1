@@ -14,6 +14,10 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     public int _speed;
     public Define.UnitCamp _unitCamp;
 
+    public bool valid = true;
+    protected float _effectSize = 0.3f;
+    protected float _currTime = 0;
+
     public int CompareTo(Unit other) // 스피드 순서로 정렬하기 위한 함수
     {
         if (_speed == other._speed)
@@ -34,9 +38,9 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
         else if (gameObject.tag == "Enemy")
             character.flipX = true;
     }
-    public virtual void Ability()
+    public virtual float Ability()
     {
-
+        return 0;
     }
     void isPlayer()
     {
@@ -97,4 +101,11 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
         Destroy(gameObject);
     }
 
+    public IEnumerator CoAttackedOrUsed(Unit target, float time)
+    {
+        target.valid = false;
+        GameManager.unitManager.DeleteUnit(target);
+        yield return new WaitForSeconds(time);
+        target.character.enabled = false;
+    }
 }
