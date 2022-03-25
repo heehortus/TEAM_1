@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c8b60a0e604a47bb20c91931798ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitList: []
   isPlace: 0
   isSteal: 0
   count: 0
@@ -333,8 +334,8 @@ MonoBehaviour:
   _currHP: 15
   _maxResource: 20
   _currResource: 0
-  _possibleStage: 000000000000
-  _selectStage: 0
+  BgmSound: 0
+  EffectSound: 0
 --- !u!1 &105809903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,8 +1753,8 @@ MonoBehaviour:
   _currHP: 15
   _maxResource: 20
   _currResource: 0
-  _possibleStage: 000000000000
-  _selectStage: 0
+  BgmSound: 0
+  EffectSound: 0
 --- !u!1 &955800090
 GameObject:
   m_ObjectHideFlags: 0
