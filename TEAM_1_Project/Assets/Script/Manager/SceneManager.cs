@@ -14,6 +14,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] public Player Player; 
     [SerializeField] public Player Enemy;
 
+    public int presentTurn { get;set; }
+
     public int _maxMoveCount = 1;
     public int _currMoveCount = 0;
     public void Init()
@@ -25,6 +27,7 @@ public class SceneManager : MonoBehaviour
 
         Player._currResource = 10;
         Enemy._currResource = 10;
+        presentTurn = 1;
 
         CreateUI();
 

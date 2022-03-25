@@ -45,9 +45,9 @@ public class BattleManager : MonoBehaviour
         _isBattle = false;
         Debug.Log("전투 끝!");
 
-        ref int _turn = ref GameObject.Find("UI_Turn_End_Button").GetComponentInChildren<UI_Turn_End_Button>().turn;
-        _turn++;
-        GameManager.uiManager.changeTurn(_turn);
+        GameManager.sceneManager.Player.endBattle();
+        GameManager.sceneManager.Enemy.endBattle();
+        GameManager.uiManager.changeTurn();
         GameManager.uiManager.ChangeBattleToPlace();
         GameManager.uiManager.ChangeInfoBar();
         GameManager.sceneManager._currMoveCount = 0;
