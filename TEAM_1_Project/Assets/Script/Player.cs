@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public bool[] _possibleStage = new bool[6];
 
     public int _selectStage;
+
+    public float BgmSound;
+    public float EffectSound;
     void Start()
     {
 
