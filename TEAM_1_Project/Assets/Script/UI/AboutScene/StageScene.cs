@@ -31,6 +31,6 @@ public class StageScene : MonoBehaviour
     }
     public void PushBackButton()
     {
-        LoadingSceneController.LoadScene("MainScene");
+        LoadingSceneController.LoadScene("LobbyScene");
     }
 }
