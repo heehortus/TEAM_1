@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
 
-    float _battleTime = 1.0f;
+    //float _battleTime = 1.0f;
     int _basicallyProvideResource = 1;
 
     public bool _isBattle = false;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_BattleScene_Setting : MonoBehaviour
 {
-    Audio audio;
+    new Audio audio;
     public Scrollbar bgm;
     public Scrollbar effect;
     void Start()

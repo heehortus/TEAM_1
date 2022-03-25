@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_StageScene_Setting : MonoBehaviour
 {
-    Audio audio;
+    new Audio audio;
     public Scrollbar bgm;
     public Scrollbar effect;
     void Start()
