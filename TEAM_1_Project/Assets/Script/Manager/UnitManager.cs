@@ -52,21 +52,19 @@ public class UnitManager : MonoBehaviour
 
     
     public GameObject CreateUnit(PlaceObject _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
+        if(GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource< GameManager.inputManager._currSelectedButton._cost)
+        {
+            Debug.Log("자원이 부족합니다.");
+            return null;
+        }
         GameObject unit = null;
         if(!_place.isEmpty) return null;
         unit = UnitFactory.getUnit(name, _place);
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit.GetComponent<Unit>());
-        if (_place.isPlayerPlace)
-        {
-            GameManager.sceneManager.Player._currResource -= GameManager.inputManager._currSelectedButton._cost;
-            GameManager.uiManager.ChangeInfoBar();
-        }
-        else
-        {
-            // TODO
-        }
+        GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource -= GameManager.inputManager._currSelectedButton._cost;
+        GameManager.uiManager.ChangeInfoBar();
         return unit;
     }
 
