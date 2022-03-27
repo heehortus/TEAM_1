@@ -5,7 +5,8 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
 
-    float _battleTime = 1.0f;
+    //float _battleTime = 1.0f;
+    int _basicallyProvideResource = 1;
 
     public bool _isBattle = false;
     public void Init()
@@ -29,8 +30,12 @@ public class BattleManager : MonoBehaviour
     IEnumerator BattleCoroutine()
     {
         BattleLogic();
-        yield return new WaitForSeconds(_battleTime);
-        GameManager.unitManager.doBattle();
+        for(int i = 0; i < GameManager.unitManager.UnitList.Count; i++)
+        {
+            yield return new WaitForSeconds(GameManager.unitManager.doBattle(i));
+            GameManager.uiManager.ChangeInfoBar();
+        }
+        GameManager.unitManager.RemoveUnits();
         EndBattle();
     }
     void BattleLogic()
@@ -38,18 +43,24 @@ public class BattleManager : MonoBehaviour
         GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
         GameManager.placeManager.display(false);
         GameManager.uiManager.ChangePlaceToBattle();
+        GameManager.unitManager.UnitList.Sort();
         Debug.Log("전투 시작!");
     }
     void EndBattle()
     {
         _isBattle = false;
         Debug.Log("전투 끝!");
-
         GameManager.sceneManager.Player.endBattle();
         GameManager.sceneManager.Enemy.endBattle();
         GameManager.uiManager.changeTurn();
         GameManager.uiManager.ChangeBattleToPlace();
         GameManager.uiManager.ChangeInfoBar();
-        GameManager.sceneManager._currMoveCount = 0;
+    }
+    void ProvideResource()
+    {
+        Player player = GameManager.sceneManager.getPlayer(true);
+        Player enemy = GameManager.sceneManager.getPlayer(false);
+        player._currResource = Mathf.Clamp(player._currResource + _basicallyProvideResource, 0, player._maxResource);
+        enemy._currResource = Mathf.Clamp(enemy._currResource + _basicallyProvideResource, 0, enemy._maxResource);
     }
 }

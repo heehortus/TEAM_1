@@ -9,4 +9,29 @@ public class Define
         playerUnit,
         enemyUnit
     }
+    public enum Effect
+    {
+        seed,
+        boom,
+        stealer,
+        stealerToSeed,
+        stealerToBoom
+    }
+    public enum SeedState
+    {
+        nothing,
+        skill
+    }
+    public enum BoomState
+    {
+        nothing,
+        skill
+    }
+    public enum StealerState
+    {
+        nothing,
+        attack,
+        stealSeed,
+        stealBoom
+    }
 }
