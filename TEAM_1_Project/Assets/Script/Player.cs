@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
     public int _maxResource;
     public int _currResource;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
+
     public bool[,] _possibleStage = new bool[4,4];
 
     public (int ,int) _selectStage;
 
     public float BgmSound;
     public float EffectSound;
+    
+    private int costEarnAtEndOfTurn = 2;
     void Start()
     {
 
@@ -38,6 +41,10 @@ public class Player : MonoBehaviour
         _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
 
         _possibleStage[1,1] = true;
+    }
+
+    public void endBattle() {
+        _currResource += costEarnAtEndOfTurn;
     }
 
     void Update()

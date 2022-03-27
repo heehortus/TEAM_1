@@ -18,8 +18,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject InfoBar;
     public int _uiInfoOffset = 50;
     public Stack<GameObject> _popupUIs = new Stack<GameObject>();
+    public void changeTurn() {
+        TurnObject.GetComponent<TurnDisplay>().changeTurn(++GameManager.sceneManager.presentTurn);
+    }
 
     public void changeTurn(int turn) {
+        GameManager.sceneManager.presentTurn = turn;
         TurnObject.GetComponent<TurnDisplay>().changeTurn(turn);
     }
     public void ChangeBattleToPlace()
