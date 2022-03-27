@@ -38,6 +38,10 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     {
 
     }
+    public virtual void Effect()
+    {
+        
+    }
     void isPlayer()
     {
         if (_currPlace.isPlayerPlace)

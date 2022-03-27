@@ -10,12 +10,14 @@ public class Stealer : Unit
     [SerializeField] public bool isSteal;
     public bool isPlayer;
     GameObject target_place;
+    Vector2 UnitTransform;
     private void Start()
     {
         base.Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
         Level();
+        UnitTransform = transform.position;
     }
     private void Update()
     {
@@ -85,6 +87,8 @@ public class Stealer : Unit
             {
                 Debug.Log("플레이어");
                 Seed seed = target_unit2.GetComponent<Seed>();
+
+
                 GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
                 GameManager.unitManager.isSteal = true;
             }

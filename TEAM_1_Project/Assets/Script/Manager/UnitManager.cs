@@ -81,7 +81,6 @@ public class UnitManager : MonoBehaviour
     public void doBattle() {
         UnitList.Sort();
         int unitCount = UnitList.Count;
-        Debug.Log(count);
         for (int i = 0; i < unitCount; i++)
         {
             UnitList[i].Ability();

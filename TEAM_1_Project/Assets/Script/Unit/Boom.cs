@@ -14,6 +14,10 @@ public class Boom : Unit
             damage += growth;
         }
     }
+    public override void Effect()
+    {
+        
+    }
     private void Start()
     {
         base.Init();
