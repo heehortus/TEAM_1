@@ -7,7 +7,16 @@ public class Player : MonoBehaviour
 {
     public string _nickName;
     public int _maxHP;
-    public int _currHP;
+    private int currHP;
+    public int _currHP {
+        get {return currHP;}
+        set {
+            if(value<currHP) {
+                GameManager.sceneManager.Player.getAnimation().getAtacked();
+            }
+            currHP = value;
+        }
+    }
     public int _maxResource;
     public int _currResource;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
@@ -26,6 +35,7 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        _currHP = _maxHP;
         _unitDic.Add("SeedUnit1", true);
         _unitDic.Add("SeedUnit2", false);
         _unitDic.Add("SeedUnit3", false);
