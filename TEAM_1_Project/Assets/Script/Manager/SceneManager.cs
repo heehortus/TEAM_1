@@ -11,7 +11,6 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
-
     [SerializeField] public Player Player; 
     [SerializeField] public Player Enemy;
 

@@ -32,6 +32,7 @@ public class EffectManager : MonoBehaviour
                 {
                     Debug.Log("stealer Effect");
                     (caster as Stealer).currState = Define.StealerState.attack;
+                    GameManager.sceneManager.Player.getAnimation().getAtacked();
                 }
                 break;
             case Define.Effect.stealerToSeed:

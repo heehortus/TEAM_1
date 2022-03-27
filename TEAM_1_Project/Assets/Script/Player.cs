@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
         _currResource += costEarnAtEndOfTurn;
     }
 
+    public Action getAnimation() {
+        return GetComponent<Action>();
+    }
+
     void Update()
     {
         if(_maxHP == 0)

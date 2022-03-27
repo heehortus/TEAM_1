@@ -46,13 +46,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-
-
-
-
-
-
     static GameManager m_cInstance;
     static public GameManager GetInstance()
     {
