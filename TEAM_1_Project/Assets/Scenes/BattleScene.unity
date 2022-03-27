@@ -331,7 +331,7 @@ MonoBehaviour:
   _nickName: 
   _maxHP: 15
   _currHP: 15
-  _maxResource: 20
+  _maxResource: 30
   _currResource: 0
   _possibleStage: 000000000000
   _selectStage: 0
@@ -1705,7 +1705,7 @@ MonoBehaviour:
   _nickName: 
   _maxHP: 15
   _currHP: 15
-  _maxResource: 20
+  _maxResource: 30
   _currResource: 0
   _possibleStage: 000000000000
   _selectStage: 0
