@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c8b60a0e604a47bb20c91931798ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitList: []
   isPlace: 0
   isSteal: 0
   count: 0
@@ -333,8 +334,8 @@ MonoBehaviour:
   _currHP: 15
   _maxResource: 20
   _currResource: 0
-  _possibleStage: 000000000000
-  _selectStage: 0
+  BgmSound: 0
+  EffectSound: 0
 --- !u!1 &105809903
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +733,50 @@ MonoBehaviour:
   idx: 2
   _unitName: SeedUnit3
   _cost: 7
+--- !u!1 &291911591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291911592}
+  - component: {fileID: 291911593}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291911592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291911591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1545778287}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291911593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291911591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceebfd7193ad3b34b91e882c1da571c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460743516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currTurn: 1
+  basicResource: 10
   UI_Parent: {fileID: 0}
   Unit_Parent: {fileID: 0}
   Player: {fileID: 926257202}
@@ -1707,8 +1753,8 @@ MonoBehaviour:
   _currHP: 15
   _maxResource: 20
   _currResource: 0
-  _possibleStage: 000000000000
-  _selectStage: 0
+  BgmSound: 0
+  EffectSound: 0
 --- !u!1 &955800090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2767,7 @@ Transform:
   - {fileID: 714001804}
   - {fileID: 2129060360}
   - {fileID: 61734735}
+  - {fileID: 291911592}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3068,6 +3115,7 @@ MonoBehaviour:
   _sceneManager: {fileID: 867938433}
   _resourceManager: {fileID: 2129060361}
   _battleManager: {fileID: 61734736}
+  _effectManager: {fileID: 291911593}
   gameState: 0
 --- !u!1 &1876657284
 GameObject:

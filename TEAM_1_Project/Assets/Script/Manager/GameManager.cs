@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SceneManager _sceneManager;
     [SerializeField] ResourceManager _resourceManager;
     [SerializeField] BattleManager _battleManager;
+    [SerializeField] EffectManager _effectManager;
 
     public static PlaceManager placeManager { get { return m_cInstance._placeManager; } }
     public static UnitManager unitManager { get { return m_cInstance._unitManager; } }
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public static SceneManager sceneManager { get { return m_cInstance._sceneManager; } }
     public static ResourceManager resourceManager { get { return m_cInstance._resourceManager; } }
     public static BattleManager battleManager { get { return m_cInstance._battleManager; } }
+    public static EffectManager effectManager { get { return m_cInstance._effectManager; } }
 
     public enum E_GAMESTATE { GAMING, VICTORY, DEFEAT, STANDBY};
     [SerializeField] public E_GAMESTATE gameState = E_GAMESTATE.GAMING;
@@ -73,8 +75,9 @@ public class GameManager : MonoBehaviour
         uiManager.Init();
         resourceManager.Init();
         battleManager.Init();
+        effectManager.Init();
 
-        sceneManager.Player._currResource = 10; // 처음 제공하는 자원 (임시)
+        sceneManager.Player._currResource = sceneManager.basicResource; // 처음 제공하는 자원 (임시)
         uiManager.ChangeInfoBar();
     }
     public void Update() {
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
         uiManager.OnUpdate();
         resourceManager.OnUpdate();
         battleManager.OnUpdate();
+        effectManager.OnUpdate();
     }
 
 }

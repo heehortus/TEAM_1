@@ -7,12 +7,17 @@ public class Boom : Unit
     public int damage;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
-    public override void Ability()
+
+    public Define.BoomState currState = Define.BoomState.nothing;
+    float _effectTime = 1f;
+    public override float Ability()
     {
+        GameManager.effectManager.UseSkill(Define.Effect.boom, this);
         if (damage <= maxDamage)
         {
             damage += growth;
         }
+        return _effectTime;
     }
     public override void Effect()
     {
@@ -22,6 +27,35 @@ public class Boom : Unit
     {
         base.Init();
         Level();
+    }
+    private void Update()
+    {
+        switch (currState)
+        {
+            case Define.BoomState.nothing:
+                {
+                    break;
+                }
+            case Define.BoomState.skill:
+                {
+                    if (_currTime > _effectTime)
+                    {
+                        currState = Define.BoomState.nothing;
+                        _currTime = 0;
+                        break;
+                    }
+                    _currTime += Time.deltaTime;
+                    if (_currTime <= _effectTime / 2)
+                    {
+                        gameObject.transform.localScale += Vector3.one * _effectSize * Time.deltaTime;
+                    }
+                    else
+                    {
+                        gameObject.transform.localScale -= Vector3.one * _effectSize * Time.deltaTime;
+                    }
+                }
+                break;
+        }
     }
     void Level()
     {
