@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public int _currResource;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
 
+    public List<string> noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
+
     public bool[,] _possibleStage = new bool[4,4];
 
     public (int ,int) _selectStage;
@@ -52,7 +54,6 @@ public class Player : MonoBehaviour
 
         _possibleStage[1,1] = true;
     }
-
     public void endBattle() {
         _currResource += costEarnAtEndOfTurn;
     }
@@ -66,6 +67,18 @@ public class Player : MonoBehaviour
         if(_maxHP == 0)
         {
 
+        }
+    }
+
+    public void ClearStage()
+    {
+        if (_selectStage.Item2 <= 2)
+        {
+            _possibleStage[_selectStage.Item1, _selectStage.Item2 + 1] = true;
+        }
+        else if (_selectStage.Item1 <= 2)
+        {
+            _possibleStage[_selectStage.Item1 + 1, 1] = true;
         }
     }
 }
