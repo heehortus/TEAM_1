@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeInfoBar();
         Background.GetComponent<SpriteRenderer>().sprite = ResourceManager.LoadSprite(string.Format("Stage{0}BG",
-            GameManager.sceneManager.Player._selectStage.Item1));
+            GameData.GetInstance().selectStage.Item1));
     }
     public void OnUpdate()
     {

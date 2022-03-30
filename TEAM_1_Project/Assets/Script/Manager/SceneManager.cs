@@ -25,8 +25,6 @@ public class SceneManager : MonoBehaviour
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
-        Player._currResource = 10;
-        Enemy._currResource = 10;
         presentTurn = 1;
 
         CreateUI();
