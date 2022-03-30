@@ -211,6 +211,7 @@ MonoBehaviour:
   damage: 5
   growth: 0
   maxDamage: 5
+  maxTurn: 2
   currState: 0
 --- !u!1 &4979422037284781630
 GameObject:

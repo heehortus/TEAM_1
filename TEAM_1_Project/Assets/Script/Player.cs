@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
         get {return currHP;}
         set {
             if(value<currHP) {
-                GameManager.sceneManager.Player.getAnimation().getAtacked();
+                if (getAnimation() != null)
+                {
+                    getAnimation().getAtacked();
+                }
             }
             currHP = value;
         }
@@ -58,7 +61,14 @@ public class Player : MonoBehaviour
     }
 
     public Action getAnimation() {
-        return GetComponent<Action>();
+        try
+        {
+            return GetComponent<Action>();
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     void Update()

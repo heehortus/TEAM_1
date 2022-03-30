@@ -125,3 +125,5 @@ MonoBehaviour:
   damage: 4
   growth: 2
   maxDamage: 10
+  maxTurn: 3
+  currState: 0

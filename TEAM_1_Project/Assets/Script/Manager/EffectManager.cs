@@ -22,7 +22,13 @@ public class EffectManager : MonoBehaviour
                     (caster as Seed).currState = Define.SeedState.skill;
                 }
                 break;
-            case Define.Effect.boom:
+            case Define.Effect.boomGetBoom:
+                {
+                    Debug.Log("boom Boom");
+                    (caster as Boom).currState = Define.BoomState.boom;
+                    break;
+                }
+            case Define.Effect.boomGetBigger:
                 {
                     Debug.Log("boom Effect");
                     (caster as Boom).currState = Define.BoomState.skill;
