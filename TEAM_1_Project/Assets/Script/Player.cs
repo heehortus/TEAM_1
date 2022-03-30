@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         _unitDic.Add("SeedUnit3", false);
 
         _unitDic.Add("BoomUnit1", true);
-        _unitDic.Add("BoomUnit2", false);
+        _unitDic.Add("BoomUnit2", true);
         _unitDic.Add("BoomUnit3", false);
 
         _unitDic.Add("StealerUnit1", true);
