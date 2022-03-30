@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 {
@@ -9,15 +10,18 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 	[SerializeField] protected int coast;
 	[SerializeField] public int level;
 	[SerializeField] public SpriteRenderer character;
+    [SerializeField] protected Skill skill;
     [SerializeField] public PlaceObject _currPlace { get; private set;}
     public string _name = "TmpName";
     public int _speed;
     public Define.UnitCamp _unitCamp;
-
     public bool valid = true;
     protected float _effectSize = 0.3f;
     protected float _currTime = 0;
-
+    public int stealCount;
+    public bool isBackCheck;
+    public bool isBoomDamageMiss;
+    public bool isSeedStealDamage;
     public int CompareTo(Unit other) // 스피드 순서로 정렬하기 위한 함수
     {
         if (_speed == other._speed)
@@ -37,6 +41,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
             character.flipX = false;
         else if (gameObject.tag == "Enemy")
             character.flipX = true;
+        skill.unit = this;
     }
     public virtual float Ability()
     {
@@ -56,6 +61,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
             gameObject.tag = "Enemy";
 
     }
+ 
     void OnMouseDown()
     {
         if (_unitCamp == Define.UnitCamp.enemyUnit)

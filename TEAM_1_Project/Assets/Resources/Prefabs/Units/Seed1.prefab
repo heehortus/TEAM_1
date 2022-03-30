@@ -118,10 +118,16 @@ MonoBehaviour:
   coast: 3
   level: 0
   character: {fileID: 0}
+  skill: {fileID: 0}
   _name: Seed1
   _speed: 1
   _unitCamp: 0
   valid: 1
+  stealCount: 0
+  turn: 0
+  isBackCheck: 0
+  isBoomDamageMiss: 0
   myresource: 1
   _growth: 2
   maxLevel: 2
+  currState: 0
