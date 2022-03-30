@@ -15,18 +15,18 @@ public class UI_Collections : MonoBehaviour
     }
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        var gameData = GameData.GetInstance();
         for(int i = 0; i < 3; i++)
         {
-            if (!player._unitDic[seeds[i].name])
+            if (!gameData._unitDic[seeds[i].name])
             {
                 seeds[i].color = Color.red;
             }
-            if (!player._unitDic[stealers[i].name])
+            if (!gameData._unitDic[stealers[i].name])
             {
                 stealers[i].color = Color.red;
             }
-            if (!player._unitDic[booms[i].name])
+            if (!gameData._unitDic[booms[i].name])
             {
                 booms[i].color = Color.red;
             }

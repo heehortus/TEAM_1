@@ -53,15 +53,15 @@ public class SceneManager : MonoBehaviour
 
     void CreateUI()
     {
-        GameObject _turnEndButton = Instantiate(GameManager.resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
+        GameObject _turnEndButton = Instantiate(ResourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
         _turnEndButton.transform.SetParent(UI_Parent.transform);
         _turnEndButton.name = "UI_Turn_End_Button"; 
 
-        GameObject _setting = Instantiate(GameManager.resourceManager.LoadUI("UI_Setting"));
+        GameObject _setting = Instantiate(ResourceManager.LoadUI("UI_Setting"));
         _setting.transform.SetParent(UI_Parent.transform);
         _setting.name = "UI_Setting";
 
-        GameObject _currStage = Instantiate(GameManager.resourceManager.LoadUI("UI_CurrStage"));
+        GameObject _currStage = Instantiate(ResourceManager.LoadUI("UI_CurrStage"));
         _currStage.transform.SetParent(UI_Parent.transform);
         _currStage.name = "UI_CurrStage";
     }

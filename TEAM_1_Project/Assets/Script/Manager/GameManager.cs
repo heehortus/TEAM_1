@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputManager _inputManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] SceneManager _sceneManager;
-    [SerializeField] ResourceManager _resourceManager;
     [SerializeField] BattleManager _battleManager;
     [SerializeField] EffectManager _effectManager;
 
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
                 gameState = E_GAMESTATE.DEFEAT;
                 if (sceneManager.finished) break;
                 sceneManager.finished = true;
-                Instantiate(resourceManager.LoadUI("UI_Defeat")).transform.SetParent(sceneManager.UI_Parent.transform);
+                Instantiate(ResourceManager.LoadUI("UI_Defeat")).transform.SetParent(sceneManager.UI_Parent.transform);
                 break;
             case 3:
                 gameState = E_GAMESTATE.STANDBY;

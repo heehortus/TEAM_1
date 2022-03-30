@@ -114,30 +114,30 @@ public class UIManager : MonoBehaviour
     }
     public void ShowVictoryUI()
     {
-        Player player = GameManager.sceneManager.Player;
-        if (player._selectStage.Item1==3&& player._selectStage.Item2 == 3)
+        GameData gameData = GameData.GetInstance();
+        if (gameData.selectStage.Item1==3&& gameData.selectStage.Item2 == 3)
         {
-            Instantiate(GameManager.resourceManager.LoadUI("UI_Victory_Final")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
+            Instantiate(ResourceManager.LoadUI("UI_Victory_Final")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
         }
         else
         {
-            Instantiate(GameManager.resourceManager.LoadUI("UI_Victory")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
+            Instantiate(ResourceManager.LoadUI("UI_Victory")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
             
             
 
-            List<string> copy_NoHaveUnit = GameManager.sceneManager.Player.noHaveUnit.ToList();
+            List<string> copy_NoHaveUnit = gameData.noHaveUnit.ToList();
             int cnt = 3;
             if (copy_NoHaveUnit.Count < 3) cnt = copy_NoHaveUnit.Count;
             if (cnt >= 1)
             {
-                GameObject ug = Instantiate(GameManager.resourceManager.LoadUI("UI_GetCompensation"));
+                GameObject ug = Instantiate(ResourceManager.LoadUI("UI_GetCompensation"));
                 ug.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
 
                 for (int i = 0; i < cnt; i++)
                 {
                     int rand = Random.Range(0, copy_NoHaveUnit.Count);
 
-                    GameObject cb = Instantiate(GameManager.resourceManager.LoadUI("CompensationUnitButton"));
+                    GameObject cb = Instantiate(ResourceManager.LoadUI("CompensationUnitButton"));
                     cb.transform.SetParent(ug.GetComponent<UI_GetCompensation>().OutLine.transform);
                     cb.GetComponent<CompensationUnitButton>().unitName = copy_NoHaveUnit[rand];
                     cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
