@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    public void Init()
-    {
-
-    }
-    public void OnUpdate()
-    {
-
-    }
-    public GameObject LoadUI(string uiName)
+    public static GameObject LoadUI(string uiName)
     {
         GameObject go = Resources.Load<GameObject>($"Prefabs/UI/{uiName}");
         if (go == null)
@@ -23,7 +15,7 @@ public class ResourceManager : MonoBehaviour
         return go;
     }
 
-    public GameObject LoadUnit(string unitName)
+    public static GameObject LoadUnit(string unitName)
     {
         GameObject go = Resources.Load<GameObject>($"Prefabs/Units/{unitName}");
         if (go == null)
@@ -34,7 +26,7 @@ public class ResourceManager : MonoBehaviour
         return go;
     }
 
-    public Sprite LoadSprite(string spriteName) {
+    public static Sprite LoadSprite(string spriteName) {
         Sprite sp = Resources.Load<Sprite>($"Sprites/{spriteName}");
         if (sp == null)
         {

@@ -11,8 +11,8 @@ public class UI_GetCompensation : MonoBehaviour
     {
         if (pushed) return;
         pushed = true;
-        GameManager.sceneManager.Player.noHaveUnit.Remove(unitName);
-        GameManager.sceneManager.Player._unitDic[unitName] = true;
+        GameData.GetInstance().noHaveUnit.Remove(unitName);
+        GameData.GetInstance()._unitDic[unitName] = true;
 
         Debug.Log(unitName);
         Destroy(gameObject, 2);

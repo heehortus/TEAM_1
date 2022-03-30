@@ -12,7 +12,8 @@ public class Define
     public enum Effect
     {
         seed,
-        boom,
+        boomGetBigger,
+        boomGetBoom,
         stealer,
         stealerToSeed,
         stealerToBoom
@@ -25,7 +26,8 @@ public class Define
     public enum BoomState
     {
         nothing,
-        skill
+        skill,
+        boom
     }
     public enum StealerState
     {

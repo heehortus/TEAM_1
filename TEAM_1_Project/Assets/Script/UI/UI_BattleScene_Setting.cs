@@ -20,7 +20,7 @@ public class UI_BattleScene_Setting : MonoBehaviour
     }
     public void PushMainButton()
     {
-        GameObject ui_giveup = Instantiate(GameManager.resourceManager.LoadUI("UI_GiveUp"));
+        GameObject ui_giveup = Instantiate(ResourceManager.LoadUI("UI_GiveUp"));
         ui_giveup.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
     }
     public void PushExitButton()

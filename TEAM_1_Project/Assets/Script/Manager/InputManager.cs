@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour
         }
         if(hit.collider.gameObject.GetComponent<Unit>() != null) // 광선을 맞은 물체가 Unit 컴포넌트를 가지고 있으면
         {
-            GameObject _uiInfo = Instantiate(GameManager.resourceManager.LoadUI("UI_Unit_Info"));
+            GameObject _uiInfo = Instantiate(ResourceManager.LoadUI("UI_Unit_Info"));
             _uiInfo.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
             GameManager.uiManager._popupUIs.Push(_uiInfo);
             Image _iamge = _uiInfo.GetComponentInChildren<Image>();

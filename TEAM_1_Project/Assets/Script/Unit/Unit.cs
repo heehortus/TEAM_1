@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     [SerializeField] public PlaceObject _currPlace { get; private set;}
     public string _name = "TmpName";
     public int _speed;
+    protected int passedTurn = 0;
     public Define.UnitCamp _unitCamp;
 
     public bool valid = true;
@@ -52,6 +53,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
             gameObject.tag = "Enemy";
 
     }
+    
     void OnMouseDown()
     {
         if (_unitCamp == Define.UnitCamp.enemyUnit)

@@ -6,16 +6,16 @@ public class UI_Victory : MonoBehaviour
 {
     public void PushNextButton()
     {
-        Player player = GameManager.sceneManager.Player;
-        if (player._selectStage.Item2 <= 2)
+        GameData gameData = GameData.GetInstance();
+        if (gameData.selectStage.Item2 <= 2)
         {
-            player._selectStage.Item2 += 1;
+            gameData.selectStage.Item2 += 1;
             LoadingSceneController.LoadScene("BattleScene");
         }
-        else if (player._selectStage.Item1 <= 2)
+        else if (gameData.selectStage.Item1 <= 2)
         {
-            player._selectStage.Item1 += 1;
-            player._selectStage.Item2 = 1;
+            gameData.selectStage.Item1 += 1;
+            gameData.selectStage.Item2 = 1;
             LoadingSceneController.LoadScene("BattleScene");
         }
     }
