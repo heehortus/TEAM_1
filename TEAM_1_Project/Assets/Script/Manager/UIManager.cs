@@ -6,9 +6,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Background;
     public void Init()
     {
         ChangeInfoBar();
+        Background.GetComponent<SpriteRenderer>().sprite = ResourceManager.LoadSprite(string.Format("Stage{0}BG",
+            GameManager.sceneManager.Player._selectStage.Item1));
     }
     public void OnUpdate()
     {

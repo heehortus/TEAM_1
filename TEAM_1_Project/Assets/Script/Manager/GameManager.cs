@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public static InputManager inputManager { get { return m_cInstance._inputManager; } }
     public static UIManager uiManager { get { return m_cInstance._uiManager; } }
     public static SceneManager sceneManager { get { return m_cInstance._sceneManager; } }
-    public static ResourceManager resourceManager { get { return m_cInstance._resourceManager; } }
     public static BattleManager battleManager { get { return m_cInstance._battleManager; } }
     public static EffectManager effectManager { get { return m_cInstance._effectManager; } }
 
@@ -66,7 +65,6 @@ public class GameManager : MonoBehaviour
         inputManager.Init();
         sceneManager.Init();
         uiManager.Init();
-        resourceManager.Init();
         battleManager.Init();
         uiManager.ChangeInfoBar();
     }
@@ -76,7 +74,6 @@ public class GameManager : MonoBehaviour
         inputManager.OnUpdate();
         sceneManager.OnUpdate();
         uiManager.OnUpdate();
-        resourceManager.OnUpdate();
         battleManager.OnUpdate();
         effectManager.OnUpdate();
     }

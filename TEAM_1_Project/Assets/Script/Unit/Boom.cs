@@ -15,7 +15,6 @@ public class Boom : Unit
         if(passedTurn >= maxTurn)
         {
             GameManager.effectManager.UseSkill(Define.Effect.boomGetBoom, this);
-            GameManager.sceneManager.getEnemy(_currPlace)._currHP -= damage;
             StartCoroutine(CoAttackedOrUsed(this, _effectTime));
         }
         else

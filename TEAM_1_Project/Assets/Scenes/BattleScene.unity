@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 255891071}
   - component: {fileID: 255891070}
   m_Layer: 0
-  m_Name: Stage1BG
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1615,6 +1615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a719ad7886e44ccbb53bbd1e6c5487d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 255891069}
   TurnObject: {fileID: 5967286334472827025}
   InfoBar: {fileID: 1883139865}
   _uiInfoOffset: 100

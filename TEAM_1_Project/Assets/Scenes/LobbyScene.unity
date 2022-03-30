@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Setting
       objectReference: {fileID: 0}
+    - target: {fileID: 9149901485916415182, guid: 1b7d19c44b0d5b047beeb836c0c2a32f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PushLobbySettingButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7d19c44b0d5b047beeb836c0c2a32f, type: 3}
 --- !u!224 &1004585666 stripped
