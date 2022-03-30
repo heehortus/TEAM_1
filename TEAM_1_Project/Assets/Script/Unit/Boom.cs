@@ -14,7 +14,7 @@ public class Boom : Unit
     {
         if (skill != null)
             skill.Skiil();
-        GameManager.effectManager.UseSkill(Define.Effect.boom, this);
+        GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
         if (damage <= maxDamage)
         {
             damage += growth;
