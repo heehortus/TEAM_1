@@ -24,20 +24,29 @@ public class Player : MonoBehaviour
     public int _currResource;
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
 
+    public List<string> noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
+
+    public bool[,] _possibleStage = new bool[4,4];
+
+    public (int ,int) _selectStage;
+
     public float BgmSound;
     public float EffectSound;
     
     private int costEarnAtEndOfTurn = 2;
+    void Start()
+    {
+
+    }
     private void Awake()
     {
         _currHP = _maxHP;
-        _currResource = 10;
         _unitDic.Add("SeedUnit1", true);
         _unitDic.Add("SeedUnit2", false);
         _unitDic.Add("SeedUnit3", false);
 
         _unitDic.Add("BoomUnit1", true);
-        _unitDic.Add("BoomUnit2", true);
+        _unitDic.Add("BoomUnit2", false);
         _unitDic.Add("BoomUnit3", false);
 
         _unitDic.Add("StealerUnit1", true);
@@ -46,6 +55,7 @@ public class Player : MonoBehaviour
 
         _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
 
+        _possibleStage[1,1] = true;
     }
 
     public void endBattle() {
@@ -68,6 +78,18 @@ public class Player : MonoBehaviour
         if(_maxHP == 0)
         {
 
+        }
+    }
+
+    public void ClearStage()
+    {
+        if (_selectStage.Item2 <= 2)
+        {
+            _possibleStage[_selectStage.Item1, _selectStage.Item2 + 1] = true;
+        }
+        else if (_selectStage.Item1 <= 2)
+        {
+            _possibleStage[_selectStage.Item1 + 1, 1] = true;
         }
     }
 }

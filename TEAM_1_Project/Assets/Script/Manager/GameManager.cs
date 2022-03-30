@@ -34,9 +34,16 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 gameState = E_GAMESTATE.VICTORY;
+                if (sceneManager.finished) break;
+                sceneManager.finished = true;
+                sceneManager.Player.ClearStage();
+                uiManager.ShowVictoryUI();
                 break;
             case 2:
                 gameState = E_GAMESTATE.DEFEAT;
+                if (sceneManager.finished) break;
+                sceneManager.finished = true;
+                Instantiate(resourceManager.LoadUI("UI_Defeat")).transform.SetParent(sceneManager.UI_Parent.transform);
                 break;
             case 3:
                 gameState = E_GAMESTATE.STANDBY;
@@ -57,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             m_cInstance = this;
         }
+        sceneManager.Player = GameObject.Find("Player").GetComponent<Player>();
     }
     private void Start()
     {
