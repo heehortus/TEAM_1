@@ -124,4 +124,5 @@ MonoBehaviour:
   valid: 1
   damage: 3
   growth: 0
-  maxDamage: 3
+  maxTurn: 2
+  currState: 0

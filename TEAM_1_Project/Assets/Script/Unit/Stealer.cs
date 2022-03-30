@@ -331,7 +331,7 @@ public class Stealer : Unit
         switch (level)
         {
             case 1:
-                attackpower = 1;
+                attackpower = 30;
                 stealCoast = 1;
                 break;
             case 2:

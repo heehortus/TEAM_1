@@ -11,7 +11,6 @@ public class SceneManager : MonoBehaviour
 
     public GameObject UI_Parent;
     public GameObject Unit_Parent;
-
     [SerializeField] public Player Player; 
     [SerializeField] public Player Enemy;
 
@@ -19,6 +18,8 @@ public class SceneManager : MonoBehaviour
 
     public int _maxMoveCount = 1;
     public int _currMoveCount = 0;
+
+    public bool finished;
     public void Init()
     {
         _inputManager = GameManager.inputManager;
@@ -26,8 +27,6 @@ public class SceneManager : MonoBehaviour
         UI_Parent = new GameObject { name = "UI_Parent" }; // UI들 묶어서 하이라키창에 저장
         Unit_Parent = new GameObject { name = "Unit_Parent" }; // Unit들 묶어서 하이라키창에 저장
 
-        Player._currResource = 10;
-        Enemy._currResource = 10;
         presentTurn = 1;
 
         CreateUI();
@@ -38,29 +37,31 @@ public class SceneManager : MonoBehaviour
     //UI_Turn_End_Button
     public void OnUpdate()
     {
-        if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.VICTORY)
-        {
-            Instantiate(GameManager.resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
-            GameManager.GetInstance().SetGameState(3);
-        }
-        else if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.DEFEAT)
-        {
-            Instantiate(GameManager.resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
-            GameManager.GetInstance().SetGameState(3);
-        }
+        //if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.VICTORY)
+        //{
+        //    if (finished) return;
+        //    Instantiate(GameManager.resourceManager.LoadUI("UI_Victory")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+        //    GameManager.GetInstance().SetGameState(3);
+        //}
+        //else if (GameManager.GetInstance().gameState == GameManager.E_GAMESTATE.DEFEAT)
+        //{
+        //    if (finished) return;
+        //    Instantiate(GameManager.resourceManager.LoadUI("UI_Defeat")).transform.SetParent(UI_Parent.transform); // 턴 종료 UI 버튼 생성
+        //    GameManager.GetInstance().SetGameState(3);
+        //}
     }
 
     void CreateUI()
     {
-        GameObject _turnEndButton = Instantiate(GameManager.resourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
+        GameObject _turnEndButton = Instantiate(ResourceManager.LoadUI("UI_Turn_End_Button")); // 턴 종료 UI 버튼 생성
         _turnEndButton.transform.SetParent(UI_Parent.transform);
         _turnEndButton.name = "UI_Turn_End_Button"; 
 
-        GameObject _setting = Instantiate(GameManager.resourceManager.LoadUI("UI_Setting"));
+        GameObject _setting = Instantiate(ResourceManager.LoadUI("UI_Setting"));
         _setting.transform.SetParent(UI_Parent.transform);
         _setting.name = "UI_Setting";
 
-        GameObject _currStage = Instantiate(GameManager.resourceManager.LoadUI("UI_CurrStage"));
+        GameObject _currStage = Instantiate(ResourceManager.LoadUI("UI_CurrStage"));
         _currStage.transform.SetParent(UI_Parent.transform);
         _currStage.name = "UI_CurrStage";
     }

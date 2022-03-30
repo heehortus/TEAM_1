@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Background;
     public void Init()
     {
         ChangeInfoBar();
+        Background.GetComponent<SpriteRenderer>().sprite = ResourceManager.LoadSprite(string.Format("Stage{0}BG",
+            GameData.GetInstance().selectStage.Item1));
     }
     public void OnUpdate()
     {
@@ -106,6 +110,41 @@ public class UIManager : MonoBehaviour
                          $"Speed :{_stealer._speed}\n" +
                          $"Level :{_stealer.level}\n" +
                          $"Power :{_stealer.attackpower}";
+        }
+    }
+    public void ShowVictoryUI()
+    {
+        GameData gameData = GameData.GetInstance();
+        if (gameData.selectStage.Item1==3&& gameData.selectStage.Item2 == 3)
+        {
+            Instantiate(ResourceManager.LoadUI("UI_Victory_Final")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
+        }
+        else
+        {
+            Instantiate(ResourceManager.LoadUI("UI_Victory")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
+            
+            
+
+            List<string> copy_NoHaveUnit = gameData.noHaveUnit.ToList();
+            int cnt = 3;
+            if (copy_NoHaveUnit.Count < 3) cnt = copy_NoHaveUnit.Count;
+            if (cnt >= 1)
+            {
+                GameObject ug = Instantiate(ResourceManager.LoadUI("UI_GetCompensation"));
+                ug.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
+
+                for (int i = 0; i < cnt; i++)
+                {
+                    int rand = Random.Range(0, copy_NoHaveUnit.Count);
+
+                    GameObject cb = Instantiate(ResourceManager.LoadUI("CompensationUnitButton"));
+                    cb.transform.SetParent(ug.GetComponent<UI_GetCompensation>().OutLine.transform);
+                    cb.GetComponent<CompensationUnitButton>().unitName = copy_NoHaveUnit[rand];
+                    cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
+
+                    copy_NoHaveUnit.RemoveAt(rand);
+                }
+            }
         }
     }
 }
