@@ -8,7 +8,7 @@ public class GameData
     public GameData()
     {
         possibleStage = new bool[4,4];
-        selectStage = (0, 0);
+        selectStage = (1, 1);
         possibleStage[1,1] = true;
         possibleStage[3,1] = true;
         _unitDic.Add("SeedUnit1", true);
