@@ -6,24 +6,24 @@ public class Boom : Unit
 {
     public int damage;
     [SerializeField] int growth;
-    [SerializeField] int maxTurn;
+    [SerializeField] int maxDamage;
 
     public Define.BoomState currState = Define.BoomState.nothing;
     float _effectTime = 1f;
     public override float Ability()
     {
-        if(passedTurn >= maxTurn)
+        if (skill != null)
+            skill.Skiil();
+        GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
+        if (damage <= maxDamage)
         {
-            GameManager.effectManager.UseSkill(Define.Effect.boomGetBoom, this);
-            StartCoroutine(CoAttackedOrUsed(this, _effectTime));
-        }
-        else
-        {
-            GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
             damage += growth;
         }
-        passedTurn++;
         return _effectTime;
+    }
+    public override void Effect()
+    {
+        
     }
     private void Start()
     {
@@ -57,10 +57,6 @@ public class Boom : Unit
                     }
                 }
                 break;
-            case Define.BoomState.boom:
-                {
-                    break;
-                }
         }
     }
     void Level()

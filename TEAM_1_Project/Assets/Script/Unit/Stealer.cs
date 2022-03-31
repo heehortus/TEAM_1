@@ -13,7 +13,6 @@ public class Stealer : Unit
 
     float _attackTime = 1f;
     float _stealTime = 1.5f;
-
     public Define.StealerState currState = Define.StealerState.nothing;
 
     public Unit target;
@@ -115,16 +114,23 @@ public class Stealer : Unit
     }
     public override float Ability()
     {
+        Debug.Log("Dd");
         float ret = 0;
+        if(skill != null && _name != "Stealer1")
+            skill.Skiil();
         if (character.flipX == true) // 적군이 아군에게
         {
             //Debug.Log("적군스틸러 실행됨");
             //Debug.Log("적군스틸러 실행됨2");
+            isPlayer = true;
             GameObject target_unit = null;
             GameObject target_unit2 = null;
-            for (int i = 0; i < 2; i++)
+            GameObject target_place;
+            isPlayer = false;
+            if (isBackCheck)
             {
-                target_place = GameManager.placeManager.getPlaceObject(true, this._currPlace.x, i);
+                Debug.Log("if문 들어옴");
+                target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
                 target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
                 if (target_unit != null)
                 {
@@ -133,52 +139,99 @@ public class Stealer : Unit
                         if (target_unit.GetComponent<Unit>().valid)
                         {
                             target_unit2 = target_unit;
-                            break;
+                        }
+                    }
+                }
+                else if (target_unit == null)
+                {
+                    target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
+                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                    if (target_unit == null)
+                        target_unit2 = target_unit;
+                    else
+                    {
+                        if (target_unit.GetComponent<Stealer>() == null)
+                        {
+                            if (target_unit.GetComponent<Unit>().valid)
+                            {
+                                target_unit2 = target_unit;
+                            }
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                //Debug.Log("플레이어");
+                for (int i = 0; i < 2; i++)
+                {
+                    target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
+                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                    if (target_unit != null)
+                    {
+                        if (target_unit.GetComponent<Stealer>() == null)
+                        {
+                            if (target_unit.GetComponent<Unit>().valid)
+                            {
+                                target_unit2 = target_unit;
+                                break;
+                            }
                         }
                     }
                 }
             }
-            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+            if (stealCount > 0)
             {
-                ret = _attackTime;
-                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+                Debug.Log("Ddd");
+                if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+                {
+                    ret = _attackTime;
+                    GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
 
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
-            }
-            else if (target_unit2.GetComponent<Seed>() != null)
-            {
-                ret = _stealTime;
-                Seed seed = target_unit2.GetComponent<Seed>();
+                    GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
+                }
+                else if (target_unit2.GetComponent<Seed>() != null)
+                {
+                    ret = _stealTime;
+                    Seed seed = target_unit2.GetComponent<Seed>();
 
-                GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, this, seed);
+                    GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, this, seed);
 
-                StartCoroutine(CoAttackedOrUsed(seed, ret));
-                GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
-                GameManager.unitManager.isSteal = true;
-            }
-            else if (target_unit2.GetComponent<Boom>() != null)
-            {
-                ret = _stealTime;
-                Boom boom = target_unit2.GetComponent<Boom>();
+                    StartCoroutine(CoAttackedOrUsed(seed, ret));
+                    GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
+                    if (isSeedStealDamage)
+                        GameManager.sceneManager.getEnemy(_currPlace)._currHP -= 2;
+                    stealCount++;
+                    GameManager.unitManager.isSteal = true;
+                }
+                else if (target_unit2.GetComponent<Boom>() != null)
+                {
+                    ret = _stealTime;
+                    Boom boom = target_unit2.GetComponent<Boom>();
 
-                GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
+                    GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
 
-                StartCoroutine(CoAttackedOrUsed(boom, ret));
-                StartCoroutine(CoAttackedOrUsed(this, ret));
-                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
-                GameManager.unitManager.isSteal = true;
+                    StartCoroutine(CoAttackedOrUsed(boom, ret));
+                    StartCoroutine(CoAttackedOrUsed(this, ret));
+                    GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
+                    GameManager.unitManager.isSteal = true;
+                }
+                stealCount--;
             }
         }
         else if (character.flipX == false) // 아군이 적군에게
         {
-            //Debug.Log("아군스틸러 실행됨");
+            Debug.Log("아군스틸러 실행됨");
             //Debug.Log("아군스틸러 실행됨2");
             GameObject target_unit = null;
             GameObject target_unit2 = null;
-            //Debug.Log("플레이어");
-            for (int i = 0; i < 2; i++) 
+            GameObject target_place;
+            isPlayer = false;
+            if (isBackCheck)
             {
-                target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
+                Debug.Log("if문 들어옴");
+                target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
                 target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
                 if (target_unit != null)
                 {
@@ -187,40 +240,86 @@ public class Stealer : Unit
                         if (target_unit.GetComponent<Unit>().valid)
                         {
                             target_unit2 = target_unit;
-                            break;
                         }
                     }
                 }
-            }     
-            if(target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-            {
-                ret = _attackTime;
-                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+                else if (target_unit == null)
+                {
+                    target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
+                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                    if (target_unit == null)
+                        target_unit2 = target_unit;
+                    else
+                    {
+                        if (target_unit.GetComponent<Stealer>() == null)
+                        {
+                            if (target_unit.GetComponent<Unit>().valid)
+                            {
+                                target_unit2 = target_unit;
+                            }
+                        }
+                    }
 
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
+                }
             }
-            else if (target_unit2.GetComponent<Seed>() != null)
-            {
-                ret = _stealTime;
-                //Debug.Log("플레이어");
-                Seed seed = target_unit2.GetComponent<Seed>();
-
-                GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, this, seed);
-
-                StartCoroutine(CoAttackedOrUsed(seed, ret));
-                GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
-                GameManager.unitManager.isSteal = true;
+            else {
+                Debug.Log("플레이어");
+                for (int i = 0; i < 2; i++)
+                {
+                    target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
+                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+                    if (target_unit != null)
+                    {
+                        if (target_unit.GetComponent<Stealer>() == null)
+                        {
+                            if (target_unit.GetComponent<Unit>().valid)
+                            {
+                                target_unit2 = target_unit;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-            else if(target_unit2.GetComponent<Boom>() != null)
+            if (stealCount > 0)
             {
-                ret = _stealTime;
-                Boom boom = target_unit2.GetComponent<Boom>();
+                Debug.Log("dDAD");
+                if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+                {
+                    ret = _attackTime;
+                    GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
 
-                GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
+                    GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
+                }
+                else if (target_unit2.GetComponent<Seed>() != null)
+                {
+                    ret = _stealTime;
+                    //Debug.Log("플레이어");
+                    Seed seed = target_unit2.GetComponent<Seed>();
 
-                StartCoroutine(CoAttackedOrUsed(boom, ret));
-                StartCoroutine(CoAttackedOrUsed(this, ret));
-                GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
+                    GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, this, seed);
+
+                    StartCoroutine(CoAttackedOrUsed(seed, ret));
+                    GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
+                    if (isSeedStealDamage)
+                        GameManager.sceneManager.getEnemy(_currPlace)._currHP -= 2;
+                    GameManager.unitManager.isSteal = true;
+                }
+                else if (target_unit2.GetComponent<Boom>() != null)
+                {
+                    ret = _stealTime;
+                    Boom boom = target_unit2.GetComponent<Boom>();
+
+                    GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
+
+                    StartCoroutine(CoAttackedOrUsed(boom, ret));
+                    if (!isBoomDamageMiss)
+                    {
+                        StartCoroutine(CoAttackedOrUsed(this, ret));
+                        GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
+                    }
+                }
+                stealCount--;
             }
         }
         return ret;

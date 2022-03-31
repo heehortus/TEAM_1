@@ -13,6 +13,8 @@ public class Seed : Unit
     public Define.SeedState currState = Define.SeedState.nothing;
     public override float Ability()
     {
+        if (skill != null)
+            skill.Skiil();
         GameManager.effectManager.UseSkill(Define.Effect.seed, this);
         if(level == maxLevel) {
             myresource += _growth;

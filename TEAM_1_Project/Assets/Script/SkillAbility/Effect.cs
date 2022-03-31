@@ -53,5 +53,5 @@ public class Attack : Effect
     {
         base.StealerUse(caster, target);
     }
+    
 }
-

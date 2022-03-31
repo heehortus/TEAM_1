@@ -20,7 +20,7 @@ public class GameData
         _unitDic.Add("BoomUnit3", false);
 
         _unitDic.Add("StealerUnit1", true);
-        _unitDic.Add("StealerUnit2", false);
+        _unitDic.Add("StealerUnit2", true);
         _unitDic.Add("StealerUnit3", false);
 
         _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
