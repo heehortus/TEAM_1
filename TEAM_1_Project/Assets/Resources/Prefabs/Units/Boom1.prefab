@@ -103,13 +103,18 @@ MonoBehaviour:
   coast: 4
   level: 0
   character: {fileID: 0}
+  skill: {fileID: 0}
   _name: Boom1
   _speed: 20
   _unitCamp: 0
   valid: 1
+  stealCount: 0
+  isBackCheck: 0
+  isBoomDamageMiss: 0
+  isSeedStealDamage: 0
   damage: 3
   growth: 0
-  maxTurn: 2
+  maxDamage: 0
   currState: 0
 --- !u!58 &5031642948544417514
 CircleCollider2D:
@@ -153,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5918074329454024110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.817, y: 0.917, z: 0}
+  m_LocalPosition: {x: 0.901, y: 0.917, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -226,7 +231,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.35, y: 0.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

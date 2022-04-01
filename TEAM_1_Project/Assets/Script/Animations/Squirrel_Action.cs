@@ -14,5 +14,9 @@ public class Squirrel_Action : MonoBehaviour, Action
         animator.SetTrigger("isGetAttacked");
     }
 
+    public void adjustAlphaValue(float value)
+    {
+    }
+
     
 }

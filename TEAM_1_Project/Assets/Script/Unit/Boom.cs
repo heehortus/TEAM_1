@@ -9,6 +9,8 @@ public class Boom : Unit
     [SerializeField] int maxDamage;
 
     public Define.BoomState currState = Define.BoomState.nothing;
+    
+    private ParticleSystem particleSystem = null;
     float _effectTime = 1f;
     public override float Ability()
     {
@@ -25,10 +27,17 @@ public class Boom : Unit
     {
         
     }
+
+    public void boomAnimation()
+    {
+        particleSystem?.Play();
+    }
     private void Start()
     {
         base.Init();
         Level();
+        particleSystem = GetComponent<ParticleSystem>() ?? null;
+        particleSystem.Stop();
     }
     private void Update()
     {
