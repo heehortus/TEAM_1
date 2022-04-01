@@ -309,6 +309,7 @@ public class Stealer : Unit
                 {
                     ret = _stealTime;
                     Boom boom = target_unit2.GetComponent<Boom>();
+                    boom.boomAnimation();
 
                     GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
 
