@@ -18,7 +18,7 @@ public class UI_Setting : MonoBehaviour
     }
     public void PushLobbySettingButton()
     {
-        GameObject _uiSettingMenu = Instantiate(ResourceManager.LoadUI("UI_Lobby_Scene_Setting"));
+        GameObject _uiSettingMenu = Instantiate(ResourceManager.LoadUI("UI_LobbyScene_Setting"));
         _uiSettingMenu.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
         _uiSettingMenu.name = "UI_BattleScene_Setting";
     }
