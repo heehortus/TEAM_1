@@ -32,6 +32,8 @@ public class Boom : Unit
     public void boomAnimation()
     {
         particleSystem?.Play();
+        if (particleSystem != null)
+            particleSystem?.Play();
     }
     private void Start()
     {
@@ -39,6 +41,8 @@ public class Boom : Unit
         Level();
         particleSystem = GetComponent<ParticleSystem>() ?? null;
         particleSystem.Stop();
+        if (particleSystem != null)
+            particleSystem.Stop();
     }
     private void Update()
     {
