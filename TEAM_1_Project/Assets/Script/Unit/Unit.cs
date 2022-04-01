@@ -40,6 +40,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
             character.flipX = false;
         else if (gameObject.tag == "Enemy")
             character.flipX = true;
+        skill.unit = this;
     }
     public virtual float Ability()
     {

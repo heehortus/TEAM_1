@@ -116,8 +116,10 @@ public class Stealer : Unit
     {
         Debug.Log("Dd");
         float ret = 0;
-        if(skill != null && _name != "Stealer1")
+        if (skill != null && _name != "Stealer1")
+        {
             skill.Skiil();
+        }
         if (character.flipX == true) // 적군이 아군에게
         {
             //Debug.Log("적군스틸러 실행됨");
@@ -213,8 +215,11 @@ public class Stealer : Unit
                     GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
 
                     StartCoroutine(CoAttackedOrUsed(boom, ret));
-                    StartCoroutine(CoAttackedOrUsed(this, ret));
-                    GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
+                    if (isBoomDamageMiss)
+                    {
+                        StartCoroutine(CoAttackedOrUsed(this, ret));
+                        GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
+                    }
                     GameManager.unitManager.isSteal = true;
                 }
                 stealCount--;

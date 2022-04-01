@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8086196622529840630}
   - component: {fileID: 806254757579777717}
   - component: {fileID: 4861737381441772171}
-  - component: {fileID: 4999899586398767997}
-  m_Layer: 3
-  m_Name: Boom3
+  - component: {fileID: -7809547604615109980}
+  m_Layer: 0
+  m_Name: TwoMonkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 0.9245283, g: 0.22241008, b: 0.28289133, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d40f232c097c8b341b1ca08f85d487fe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4999899586398767997
+--- !u!114 &-7809547604615109980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1569926392765020863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5756aa75b33c66e449f4f186a84f43f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ed9892a250dad940b469ae88c0759d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isUnitClick: 0
@@ -119,16 +119,18 @@ MonoBehaviour:
   level: 0
   character: {fileID: 0}
   skill: {fileID: 0}
-  _name: Boom3
-  _speed: 20
+  _name: Stealer1
+  _speed: 14
   _unitCamp: 0
   valid: 1
-  stealCount: 0
-  isBackCheck: 0
+  stealCount: 2
+  isBackCheck: 1
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
-  damage: 4
-  growth: 2
-  maxDamage: 10
-  maxCount: 3
+  attackpower: 1
+  stealCoast: 1
+  isSteal: 0
+  isPlayer: 0
   currState: 0
+  target: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}

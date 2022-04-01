@@ -7,7 +7,8 @@ public class Boom : Unit
     public int damage;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
-
+    [SerializeField] public int playermaxCount;
+    [SerializeField] public int enemymaxCount;
     public Define.BoomState currState = Define.BoomState.nothing;
     
     private ParticleSystem particleSystem = null;
