@@ -7,7 +7,8 @@ public class Boom : Unit
     public int damage;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
-
+    [SerializeField] public int playermaxCount;
+    [SerializeField] public int enemymaxCount;
     public Define.BoomState currState = Define.BoomState.nothing;
     
     private ParticleSystem particleSystem = null;
@@ -30,6 +31,7 @@ public class Boom : Unit
 
     public void boomAnimation()
     {
+        particleSystem?.Play();
         if (particleSystem != null)
             particleSystem?.Play();
     }
@@ -38,6 +40,7 @@ public class Boom : Unit
         base.Init();
         Level();
         particleSystem = GetComponent<ParticleSystem>() ?? null;
+        particleSystem.Stop();
         if (particleSystem != null)
             particleSystem.Stop();
     }

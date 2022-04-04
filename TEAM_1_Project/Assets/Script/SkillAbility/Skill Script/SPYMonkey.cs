@@ -7,6 +7,7 @@ public class SPYMonkey : Skill
 {
     public override void Skiil()
     {
+        Debug.Log("DD");
         unit.isBackCheck = true;
     }
 }
