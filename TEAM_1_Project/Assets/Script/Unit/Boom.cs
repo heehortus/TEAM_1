@@ -47,8 +47,8 @@ public class Boom : Unit
         {
             Debug.Log("이펙트가 없습니다.");
         }
-
-        particle?.Stop();
+        if (particle != null)
+            particle.Stop();
     }
     private void Update()
     {

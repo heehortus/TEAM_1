@@ -29,88 +29,23 @@ public class Stealer : Unit
     }
     private void Update()
     {
+        UpdateState();
+    }
+    void UpdateState()
+    {
         switch (currState)
         {
             case Define.StealerState.nothing:
-                {
-                    break;
-                }
+                UpdateNothing();
+                break;
             case Define.StealerState.attack:
-                {
-                    if (_currTime > _attackTime)
-                    {
-                        currState = Define.StealerState.nothing;
-                        _currTime = 0;
-                        break;
-                    }
-                    _currTime += Time.deltaTime;
-                    if (_currTime <= _attackTime / 2)
-                    {
-                        gameObject.transform.localScale += Vector3.one * _effectSize * Time.deltaTime;
-                    }
-                    else
-                    {
-                        gameObject.transform.localScale -= Vector3.one * _effectSize * Time.deltaTime;
-                    }
-                }
+                UpdateAttack();
                 break;
             case Define.StealerState.stealSeed:
-                {
-                    if (_currTime > _stealTime)
-                    {
-                        currState = Define.StealerState.nothing;
-                        _currTime = 0;
-                        break;
-                    }
-                    _currTime += Time.deltaTime;
-                    Vector3 dirVec = (targetPos - transform.position).normalized;
-                    float dist = (targetPos - transform.position).magnitude;
-                    if (_currTime <= _stealTime / 2)
-                    {
-                        transform.position += dirVec * dist * Time.deltaTime * 1.5f;
-                    }
-                    else
-                    {
-                        if (_unitCamp == Define.UnitCamp.playerUnit)
-                        {
-                            target.transform.position = transform.position + Vector3.right;
-                        }
-                        else
-                        {
-                            target.transform.position = transform.position + Vector3.left;
-                        }
-                        transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
-                    }
-                }
+                UpdateStealSead();
                 break;
             case Define.StealerState.stealBoom:
-                {
-                    if (_currTime > _stealTime)
-                    {
-                        currState = Define.StealerState.nothing;
-                        _currTime = 0;
-                        break;
-                    }
-                    _currTime += Time.deltaTime;
-                    Vector3 dirVec = (targetPos - transform.position).normalized;
-                    float dist = (targetPos - transform.position).magnitude;
-                    if (_currTime <= _stealTime / 2)
-                    {
-                        transform.position += dirVec * dist * Time.deltaTime * 1.5f;
-                    }
-                    else
-                    {
-                        if (_unitCamp == Define.UnitCamp.playerUnit)
-                        {
-                            target.transform.position = transform.position + Vector3.right;
-                        }
-                        else
-                        {
-                            target.transform.position = transform.position + Vector3.left;
-                        }
-                        transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
-                    }
-                }
+                UpdateStealBoom();
                 break;
         }
     }
@@ -335,5 +270,83 @@ public class Stealer : Unit
         int result;
         result = boom.damage;
         return result;
+    }
+    void UpdateNothing()
+    {
+
+    }
+    void UpdateAttack()
+    {
+        if (_currTime > _attackTime)
+        {
+            currState = Define.StealerState.nothing;
+            _currTime = 0;
+            return;
+        }
+        _currTime += Time.deltaTime;
+        if (_currTime <= _attackTime / 2)
+        {
+            gameObject.transform.localScale += Vector3.one * _effectSize * Time.deltaTime;
+        }
+        else
+        {
+            gameObject.transform.localScale -= Vector3.one * _effectSize * Time.deltaTime;
+        }
+    }
+    void UpdateStealSead()
+    {
+        if (_currTime > _stealTime)
+        {
+            currState = Define.StealerState.nothing;
+            _currTime = 0;
+            return;
+        }
+        _currTime += Time.deltaTime;
+        Vector3 dirVec = (targetPos - transform.position).normalized;
+        float dist = (targetPos - transform.position).magnitude;
+        if (_currTime <= _stealTime / 2)
+        {
+            transform.position += dirVec * dist * Time.deltaTime * 1.5f;
+        }
+        else
+        {
+            if (_unitCamp == Define.UnitCamp.playerUnit)
+            {
+                target.transform.position = transform.position + Vector3.right;
+            }
+            else
+            {
+                target.transform.position = transform.position + Vector3.left;
+            }
+            transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
+        }
+    }
+    void UpdateStealBoom()
+    {
+        if (_currTime > _stealTime)
+        {
+            currState = Define.StealerState.nothing;
+            _currTime = 0;
+            return;
+        }
+        _currTime += Time.deltaTime;
+        Vector3 dirVec = (targetPos - transform.position).normalized;
+        float dist = (targetPos - transform.position).magnitude;
+        if (_currTime <= _stealTime / 2)
+        {
+            transform.position += dirVec * dist * Time.deltaTime * 1.5f;
+        }
+        else
+        {
+            if (_unitCamp == Define.UnitCamp.playerUnit)
+            {
+                target.transform.position = transform.position + Vector3.right;
+            }
+            else
+            {
+                target.transform.position = transform.position + Vector3.left;
+            }
+            transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
+        }
     }
 }
