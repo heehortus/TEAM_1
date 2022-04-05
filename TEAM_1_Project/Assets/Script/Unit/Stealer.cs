@@ -17,12 +17,14 @@ public class Stealer : Unit
 
     public Unit target;
     public Vector3 targetPos;
-
+    GameObject target_unit = null;
+    GameObject target_unit2 = null;
     private void Start()
     {
         base.Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
+        skill.unit = this;
         Level();
     }
     private void Update()
@@ -47,6 +49,58 @@ public class Stealer : Unit
                 break;
         }
     }
+    void BackCheck()
+    {
+        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
+        target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+        if (target_unit != null)
+        {
+            if (target_unit.GetComponent<Stealer>() == null)
+            {
+                if (target_unit.GetComponent<Unit>().valid)
+                {
+                    target_unit2 = target_unit;
+                }
+            }
+        }
+        else if (target_unit == null)
+        {
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
+            target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+            if (target_unit == null)
+                target_unit2 = target_unit;
+            else
+            {
+                if (target_unit.GetComponent<Stealer>() == null)
+                {
+                    if (target_unit.GetComponent<Unit>().valid)
+                    {
+                        target_unit2 = target_unit;
+                    }
+                }
+            }
+        }
+    }
+
+    void isCheck()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, i);
+            target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
+            if (target_unit != null)
+            {
+                if (target_unit.GetComponent<Stealer>() == null)
+                {
+                    if (target_unit.GetComponent<Unit>().valid)
+                    {
+                        target_unit2 = target_unit;
+                        break;
+                    }
+                }
+            }
+        }
+    }
     public override float Ability()
     {
         Debug.Log("Dd");
@@ -57,66 +111,16 @@ public class Stealer : Unit
         }
         if (character.flipX == true) // 적군이 아군에게
         {
-            //Debug.Log("적군스틸러 실행됨");
-            //Debug.Log("적군스틸러 실행됨2");
-            isPlayer = true;
-            GameObject target_unit = null;
-            GameObject target_unit2 = null;
-            GameObject target_place;
+
             isPlayer = false;
             if (isBackCheck)
             {
-                Debug.Log("if문 들어옴");
-                target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
-                target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                if (target_unit != null)
-                {
-                    if (target_unit.GetComponent<Stealer>() == null)
-                    {
-                        if (target_unit.GetComponent<Unit>().valid)
-                        {
-                            target_unit2 = target_unit;
-                        }
-                    }
-                }
-                else if (target_unit == null)
-                {
-                    target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
-                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                    if (target_unit == null)
-                        target_unit2 = target_unit;
-                    else
-                    {
-                        if (target_unit.GetComponent<Stealer>() == null)
-                        {
-                            if (target_unit.GetComponent<Unit>().valid)
-                            {
-                                target_unit2 = target_unit;
-                            }
-                        }
-                    }
-
-                }
+                BackCheck();
             }
             else
             {
                 //Debug.Log("플레이어");
-                for (int i = 0; i < 2; i++)
-                {
-                    target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
-                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                    if (target_unit != null)
-                    {
-                        if (target_unit.GetComponent<Stealer>() == null)
-                        {
-                            if (target_unit.GetComponent<Unit>().valid)
-                            {
-                                target_unit2 = target_unit;
-                                break;
-                            }
-                        }
-                    }
-                }
+                isCheck();
             }
             if (stealCount > 0)
             {
@@ -162,64 +166,13 @@ public class Stealer : Unit
         }
         else if (character.flipX == false) // 아군이 적군에게
         {
-            Debug.Log("아군스틸러 실행됨");
-            //Debug.Log("아군스틸러 실행됨2");
-            GameObject target_unit = null;
-            GameObject target_unit2 = null;
-            GameObject target_place;
-            isPlayer = false;
+            isPlayer = true;
             if (isBackCheck)
             {
-                Debug.Log("if문 들어옴");
-                target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
-                target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                if (target_unit != null)
-                {
-                    if (target_unit.GetComponent<Stealer>() == null)
-                    {
-                        if (target_unit.GetComponent<Unit>().valid)
-                        {
-                            target_unit2 = target_unit;
-                        }
-                    }
-                }
-                else if (target_unit == null)
-                {
-                    target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
-                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                    if (target_unit == null)
-                        target_unit2 = target_unit;
-                    else
-                    {
-                        if (target_unit.GetComponent<Stealer>() == null)
-                        {
-                            if (target_unit.GetComponent<Unit>().valid)
-                            {
-                                target_unit2 = target_unit;
-                            }
-                        }
-                    }
-
-                }
+                BackCheck();
             }
             else {
-                Debug.Log("플레이어");
-                for (int i = 0; i < 2; i++)
-                {
-                    target_place = GameManager.placeManager.getPlaceObject(false, this._currPlace.x, i);
-                    target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
-                    if (target_unit != null)
-                    {
-                        if (target_unit.GetComponent<Stealer>() == null)
-                        {
-                            if (target_unit.GetComponent<Unit>().valid)
-                            {
-                                target_unit2 = target_unit;
-                                break;
-                            }
-                        }
-                    }
-                }
+                isCheck();
             }
             if (stealCount > 0)
             {
