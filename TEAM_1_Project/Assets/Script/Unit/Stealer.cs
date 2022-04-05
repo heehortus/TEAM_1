@@ -51,12 +51,7 @@ public class Stealer : Unit
     }
     void BackCheck()
     {
-        bool player;
-        if (isPlayer)
-            player = !_currPlace.isPlayerPlace;
-        else
-            player = _currPlace.isPlayerPlace;
-        target_place = GameManager.placeManager.getPlaceObject(player, this._currPlace.x, 1);
+        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
         target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
         if (target_unit != null)
         {
@@ -70,7 +65,7 @@ public class Stealer : Unit
         }
         else if (target_unit == null)
         {
-            target_place = GameManager.placeManager.getPlaceObject(player, this._currPlace.x, 0);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit == null)
                 target_unit2 = target_unit;
@@ -89,14 +84,9 @@ public class Stealer : Unit
 
     void isCheck()
     {
-        bool player;
-        if (isPlayer)
-            player = !_currPlace.isPlayerPlace;
-        else
-            player = _currPlace.isPlayerPlace;
         for (int i = 0; i < 2; i++)
         {
-            target_place = GameManager.placeManager.getPlaceObject(player, this._currPlace.x, i);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, i);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit != null)
             {
@@ -121,12 +111,7 @@ public class Stealer : Unit
         }
         if (character.flipX == true) // 적군이 아군에게
         {
-            //Debug.Log("적군스틸러 실행됨");
-            //Debug.Log("적군스틸러 실행됨2");
-            isPlayer = true;
-            GameObject target_unit = null;
-            GameObject target_unit2 = null;
-            GameObject target_place;
+
             isPlayer = false;
             if (isBackCheck)
             {
@@ -181,12 +166,7 @@ public class Stealer : Unit
         }
         else if (character.flipX == false) // 아군이 적군에게
         {
-            Debug.Log("아군스틸러 실행됨");
-            //Debug.Log("아군스틸러 실행됨2");
-            GameObject target_unit = null;
-            GameObject target_unit2 = null;
-            GameObject target_place;
-            isPlayer = false;
+            isPlayer = true;
             if (isBackCheck)
             {
                 BackCheck();
