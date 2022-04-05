@@ -29,14 +29,10 @@ public class Seed : Unit, IStoledUnit
     public void getStoled(float time, Stealer stealer)
     {
         GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, stealer, this);
-        getStoled(time);
-    }
-    public void getStoled(float time)
-    {
         StartCoroutine(CoAttackedOrUsed(this, time));
-        GameManager.sceneManager.getPlayer(_currPlace)._currResource += myresource;
+        GameManager.sceneManager.getPlayer(stealer._currPlace)._currResource += myresource;
         if (isSeedStealDamage)
-            GameManager.sceneManager.getEnemy(_currPlace)._currHP -= 2;
+            GameManager.sceneManager.getEnemy(stealer._currPlace)._currHP -= 2;
         stealCount++;
         GameManager.unitManager.isSteal = true;
     }
