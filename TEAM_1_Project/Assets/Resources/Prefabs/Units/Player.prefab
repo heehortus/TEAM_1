@@ -1529,13 +1529,6 @@ MonoBehaviour:
   _maxHP: 15
   _maxResource: 30
   _currResource: 0
-  noHaveUnit:
-  - SeedUnit2
-  - SeedUnit3
-  - BoomUnit2
-  - BoomUnit3
-  - StealerUnit2
-  - StealerUnit3
   BgmSound: 0
   EffectSound: 0
 --- !u!1 &7955581971760514796
