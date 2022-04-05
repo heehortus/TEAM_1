@@ -11,7 +11,7 @@ public class Boom : Unit
     [SerializeField] public int enemymaxCount;
     public Define.BoomState currState = Define.BoomState.nothing;
     
-    private ParticleSystem particleSystem = null;
+    private ParticleSystem particle = null;
     float _effectTime = 1f;
     public override float Ability()
     {
@@ -31,18 +31,26 @@ public class Boom : Unit
 
     public void boomAnimation()
     {
-        particleSystem?.Play();
-        if (particleSystem != null)
-            particleSystem?.Play();
+        if (particle != null)
+        {
+            particle.Play();
+        }
     }
+
     private void Start()
     {
         base.Init();
         Level();
-        particleSystem = GetComponent<ParticleSystem>() ?? null;
-        particleSystem.Stop();
-        if (particleSystem != null)
-            particleSystem.Stop();
+        try
+        {
+            particle = GetComponent<ParticleSystem>() ?? null;
+        }
+        catch
+        {
+            Debug.Log("이펙트가 없습니다.");
+        }
+
+        particle?.Stop();
     }
     private void Update()
     {
