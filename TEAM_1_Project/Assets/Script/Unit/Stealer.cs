@@ -23,6 +23,7 @@ public class Stealer : Unit
         base.Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
+        skill.unit = this;
         Level();
     }
     private void Update()
@@ -160,7 +161,6 @@ public class Stealer : Unit
                             }
                         }
                     }
-
                 }
             }
             else

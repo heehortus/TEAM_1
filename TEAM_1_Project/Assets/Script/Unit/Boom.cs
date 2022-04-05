@@ -15,8 +15,6 @@ public class Boom : Unit
     float _effectTime = 1f;
     public override float Ability()
     {
-        if (skill != null)
-            skill.Skiil();
         GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
         if (damage <= maxDamage)
         {
