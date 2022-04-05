@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : Unit//, IStoledUnit
+public class Boom : Unit, IStoledUnit
 {
     public int damage;
     [SerializeField] int growth;

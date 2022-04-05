@@ -55,8 +55,6 @@ public class Stealer : Unit
         {
             skill.Skiil();
         }
-        //Debug.Log("적군스틸러 실행됨");
-        //Debug.Log("적군스틸러 실행됨2");
         isPlayer = true;
         GameObject target_unit = null;
         GameObject target_unit2 = null;
