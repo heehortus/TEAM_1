@@ -75,6 +75,4 @@ public class Seed : Unit, IStoledUnit
                 break;
         }
     }
-
-
 }
