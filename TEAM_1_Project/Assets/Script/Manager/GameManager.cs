@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
         {
             m_cInstance = this;
         }
-        sceneManager.Player = GameObject.Find("Player").GetComponent<Player>();
     }
     private void Start()
     {

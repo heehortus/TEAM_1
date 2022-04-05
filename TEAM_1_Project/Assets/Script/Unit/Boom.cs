@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : Unit
+public class Boom : Unit//, IStoledUnit
 {
     public int damage;
     [SerializeField] int growth;
@@ -35,6 +35,23 @@ public class Boom : Unit
         {
             particle.Play();
         }
+    }
+
+    public void getStoled(float time, Stealer stealer)
+    {
+        GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, stealer, this);
+        getStoled(time);
+    }
+
+    public void getStoled(float time)
+    {
+        StartCoroutine(CoAttackedOrUsed(this, time));
+        if (isBoomDamageMiss)
+        {
+            StartCoroutine(CoAttackedOrUsed(this, time));
+            GameManager.sceneManager.getPlayer(_currPlace)._currHP -= damage;
+        }
+        GameManager.unitManager.isSteal = true;
     }
 
     private void Start()
