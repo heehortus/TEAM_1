@@ -114,57 +114,54 @@ public class Stealer : Unit
         {
             skill.Skiil();
         }
-
-        if (character.flipX) // 적군이 아군에게
+        
+        isPlayer = false;
+        if (isBackCheck)
         {
-            isPlayer = false;
+            BackCheck();
+        }
+        else
+        {
+            //Debug.Log("플레이어");
+            isCheck();
+        }
+
+        if (stealCount > 0)
+        {
+            Debug.Log("Ddd");
+            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+            {
+                ret = _attackTime;
+                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+            }
+        }
+        else
+        {
+            isPlayer = true;
             if (isBackCheck)
             {
                 BackCheck();
             }
             else
             {
-                //Debug.Log("플레이어");
                 isCheck();
             }
+        }
 
-            if (stealCount > 0)
+        if (stealCount > 0)
+        {
+            Debug.Log("Ddd");
+            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
             {
-                Debug.Log("Ddd");
-                if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-                {
-                    ret = _attackTime;
-                    GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
-                }
+                ret = _attackTime;
+                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
             else
             {
-                isPlayer = true;
-                if (isBackCheck)
-                {
-                    BackCheck();
-                }
-                else
-                {
-                    isCheck();
-                }
-            }
-
-            if (stealCount > 0)
-            {
-                Debug.Log("Ddd");
-                if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-                {
-                    ret = _attackTime;
-                    GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
-
-                    GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
-                }
-                else
-                {
-                    (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
-                    ret = _stealTime;
-                }
+                (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                ret = _stealTime;
             }
         }
 
