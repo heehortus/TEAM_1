@@ -6,6 +6,7 @@ public class GameData
 
     public GameData()
     {
+        stageInfo = new StageInfo();
         possibleStage = new bool[4,4];
         selectStage = (1, 1);
         possibleStage[1,1] = true;
@@ -39,6 +40,8 @@ public class GameData
     public bool[,] possibleStage { get; set; }
     
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
+
+    public StageInfo stageInfo { get; private set; }
 
     public List<string> noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
 }
