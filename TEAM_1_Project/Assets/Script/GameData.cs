@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GameData
 {
@@ -6,24 +7,40 @@ public class GameData
 
     public GameData()
     {
-        possibleStage = new bool[4,4];
+        //possibleStage = new bool[4,4];
         selectStage = (1, 1);
-        possibleStage[1,1] = true;
-        possibleStage[2,1] = true;
-        possibleStage[3,1] = true;
+        //possibleStage[1,1] = true;
+        //possibleStage[2,1] = true;
+        //possibleStage[3,1] = true;
+
+        //possibleStage1 = new List<bool> { false, true, false, false };
+        //possibleStage2 = new List<bool> { false, false, false, false };
+        //possibleStage3 = new List<bool> { false, false, false, false };
+
         _unitDic.Add("SeedUnit1", true);
-        _unitDic.Add("SeedUnit2", false);
-        _unitDic.Add("SeedUnit3", false);
+        _unitDic.Add("SeedUnit2", true);
+        _unitDic.Add("SeedUnit3", true);
 
         _unitDic.Add("BoomUnit1", true);
-        _unitDic.Add("BoomUnit2", false);
-        _unitDic.Add("BoomUnit3", false);
+        _unitDic.Add("BoomUnit2", true);
+        _unitDic.Add("BoomUnit3", true);
 
         _unitDic.Add("StealerUnit1", true);
-        _unitDic.Add("StealerUnit2", false);
-        _unitDic.Add("StealerUnit3", false);
+        _unitDic.Add("StealerUnit2", true);
+        _unitDic.Add("StealerUnit3", true);
 
-        _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
+        //noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
+    }
+    public void Clear()
+    {
+        possibleStage1 = new List<bool> { false, true, false, false };
+        possibleStage2 = new List<bool> { false, false, false, false };
+        possibleStage3 = new List<bool> { false, false, false, false };
+        noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
+        foreach (var unit in noHaveUnit)
+        {
+            GameData.GetInstance()._unitDic[unit] = false;
+        }
     }
     public static GameData GetInstance()
     {
@@ -35,10 +52,13 @@ public class GameData
     }
 
     public (int, int) selectStage;
-    
-    public bool[,] possibleStage { get; set; }
-    
+
+    //public bool[,] possibleStage;
+    public List<bool> possibleStage1;
+    public List<bool> possibleStage2;
+    public List<bool> possibleStage3;
+
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
 
-    public List<string> noHaveUnit = new List<string>() { "SeedUnit2", "SeedUnit3", "BoomUnit2", "BoomUnit3", "StealerUnit2", "StealerUnit3" };
+    public List<string> noHaveUnit;
 }
