@@ -35,6 +35,7 @@ public class SaveManager
                 string str = JsonUtility.ToJson(GameData.GetInstance());
                 writer.Write(str);
             }
+            return;
         }
 
         string file = File.ReadAllText(path);
