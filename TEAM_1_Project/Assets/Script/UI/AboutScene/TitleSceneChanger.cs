@@ -16,6 +16,7 @@ public class TitleSceneChanger : MonoBehaviour
         {
             DontDestroyOnLoad(audio);
         }
+        SaveManager.Save.LoadInfo();
     }
     void Update()
     {
