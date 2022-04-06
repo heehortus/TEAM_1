@@ -1693,7 +1693,7 @@ MonoBehaviour:
   basicResource: 10
   UI_Parent: {fileID: 0}
   Unit_Parent: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 2028919084}
   Enemy: {fileID: 92526111}
   _maxMoveCount: 1
   _currMoveCount: 0
@@ -3919,6 +3919,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8941362501382848084, guid: 86f0c9b3fe254d7499b3aa03b102971e, type: 3}
   m_PrefabInstance: {fileID: 2028919082}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2028919084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7726435166808289208, guid: 86f0c9b3fe254d7499b3aa03b102971e, type: 3}
+  m_PrefabInstance: {fileID: 2028919082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef7cd13035b6c646b54de66e94c235c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112294915
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,6 @@ public class UnitManager : MonoBehaviour
 {
     public void Init()
     {
-
     }
     public void OnUpdate()
     {
