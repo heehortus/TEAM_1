@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class SaveManager
 {
-    static string path = "Assets/Resources/Save/save.json";
-
     static SaveManager _instance = null;
     public static SaveManager Save
     {
@@ -23,23 +21,37 @@ public class SaveManager
     public void SaveInfo()
     {
         string str = JsonUtility.ToJson(GameData.GetInstance());
-        using (var writer = File.CreateText("Assets/Resources/Save/save.json"))
-        {
-            writer.Write(str);
-        }
+        File.WriteAllText($"{Application.persistentDataPath}/save.json", str);
     }
     public void LoadInfo()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("Save/save");
-        GameData data = JsonUtility.FromJson<GameData>(textAsset.text);
-        GameData.GetInstance().noHaveUnit = data.noHaveUnit.ToList();
-        GameData.GetInstance().possibleStage1 = data.possibleStage1.ToList();
-        GameData.GetInstance().possibleStage2 = data.possibleStage2.ToList();
-        GameData.GetInstance().possibleStage3 = data.possibleStage3.ToList();
-        foreach(var unit in data.noHaveUnit)
+        
+        string path = $"{Application.persistentDataPath}/save.json";
+        if (File.Exists(path) == false)
         {
+            using (var writer = File.CreateText(path))
+            {
+                GameData.GetInstance().Clear();
+                string str = JsonUtility.ToJson(GameData.GetInstance());
+                writer.Write(str);
+            }
+        }
+
+        string file = File.ReadAllText(path);
+        GameData data = JsonUtility.FromJson<GameData>(file);
+
+        foreach (var unit in data.noHaveUnit)
+        {
+            GameData.GetInstance().noHaveUnit.Add(unit);
             GameData.GetInstance()._unitDic[unit] = false;
         }
+        foreach (var st in data.possibleStage1)
+            GameData.GetInstance().possibleStage1.Add(st);
+        foreach (var st in data.possibleStage2)
+            GameData.GetInstance().possibleStage2.Add(st);
+        foreach (var st in data.possibleStage3)
+            GameData.GetInstance().possibleStage3.Add(st);
+
     }
     public void ClearInfo()
     {
