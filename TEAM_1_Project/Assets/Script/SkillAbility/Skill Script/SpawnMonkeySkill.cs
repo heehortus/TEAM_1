@@ -23,7 +23,7 @@ public class SpawnMonkeySkill : Skill
         {
             int x = Random.Range(0, 2);
             int y = Random.Range(0, 2);
-            if (unit._name == "LastBoos")
+            if (unit._name == "LastBoss")
             {
                 GameManager.sceneManager.getPlayer(unit._currPlace)._currHP -= 2;
                 GameObject target_Place = GameManager.placeManager.getPlaceObject(unit._currPlace.isPlayerPlace, x, y);
