@@ -38,5 +38,6 @@ public class UserPlayer : Player
             }
             //gameData.possibleStage[gameData.selectStage.Item1 + 1, 1] = true;
         }
+        SaveManager.Save.SaveInfo();
     }
 }
