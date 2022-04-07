@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public string _nickName;
     public int _maxHP;
+    [SerializeField]
     private int currHP;
     public int _currHP {
         get {return currHP;}
@@ -41,22 +42,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _currHP = _maxHP;
-        /*
-        _unitDic.Add("SeedUnit1", true);
-        _unitDic.Add("SeedUnit2", false);
-        _unitDic.Add("SeedUnit3", false);
-
-        _unitDic.Add("BoomUnit1", true);
-        _unitDic.Add("BoomUnit2", true);
-        _unitDic.Add("BoomUnit3", false);
-
-        _unitDic.Add("StealerUnit1", true);
-        _unitDic.Add("StealerUnit2", false);
-        _unitDic.Add("StealerUnit3", false);
-
-        _unitDic.Add("Unit", false); // 일단 UnitFactory에 있는 유닛들만 임시로 보유하도록 설정
-        */
-
         _currHP = _maxHP;
         _currResource = 10;
     }
@@ -89,11 +74,30 @@ public class Player : MonoBehaviour
         var gameData = GameData.GetInstance();
         if (gameData.selectStage.Item2 <= 2)
         {
-            gameData.possibleStage[gameData.selectStage.Item1, gameData.selectStage.Item2 + 1] = true;
+            if (gameData.selectStage.Item1 == 1)
+            {
+                gameData.possibleStage1[gameData.selectStage.Item2 + 1] = true;
+            }
+            else if (gameData.selectStage.Item1 == 2)
+            {
+                gameData.possibleStage2[gameData.selectStage.Item2 + 1] = true;
+            }
+            else if (gameData.selectStage.Item1 == 3)
+            {
+                gameData.possibleStage3[gameData.selectStage.Item2 + 1] = true;
+            }
         }
         else if (gameData.selectStage.Item1 <= 2)
         {
-            gameData.possibleStage[gameData.selectStage.Item1 + 1, 1] = true;
+            if (gameData.selectStage.Item1 == 1)
+            {
+                gameData.possibleStage2[1] = true;
+            }
+            else if (gameData.selectStage.Item1 == 2)
+            {
+                gameData.possibleStage3[1] = true;
+            }
+            //gameData.possibleStage[gameData.selectStage.Item1 + 1, 1] = true;
         }
     }
 }

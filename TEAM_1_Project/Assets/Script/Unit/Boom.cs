@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : Unit
+public class Boom : Unit, IStoledUnit
 {
     public int damage;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
-
+    [SerializeField] public int playermaxCount;
+    [SerializeField] public int enemymaxCount;
     public Define.BoomState currState = Define.BoomState.nothing;
     
-    private ParticleSystem particleSystem = null;
+    private ParticleSystem particle = null;
     float _effectTime = 1f;
     public override float Ability()
     {
-        if (skill != null)
-            skill.Skiil();
         GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
         if (damage <= maxDamage)
         {
@@ -30,14 +29,39 @@ public class Boom : Unit
 
     public void boomAnimation()
     {
-        particleSystem?.Play();
+        if (particle != null)
+        {
+            particle.Play();
+        }
     }
+
+    public void getStoled(float time, Stealer stealer)
+    {
+        GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, stealer, this);
+        
+        StartCoroutine(CoAttackedOrUsed(this, time));
+        if (!isBoomDamageMiss)
+        {
+            StartCoroutine(CoAttackedOrUsed(this, time));
+            GameManager.sceneManager.getPlayer(stealer._currPlace)._currHP -= damage;
+        }
+        GameManager.unitManager.isSteal = true;
+    }
+
     private void Start()
     {
         base.Init();
         Level();
-        particleSystem = GetComponent<ParticleSystem>() ?? null;
-        particleSystem.Stop();
+        try
+        {
+            particle = GetComponent<ParticleSystem>() ?? null;
+        }
+        catch
+        {
+            Debug.Log("이펙트가 없습니다.");
+        }
+        if (particle != null)
+            particle.Stop();
     }
     private void Update()
     {

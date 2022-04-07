@@ -35,18 +35,59 @@ public static class UnitFactory
             case "StealerUnit3":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("Stealer3"));
                 break;
+            case "AgentMonkeyUnit":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("AgentMonkey"));
+                break;
+            case "CheeringMonkeyUnit":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("CheeringMonkey"));
+                break;
+            case "FruitMonkeyUnit":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("FruitMonkey"));
+                break;
+
+
             case "BoomUnit1":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("Boom1"));
                 break;
             case "BoomUnit2":
-                unit = Object.Instantiate(ResourceManager.LoadUnit("Boom2"));
+                if(ResourceManager.LoadUnit("Boom2").GetComponent<Boom>() != null)
+                {
+                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount > 0 && _place.isPlayerPlace)
+                         unit = Object.Instantiate(ResourceManager.LoadUnit("Boom2"));
+                    
+                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount <= 0 && _place.isPlayerPlace)
+                        unit = null;
+                    
+                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount > 0 && !_place.isPlayerPlace)
+                        unit = Object.Instantiate(ResourceManager.LoadUnit("Boom2"));
+                    
+                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount <= 0 && !_place.isPlayerPlace)
+                        unit = null;
+                }
                 break;
             case "BoomUnit3":
-                unit = Object.Instantiate(ResourceManager.LoadUnit("Boom3"));
+                if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>() != null)
+                {
+                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount > 0 && _place.isPlayerPlace)
+                        unit = Object.Instantiate(ResourceManager.LoadUnit("Boom3"));
+
+                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount <= 0 && _place.isPlayerPlace)
+                        unit = null;
+
+                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount > 0 && !_place.isPlayerPlace)
+                        unit = Object.Instantiate(ResourceManager.LoadUnit("Boom3"));
+
+                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount <= 0 && !_place.isPlayerPlace)
+                        unit = null;
+                }
                 break;
                   
             default :
                 return unit;
+        }
+        if(unit == null)
+        {
+            return null;
         }
         unit.transform.SetParent(GameManager.sceneManager.Unit_Parent.transform);
         var script = unit.GetComponent<UnitInterface>();

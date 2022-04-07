@@ -23,6 +23,11 @@ public class ChooseUnitButton : MonoBehaviour
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
             return;
         }
+
+        if (GameManager.inputManager._currSelectedButton == this)
+        {
+            Debug.Log("선택 해제");
+        }
         GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.CREATEUNIT;
         GameManager.inputManager._currSelectedButton = this;
         Debug.Log((idx + 1) + "번째 유닛이 선택되었습니다.");

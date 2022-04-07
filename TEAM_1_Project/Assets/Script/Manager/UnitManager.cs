@@ -7,7 +7,6 @@ public class UnitManager : MonoBehaviour
 {
     public void Init()
     {
-
     }
     public void OnUpdate()
     {
@@ -26,6 +25,8 @@ public class UnitManager : MonoBehaviour
     public bool isPlace;
     public bool isSteal = false;
     public int count = 0;
+    int playerboomCount = 3;
+    int enemybommCount = 3;
     int unitRemoveCount;
     public void UnitMoveFunc(PlaceObject prev,PlaceObject next)
     {
@@ -60,11 +61,27 @@ public class UnitManager : MonoBehaviour
         GameObject unit = null;
         if(!_place.isEmpty) return null;
         unit = UnitFactory.getUnit(name, _place);
+        if(unit == null)
+        {
+            Debug.Log("더 이상 설치할 수 없습니다");
+            return null;
+        }
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit.GetComponent<Unit>());
         GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource -= GameManager.inputManager._currSelectedButton._cost;
         GameManager.uiManager.ChangeInfoBar();
+        if (unit.GetComponent<Boom>() != null && name != "BoomUnit1")
+        {
+            if (_place.isPlayerPlace)
+                playerboomCount--;
+            else if (!_place.isPlayerPlace)
+                enemybommCount--;
+            if (unit.GetComponent<Unit>()._currPlace.isPlayerPlace)
+                ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount = playerboomCount;
+            else
+                ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount = enemybommCount;
+        }
         return unit;
     }
 
