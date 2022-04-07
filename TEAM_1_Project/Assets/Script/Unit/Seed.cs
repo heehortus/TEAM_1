@@ -7,7 +7,7 @@ public class Seed : Unit
     public int myresource;
     public int _growth;
     public int maxLevel = 3;
-
+    public SpriteRenderer seedSprite;
     float _effectTime = 1f;
 
     public Define.SeedState currState = Define.SeedState.nothing;
@@ -27,6 +27,7 @@ public class Seed : Unit
     }
     private void Start()
     {
+        seedSprite = GetComponent<SpriteRenderer>();
         base.Init();
     }
 
