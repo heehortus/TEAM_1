@@ -23,8 +23,8 @@ public class Stealer : Unit
         Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
-        skill.unit = this;
-        Level();
+        if(skill != null)
+            skill.unit = this;
     }
 
     private void Update()
@@ -124,28 +124,6 @@ public class Stealer : Unit
             //Debug.Log("플레이어");
             isCheck();
         }
-
-        if (stealCount > 0)
-        {
-            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-            {
-                ret = _attackTime;
-                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
-            }
-        }
-        else
-        {
-            isPlayer = true;
-            if (isBackCheck)
-            {
-                BackCheck();
-            }
-            else
-            {
-                isCheck();
-            }
-        }
-
         if (stealCount > 0)
         {
             if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
@@ -171,7 +149,7 @@ public class Stealer : Unit
         switch (level)
         {
             case 1:
-                attackpower = 30;
+                attackpower = 3;
                 stealCoast = 1;
                 break;
             case 2:

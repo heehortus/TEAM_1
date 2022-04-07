@@ -32,7 +32,6 @@ public class BattleManager : MonoBehaviour
     IEnumerator BattleCoroutine()
     {
         BattleLogic();
-        Debug.Log(GameManager.unitManager.UnitList);
         for(int i = 0; i < GameManager.unitManager.UnitList.Count; i++)
         {
             yield return new WaitForSeconds(GameManager.unitManager.doBattle(i));

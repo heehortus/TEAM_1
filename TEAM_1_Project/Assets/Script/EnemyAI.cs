@@ -29,6 +29,7 @@ public class EnemyAI
         {
             var item2 = iterator.Current.GetComponent<PlaceObject>();
             int x = item2.x, y = item2.y;
+            Debug.Log(item);
             var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
             unitManager.CreateUnit(placeObject, item);
             iterator.MoveNext();

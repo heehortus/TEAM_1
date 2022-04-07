@@ -7,15 +7,6 @@ public static class UnitFactory
 
         GameObject unit = null;
 
-        if (_place.isPlayerPlace)
-        {
-            Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
-        }
-        else
-        {
-            Debug.Log($"Enemy 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
-        }
-
         switch (name) {
             case "SeedUnit1":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("Seed1"));
@@ -41,10 +32,7 @@ public static class UnitFactory
             case "TwoMonkey":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("TwoMonkey"));
                 break;
-            case "AgentMonkeyUnit":
-                unit = Object.Instantiate(ResourceManager.LoadUnit("AgentMonkey"));
-                break;
-            case "CheeringMonkeyUnit":
+            case "CheeringMonkey":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("CheeringMonkey"));
                 break;
             case "FuckMonkey":
@@ -56,7 +44,7 @@ public static class UnitFactory
             case "MartialMonkey":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("MartialMonkey"));
                 break;
-            case "FruitMonkeyUnit":
+            case "FruitMonkey":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("FruitMonkey"));
                 break;
             case "OfficialMonkey":
@@ -111,7 +99,16 @@ public static class UnitFactory
         }
         if(unit == null)
         {
+            Debug.Log("설치에 실패하였습니다.");
             return null;
+        }
+        if (_place.isPlayerPlace)
+        {
+            Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
+        }
+        else
+        {
+            Debug.Log($"Enemy 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");
         }
         unit.transform.SetParent(GameManager.sceneManager.Unit_Parent.transform);
         var script = unit.GetComponent<UnitInterface>();
