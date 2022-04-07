@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public static class StageInfo
@@ -17,6 +17,7 @@ public static class StageInfo
         {
             int i = int.Parse(item.stage[0].ToString());
             int j = int.Parse(item.stage[2].ToString());
+            stageEnemyUnitList[i, j] = new List<string>();
             if (!(i == 1 && j == 1))
             {
                 int x = j>1 ? i : i - 1;
@@ -32,13 +33,14 @@ public static class StageInfo
     }
 }
 
+[Serializable]
 public class MonkeyData
 {
     public StageAddUnitList[] stageAddUnitList;
 }
 
-public class StageAddUnitList
-{
+[Serializable]
+public class StageAddUnitList {
     public string stage;
     public string[] Units;
 }

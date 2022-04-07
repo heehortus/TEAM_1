@@ -18,7 +18,15 @@ namespace Script.Test
         {
             var list = StageInfo.getStageInfo();
             yield return null;
-            Assert.AreEqual(list[1, 1].First(),"OneMonkey");
+            Assert.AreEqual(true,list[1, 1].Contains("OneMonkey"));
+        }
+        [UnityTest]
+        public IEnumerator LoadEnemyUnitTest3()
+        {
+            var list = StageInfo.getStageInfo();
+            yield return null;
+            Assert.AreEqual(true,list[1, 2].Contains("OneMonkey"));
+            Assert.AreEqual(true,list[1, 2].Contains("TwoMonkey"));
         }
     }
 }
