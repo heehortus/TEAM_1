@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nickName: 
   _maxHP: 15
+  currHP: 0
   _maxResource: 30
   _currResource: 0
   BgmSound: 0
@@ -4439,8 +4440,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Place Turn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 100a8e2ff70e24d48a54af4c70c31965, type: 2}
+  m_sharedMaterial: {fileID: -7481556495914575023, guid: 100a8e2ff70e24d48a54af4c70c31965, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
