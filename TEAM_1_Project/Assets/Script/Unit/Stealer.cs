@@ -108,7 +108,6 @@ public class Stealer : Unit
 
     public override float Ability()
     {
-        Debug.Log("Dd");
         float ret = 0;
         if (skill != null && _name != "Stealer1")
         {
@@ -128,7 +127,6 @@ public class Stealer : Unit
 
         if (stealCount > 0)
         {
-            Debug.Log("Ddd");
             if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
             {
                 ret = _attackTime;
@@ -150,7 +148,6 @@ public class Stealer : Unit
 
         if (stealCount > 0)
         {
-            Debug.Log("Ddd");
             if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
             {
                 ret = _attackTime;

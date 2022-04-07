@@ -75,5 +75,15 @@ public class PlaceManager : MonoBehaviour
         }
         return null;
     }
+    
+    public List<GameObject> getEmptyPlaceObject(bool _isPlayerPlace)
+    {
+        var list = new List<GameObject>();
+        foreach(var item in listPlace) {
+            if(item.GetComponent<PlaceObject>().isEmpty && item.GetComponent<PlaceObject>().isPlayerPlace == _isPlayerPlace)
+                list.Add(item);
+        }
+        return list;
+    }
 
 }

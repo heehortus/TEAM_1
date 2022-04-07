@@ -10,7 +10,7 @@ public class GameData
     public GameData()
     {
         //possibleStage = new bool[4,4];
-        selectStage = (2, 3);
+        selectStage = (1, 1);
         //possibleStage[1,1] = true;
         //possibleStage[2,1] = true;
         //possibleStage[3,1] = true;
