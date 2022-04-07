@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class GameData
 {
     private static GameData instance = null;
@@ -54,11 +56,11 @@ public class GameData
     public (int, int) selectStage;
 
     //public bool[,] possibleStage;
-    public List<bool> possibleStage1;
-    public List<bool> possibleStage2;
-    public List<bool> possibleStage3;
+    public List<bool> possibleStage1 = new List<bool>();
+    public List<bool> possibleStage2 = new List<bool>();
+    public List<bool> possibleStage3 = new List<bool>();
 
     public Dictionary<string, bool> _unitDic = new Dictionary<string, bool>();
 
-    public List<string> noHaveUnit;
+    public List<string> noHaveUnit = new List<string>();
 }
