@@ -76,6 +76,7 @@ public class SceneManager : MonoBehaviour
 
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
+        if (placeObject.isPlayerPlace == false) return;
         var click_state = _inputManager.e_CLICKERSTATE;
 
         if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
