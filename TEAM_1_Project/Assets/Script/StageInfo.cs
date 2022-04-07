@@ -7,7 +7,7 @@ public static class StageInfo
 {
     private const int MaxFirstStage = 3;
     private const int MaxSecondStage = 3;
-    public static List<string>[,] getStageInfo()
+    public static List<string>[,] getStageUnitInfo()
     {
         var stageEnemyUnitList = new List<string>[4, 4];
         string path = "monkeysList";
@@ -30,6 +30,11 @@ public static class StageInfo
             }
         }
         return stageEnemyUnitList;
+    }
+
+    public static List<string> getStageUnitInfo(int first, int second)
+    {
+        return getStageUnitInfo()[first,second];
     }
 }
 

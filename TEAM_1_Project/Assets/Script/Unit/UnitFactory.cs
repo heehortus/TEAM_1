@@ -35,14 +35,38 @@ public static class UnitFactory
             case "StealerUnit3":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("Stealer3"));
                 break;
+            case "OneMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("OneMonkey"));
+                break;
+            case "TwoMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("TwoMonkey"));
+                break;
             case "AgentMonkeyUnit":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("AgentMonkey"));
                 break;
             case "CheeringMonkeyUnit":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("CheeringMonkey"));
                 break;
+            case "FuckMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("FuckMonkey"));
+                break;
+            case "AgentMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("AgentMonkey"));
+                break;
+            case "MartialMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("MartialMonkey"));
+                break;
             case "FruitMonkeyUnit":
                 unit = Object.Instantiate(ResourceManager.LoadUnit("FruitMonkey"));
+                break;
+            case "OfficialMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("OfficialMonkey"));
+                break;
+            case "EclipseMonkey":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("EclipseMonkey"));
+                break;
+            case "LastBoss":
+                unit = Object.Instantiate(ResourceManager.LoadUnit("LastBoss"));
                 break;
 
 

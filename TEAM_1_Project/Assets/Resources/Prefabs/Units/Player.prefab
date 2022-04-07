@@ -247,7 +247,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6449675039532129337}
   m_Bounds:
-    m_Center: {x: -0.00045502186, y: 0.0002297163, z: 0}
+    m_Center: {x: -0.00045502186, y: 0.00022995472, z: 0}
     m_Extent: {x: 0.24454501, y: 0.30715996, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -354,8 +354,8 @@ MonoBehaviour:
   - {fileID: 5777127352061796767}
   - {fileID: 8138013294240786402}
   m_Bounds:
-    m_Center: {x: -0.0005749464, y: -0.0013651252, z: 0}
-    m_Extent: {x: 0.76442504, y: 0.90706515, z: 0}
+    m_Center: {x: -0.0005749464, y: -0.0013651848, z: 0}
+    m_Extent: {x: 0.76442516, y: 0.90706515, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   - {fileID: 8138013294240786402}
   - {fileID: 8028575789116826136}
   m_Bounds:
-    m_Center: {x: 0.00007003546, y: -0.0020998716, z: 0}
+    m_Center: {x: 0.00006997585, y: -0.00210011, z: 0}
     m_Extent: {x: 0.72493, y: 0.32764006, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -631,8 +631,8 @@ MonoBehaviour:
   - {fileID: 711583494045250776}
   - {fileID: 3511422688112728274}
   m_Bounds:
-    m_Center: {x: 0.00000011920929, y: -0.00000032782555, z: 0}
-    m_Extent: {x: 1.5450001, y: 0.48000008, z: 0}
+    m_Center: {x: 0.00000011920929, y: -0.0000004172325, z: 0}
+    m_Extent: {x: 1.5450003, y: 0.48000014, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6449675039532129337}
   m_Bounds:
-    m_Center: {x: 0.001969993, y: 0.00031986833, z: 0}
+    m_Center: {x: 0.001969993, y: 0.00032022595, z: 0}
     m_Extent: {x: 0.26303, y: 0.29968, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 9106631634022480391}
   m_Bounds:
-    m_Center: {x: 0.014775962, y: -0.033156767, z: 0}
+    m_Center: {x: 0.014775991, y: -0.033157095, z: 0}
     m_Extent: {x: 0.291233, y: 0.19123237, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1045,8 +1045,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 471765164550270550}
   m_Bounds:
-    m_Center: {x: 0.00024595857, y: -0.22364563, z: 0}
-    m_Extent: {x: 0.30353498, y: 0.16886497, z: 0}
+    m_Center: {x: 0.00024595857, y: -0.22364561, z: 0}
+    m_Extent: {x: 0.30353498, y: 0.16886498, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6449675039532129337}
   m_Bounds:
-    m_Center: {x: 0.00065501034, y: 0.0011347234, z: 0}
+    m_Center: {x: 0.00065501034, y: 0.001135081, z: 0}
     m_Extent: {x: 0.20930502, y: 0.347075, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1427,8 +1427,8 @@ MonoBehaviour:
   - {fileID: 8028575789116826136}
   - {fileID: 6449675039532129337}
   m_Bounds:
-    m_Center: {x: 0, y: -0.0013400912, z: 0}
-    m_Extent: {x: 0.67499995, y: 0.62716985, z: 0}
+    m_Center: {x: 0, y: -0.0013399124, z: 0}
+    m_Extent: {x: 0.6750001, y: 0.62716997, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 8941362501382848084}
   - component: {fileID: 7726435166808289215}
   - component: {fileID: 7726435166808289209}
-  - component: {fileID: 7726435166808289208}
+  - component: {fileID: 6844304782662981755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c22b474444724ae79940b9af1229ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7726435166808289208
+--- !u!114 &6844304782662981755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1522,15 +1522,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7844707628883600951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef7cd13035b6c646b54de66e94c235c, type: 3}
+  m_Script: {fileID: 11500000, guid: 118572de566c4e169639f76fc0c9fc59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nickName: 
   _maxHP: 15
+  currHP: 0
   _maxResource: 30
   _currResource: 0
   BgmSound: 0
   EffectSound: 0
+  _nickName: 
 --- !u!1 &7955581971760514796
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class BattleManager : MonoBehaviour
             return;
         }
         _isBattle = true;
+        //상대 유닛 생성
+        (GameManager.sceneManager.Enemy as EnemyPlayer).enemyAI.PlaceUnits();
         StartCoroutine("BattleCoroutine");
     }
     IEnumerator BattleCoroutine()
