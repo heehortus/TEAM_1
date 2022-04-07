@@ -23,10 +23,12 @@ public class ChooseUnitButton : MonoBehaviour
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
             return;
         }
-
         if (GameManager.inputManager._currSelectedButton == this)
         {
+            GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            GameManager.inputManager._currSelectedButton = null;
             Debug.Log("선택 해제");
+            return;
         }
         GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.CREATEUNIT;
         GameManager.inputManager._currSelectedButton = this;
