@@ -18,4 +18,12 @@ public class LobbyScene : MonoBehaviour
     {
         LoadingSceneController.LoadScene("StageScene");
     }
+    public void TmpSaveInfo()
+    {
+        SaveManager.Save.SaveInfo();
+    }
+    public void TmpClearInfo()
+    {
+        SaveManager.Save.ClearInfo();
+    }
 }

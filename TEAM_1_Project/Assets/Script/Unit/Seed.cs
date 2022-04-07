@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seed : Unit
+public class Seed : Unit, IStoledUnit
 {
     public int myresource;
     public int _growth;
@@ -25,6 +25,18 @@ public class Seed : Unit
         level += 1;
         return _effectTime;
     }
+
+    public void getStoled(float time, Stealer stealer)
+    {
+        GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, stealer, this);
+        StartCoroutine(CoAttackedOrUsed(this, time));
+        GameManager.sceneManager.getPlayer(stealer._currPlace)._currResource += myresource;
+        if (isSeedStealDamage)
+            GameManager.sceneManager.getEnemy(stealer._currPlace)._currHP -= 2;
+        stealCount++;
+        GameManager.unitManager.isSteal = true;
+    }
+    
     private void Start()
     {
         seedSprite = GetComponent<SpriteRenderer>();
@@ -60,6 +72,4 @@ public class Seed : Unit
                 break;
         }
     }
-
-
 }

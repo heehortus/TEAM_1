@@ -19,15 +19,15 @@ public class StageScene : MonoBehaviour
     {
         for(int i = 1; i <= 3; i++)
         {
-            if (!_player.possibleStage[1, i])
+            if (!_player.possibleStage1[i])
             {
                 stage1Imags[i].color = Color.red;
             }
-            if (!_player.possibleStage[2, i])
+            if (!_player.possibleStage2[i])
             {
                 stage2Imags[i].color = Color.red;
             }
-            if (!_player.possibleStage[3, i])
+            if (!_player.possibleStage3[i])
             {
                 stage3Imags[i].color = Color.red;
             }
@@ -35,19 +35,19 @@ public class StageScene : MonoBehaviour
     }
     public void PushStage1Button(int num)
     {
-        if (!_player.possibleStage[1, num]) return;
+        if (!_player.possibleStage1[num]) return;
         _player.selectStage = (1, num);
         LoadingSceneController.LoadScene("BattleScene");
     }
     public void PushStage2Button(int num)
     {
-        if (!_player.possibleStage[2, num]) return;
+        if (!_player.possibleStage2[num]) return;
         _player.selectStage = (2, num);
         LoadingSceneController.LoadScene("BattleScene");
     }
     public void PushStage3Button(int num)
     {
-        if (!_player.possibleStage[3, num]) return;
+        if (!_player.possibleStage3[num]) return;
         _player.selectStage = (3, num);
         LoadingSceneController.LoadScene("BattleScene");
     }

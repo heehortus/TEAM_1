@@ -1,37 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Stealer : Unit
 {
     [SerializeField] public int attackpower;
-    [SerializeField] int stealCoast;
+    [SerializeField] private int stealCoast;
 
     [SerializeField] public bool isSteal;
     public bool isPlayer;
-    GameObject target_place;
+    private GameObject target_place;
 
-    float _attackTime = 1f;
-    float _stealTime = 1.5f;
+    private readonly float _attackTime = 1f;
+    private readonly float _stealTime = 1.5f;
     public Define.StealerState currState = Define.StealerState.nothing;
 
     public Unit target;
     public Vector3 targetPos;
-    GameObject target_unit = null;
-    GameObject target_unit2 = null;
+    private GameObject target_unit;
+    private GameObject target_unit2;
+
     private void Start()
     {
-        base.Init();
+        Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
         skill.unit = this;
         Level();
     }
+
     private void Update()
     {
         UpdateState();
     }
-    void UpdateState()
+
+    private void UpdateState()
     {
         switch (currState)
         {
@@ -49,9 +50,10 @@ public class Stealer : Unit
                 break;
         }
     }
-    void BackCheck()
+
+    private void BackCheck()
     {
-        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 1);
+        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 1);
         target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
         if (target_unit != null)
         {
@@ -65,15 +67,17 @@ public class Stealer : Unit
         }
         else if (target_unit == null)
         {
-            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, 0);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 0);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit == null)
+            {
                 target_unit2 = target_unit;
+            }
             else
             {
                 if (target_unit.GetComponent<Stealer>() == null)
                 {
-                    if (target_unit.GetComponent<   Unit>().valid)
+                    if (target_unit.GetComponent<Unit>().valid)
                     {
                         target_unit2 = target_unit;
                     }
@@ -82,11 +86,11 @@ public class Stealer : Unit
         }
     }
 
-    void isCheck()
+    private void isCheck()
     {
         for (int i = 0; i < 2; i++)
         {
-            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, this._currPlace.x, i);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, i);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit != null)
             {
@@ -101,6 +105,7 @@ public class Stealer : Unit
             }
         }
     }
+
     public override float Ability()
     {
         Debug.Log("Dd");
@@ -109,57 +114,57 @@ public class Stealer : Unit
         {
             skill.Skiil();
         }
+        
+        isPlayer = false;
+        if (isBackCheck)
+        {
+            BackCheck();
+        }
+        else
+        {
+            //Debug.Log("플레이어");
+            isCheck();
+        }
+
+        if (stealCount > 0)
+        {
+            Debug.Log("Ddd");
+            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+            {
+                ret = _attackTime;
+                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+            }
+        }
+        else
+        {
+            isPlayer = true;
             if (isBackCheck)
             {
                 BackCheck();
             }
             else
             {
-                //Debug.Log("플레이어");
                 isCheck();
             }
-            if (stealCount > 0)
+        }
+
+        if (stealCount > 0)
+        {
+            Debug.Log("Ddd");
+            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
             {
-                Debug.Log("Ddd");
-                if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-                {
-                    ret = _attackTime;
-                    GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+                ret = _attackTime;
+                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
 
-                    GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
-                }
-                else if (target_unit2.GetComponent<Seed>() != null)
-                {
-                    ret = _stealTime;
-                    Seed seed = target_unit2.GetComponent<Seed>();
-
-                    GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, this, seed);
-
-                    StartCoroutine(CoAttackedOrUsed(seed, ret));
-                    GameManager.sceneManager.getPlayer(_currPlace)._currResource += Rip_Seed(seed);
-                    if (isSeedStealDamage)
-                        GameManager.sceneManager.getEnemy(_currPlace)._currHP -= 2;
-                    stealCount++;
-                    GameManager.unitManager.isSteal = true;
-                }
-                else if (target_unit2.GetComponent<Boom>() != null)
-                {
-                    ret = _stealTime;
-                    Boom boom = target_unit2.GetComponent<Boom>();
-
-                    GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, this, boom);
-
-                    StartCoroutine(CoAttackedOrUsed(boom, ret));
-                    if (isBoomDamageMiss)
-                    {
-                        StartCoroutine(CoAttackedOrUsed(this, ret));
-                        GameManager.sceneManager.getPlayer(_currPlace)._currHP -= Rip_Boom(boom);
-                    }
-                    GameManager.unitManager.isSteal = true;
-                }
-                stealCount--;
+                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
-        
+            else
+            {
+                (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                ret = _stealTime;
+            }
+        }
+
         return ret;
     }
 
@@ -183,23 +188,11 @@ public class Stealer : Unit
         }
     }
 
-    public int Rip_Seed(Seed seed)
+    private void UpdateNothing()
     {
-        int result;
-        result = seed.myresource;
-        return result;
     }
-    public int Rip_Boom(Boom boom)
-    {
-        int result;
-        result = boom.damage;
-        return result;
-    }
-    void UpdateNothing()
-    {
 
-    }
-    void UpdateAttack()
+    private void UpdateAttack()
     {
         if (_currTime > _attackTime)
         {
@@ -207,6 +200,7 @@ public class Stealer : Unit
             _currTime = 0;
             return;
         }
+
         _currTime += Time.deltaTime;
         if (_currTime <= _attackTime / 2)
         {
@@ -217,7 +211,8 @@ public class Stealer : Unit
             gameObject.transform.localScale -= Vector3.one * _effectSize * Time.deltaTime;
         }
     }
-    void UpdateStealSead()
+
+    private void UpdateStealSead()
     {
         if (_currTime > _stealTime)
         {
@@ -225,6 +220,7 @@ public class Stealer : Unit
             _currTime = 0;
             return;
         }
+
         _currTime += Time.deltaTime;
         Vector3 dirVec = (targetPos - transform.position).normalized;
         float dist = (targetPos - transform.position).magnitude;
@@ -242,10 +238,12 @@ public class Stealer : Unit
             {
                 target.transform.position = transform.position + Vector3.left;
             }
+
             transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
         }
     }
-    void UpdateStealBoom()
+
+    private void UpdateStealBoom()
     {
         if (_currTime > _stealTime)
         {
@@ -253,6 +251,7 @@ public class Stealer : Unit
             _currTime = 0;
             return;
         }
+
         _currTime += Time.deltaTime;
         Vector3 dirVec = (targetPos - transform.position).normalized;
         float dist = (targetPos - transform.position).magnitude;
@@ -270,6 +269,7 @@ public class Stealer : Unit
             {
                 target.transform.position = transform.position + Vector3.left;
             }
+
             transform.position -= dirVec * dist * Time.deltaTime * 1.5f;
         }
     }
