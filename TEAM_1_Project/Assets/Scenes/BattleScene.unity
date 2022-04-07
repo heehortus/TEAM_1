@@ -4438,7 +4438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Place Turn
+  m_text: "\uBC30\uCE58 \uD134"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 100a8e2ff70e24d48a54af4c70c31965, type: 2}
   m_sharedMaterial: {fileID: -7481556495914575023, guid: 100a8e2ff70e24d48a54af4c70c31965, type: 2}
