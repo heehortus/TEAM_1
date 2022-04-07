@@ -20,7 +20,7 @@ public class UI_LobbyScene_Setting : MonoBehaviour
     }
     public void PushMainButton()
     {
-        LoadingSceneController.LoadScene("TitleScene");
+        LoadingSceneController.LoadScene("LobbyScene");
     }
     public void PushExitButton()
     {
