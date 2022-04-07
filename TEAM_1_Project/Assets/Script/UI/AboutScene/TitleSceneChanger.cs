@@ -18,6 +18,7 @@ public class TitleSceneChanger : MonoBehaviour
     {
         if(Input.anyKey)
         {
+            if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             LoadingSceneController.LoadScene("MainScene");
         }
     }
