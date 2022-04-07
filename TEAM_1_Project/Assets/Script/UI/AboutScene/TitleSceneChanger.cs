@@ -14,11 +14,4 @@ public class TitleSceneChanger : MonoBehaviour
         }
         SaveManager.Save.LoadInfo();
     }
-    void Update()
-    {
-        if(Input.anyKey)
-        {
-            LoadingSceneController.LoadScene("MainScene");
-        }
-    }
 }

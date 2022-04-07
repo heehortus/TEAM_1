@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class ChooseUnitButton : MonoBehaviour
     [SerializeField] int idx;
     public string _unitName; // 버튼에 유닛 이름을 부여해서 player의 유닛 리스트에 해당 유닛이 없으면 소환할 수 없음
     public int _cost;
+
+    private void OnMouseEnter()
+    {
+        
+    }
+
     private void OnMouseDown()
     {
         if (GameManager.battleManager._isBattle)
@@ -21,6 +28,13 @@ public class ChooseUnitButton : MonoBehaviour
         {
             Debug.Log("아직 획득하지 못한 유닛입니다.");
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            return;
+        }
+        if (GameManager.inputManager._currSelectedButton == this)
+        {
+            GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
+            GameManager.inputManager._currSelectedButton = null;
+            Debug.Log("선택 해제");
             return;
         }
         GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.CREATEUNIT;

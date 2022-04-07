@@ -11,6 +11,6 @@ public class UI_CurrStage : MonoBehaviour
     {
         _text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         var selectedStage = GameData.GetInstance().selectStage;
-        _text.text = $"Stage\n {selectedStage.Item1}-{selectedStage.Item2}";
+        _text.text = $"{selectedStage.Item1}-{selectedStage.Item2}";
     }
 }

@@ -51,13 +51,27 @@ public class UnitManager : MonoBehaviour
         GameManager.sceneManager._currMoveCount++;
     }//유닛 이동 명령
 
+    public bool checkResouceToCreateUnit(Player player,string name)
+    {
+        try
+        {
+            if (player._currResource < GameManager.inputManager._currSelectedButton._cost)
+            {
+                Debug.Log("자원이 부족합니다.");
+                return false;
+            }
+        }
+        catch
+        {
+            return false;
+        }
+        return true;
+    }
+
     
     public GameObject CreateUnit(PlaceObject _place,string name) { // 인자는 배치 오브젝트의 순서 (ex : (0,0), (2,0) ...) 이고 Transform이 아닙니다.
-        if(GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource< GameManager.inputManager._currSelectedButton._cost)
-        {
-            Debug.Log("자원이 부족합니다.");
-            return null;
-        }
+        var player = GameManager.sceneManager.getPlayer(_place.isPlayerPlace);
+        if (!checkResouceToCreateUnit(player, name)&&_place.isPlayerPlace) return null;
         GameObject unit = null;
         if(!_place.isEmpty) return null;
         unit = UnitFactory.getUnit(name, _place);
@@ -69,7 +83,7 @@ public class UnitManager : MonoBehaviour
         isPlace = _place.isPlayerPlace;
         _place.isEmpty = false;
         UnitList.Add(unit.GetComponent<Unit>());
-        GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource -= GameManager.inputManager._currSelectedButton._cost;
+        GameManager.sceneManager.getPlayer(_place.isPlayerPlace)._currResource -= GameManager.inputManager._currSelectedButton?._cost ?? 0;
         GameManager.uiManager.ChangeInfoBar();
         if (unit.GetComponent<Boom>() != null && name != "BoomUnit1")
         {
