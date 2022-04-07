@@ -18,9 +18,11 @@ public class UI_Victory : MonoBehaviour
             gameData.selectStage.Item2 = 1;
             LoadingSceneController.LoadScene("BattleScene");
         }
+        SaveManager.Save.SaveInfo();
     }
     public void PushLobbyButton()
     {
         LoadingSceneController.LoadScene("LobbyScene");
+        SaveManager.Save.SaveInfo();
     }
 }

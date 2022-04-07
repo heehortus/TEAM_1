@@ -14,12 +14,4 @@ public class TitleSceneChanger : MonoBehaviour
         }
         SaveManager.Save.LoadInfo();
     }
-    void Update()
-    {
-        if(Input.anyKey)
-        {
-            if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            LoadingSceneController.LoadScene("MainScene");
-        }
-    }
 }

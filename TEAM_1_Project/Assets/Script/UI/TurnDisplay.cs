@@ -16,10 +16,10 @@ public class TurnDisplay : MonoBehaviour
     }
     public void ChangeBattleToPlace()
     {
-        textMeshStr.text = "Place Turn";
+        textMeshStr.text = "배치 턴";
     }
     public void ChangePlaceToBattle()
     {
-        textMeshStr.text = "Battle Turn";
+        textMeshStr.text = "전투 턴";
     }
 }
