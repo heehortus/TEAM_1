@@ -45,6 +45,7 @@ public class Boom : Unit, IStoledUnit
             StartCoroutine(CoAttackedOrUsed(this, time));
             GameManager.sceneManager.getPlayer(stealer._currPlace)._currHP -= damage;
         }
+        boomAnimation();
         GameManager.unitManager.isSteal = true;
     }
 
