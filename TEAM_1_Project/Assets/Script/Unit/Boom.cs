@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : Unit, IStoledUnit
+public class Boom : Unit
 {
     public int damage;
+    SpriteRenderer sprite;
     [SerializeField] int growth;
     [SerializeField] int maxDamage;
     [SerializeField] public int playermaxCount;
@@ -35,22 +36,10 @@ public class Boom : Unit, IStoledUnit
         }
     }
 
-    public void getStoled(float time, Stealer stealer)
-    {
-        GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, stealer, this);
-        
-        StartCoroutine(CoAttackedOrUsed(this, time));
-        if (!isBoomDamageMiss)
-        {
-            StartCoroutine(CoAttackedOrUsed(this, time));
-            GameManager.sceneManager.getPlayer(stealer._currPlace)._currHP -= damage;
-        }
-        GameManager.unitManager.isSteal = true;
-    }
-
     private void Start()
     {
         base.Init();
+        sprite = GetComponent<SpriteRenderer>();
         Level();
         try
         {
