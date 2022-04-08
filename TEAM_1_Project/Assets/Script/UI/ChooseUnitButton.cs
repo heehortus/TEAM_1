@@ -32,6 +32,7 @@ public class ChooseUnitButton : MonoBehaviour
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
             return;
         }
+        Audio.PlayEffect("UnitSelectButton");
         if (GameManager.inputManager._currSelectedButton == this)
         {
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;

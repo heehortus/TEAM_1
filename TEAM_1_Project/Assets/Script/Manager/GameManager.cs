@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
                 gameState = E_GAMESTATE.VICTORY;
                 if (sceneManager.finished) break;
                 sceneManager.finished = true;
+                Audio.PlayEffect("VictorySound");
                 bool isAlreadyCleared = (sceneManager.Player as UserPlayer).ClearStage();
                 uiManager.ShowVictoryUI(isAlreadyCleared);
                 break;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
                 gameState = E_GAMESTATE.DEFEAT;
                 if (sceneManager.finished) break;
                 sceneManager.finished = true;
+                Audio.PlayEffect("DefeatSound");
                 Instantiate(ResourceManager.LoadUI("UI_Defeat")).transform.SetParent(sceneManager.UI_Parent.transform);
                 break;
             case 3:

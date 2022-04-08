@@ -17,6 +17,7 @@ public class Audio : MonoBehaviour
     private void Awake()
     {
         s_instance = this;
+        Audio.PlayBgm("MainBgm");
     }
     public static void ChangeBgmSound(float value)
     {

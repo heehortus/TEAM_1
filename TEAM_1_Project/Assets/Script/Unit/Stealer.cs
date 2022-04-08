@@ -132,6 +132,7 @@ public class Stealer : Unit
                 ret = _attackTime;
                 GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
 
+                Audio.PlayEffect("AttackSound");
                 GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
             }
             else
@@ -140,6 +141,7 @@ public class Stealer : Unit
                 stealCount--;
                 try
                 {
+                    Audio.PlayEffect("StealSound");
                     var anim = transform.GetChild(0)?.GetComponent<Animator>();
                     anim.SetTrigger("attack");
                 }
