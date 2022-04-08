@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 299107e99e865de42a876b118a899b06
+guid: bb3199142c179fd4b8810cd3fe71e928
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -91,27 +91,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 54
-      y: 135
-      width: 24
-      height: 44
-    spriteID: 5689370e59a57304fabf41888259ebb6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -43, y: 54}
   - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -123,7 +102,7 @@ ScriptedImporter:
       y: 4
       width: 94
       height: 123
-    spriteID: 8c05462e8b03f114d80f634677c75c80
+    spriteID: 8cf8ab369e8632a43935fe91fa503130
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -132,28 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -58, y: -63}
-  - name: Layer 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 135
-      width: 42
-      height: 47
-    spriteID: 8181cee8a8a01ef47ab5e35b3bb7ea88
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: -16}
+    uvTransform: {x: -1, y: -2}
   characterData:
     bones: []
     parts: []
@@ -184,33 +142,13 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Layer 3
-    spriteName: Layer 3
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 5689370e59a57304fabf41888259ebb6
-    layerID: 5
-    mosaicPosition: {x: 54, y: 135}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Layer 2
     spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 8c05462e8b03f114d80f634677c75c80
+    spriteID: 8cf8ab369e8632a43935fe91fa503130
     layerID: 4
     mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 1
-    spriteName: Layer 1
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 8181cee8a8a01ef47ab5e35b3bb7ea88
-    layerID: 2
-    mosaicPosition: {x: 4, y: 135}
     flatten: 0
     isImported: 1
     isVisible: 1

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7576e2458d9b0948a95ac561d845267
+guid: dd6cbfd706a79584fac8fdfb9baae37f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -91,6 +91,27 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
+  - name: "\uB208\uBB3C"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 585
+      y: 4
+      width: 217
+      height: 245
+    spriteID: d74a017d5f8a7e74fb49ebf3b668e0d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 585, y: 4}
   - name: Layer 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -100,9 +121,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 261
-      height: 249
-    spriteID: b9278736ceacd624897b783838c10217
+      width: 573
+      height: 532
+    spriteID: 6e7bda4617b46ef4f89da318b23d43c1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -111,7 +132,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2, y: 4}
+    uvTransform: {x: -12, y: -37}
   characterData:
     bones: []
     parts: []
@@ -143,20 +164,20 @@ ScriptedImporter:
   mosaicPSDLayers: []
   rigPSDLayers:
   - name: "\uB208\uBB3C"
-    spriteName: 
+    spriteName: "\uB208\uBB3C"
     isGroup: 0
     parentIndex: -1
-    spriteID: d2682a4b3978b6d409d57e02571cc10b
+    spriteID: d74a017d5f8a7e74fb49ebf3b668e0d1
     layerID: 9
-    mosaicPosition: {x: 0, y: 0}
+    mosaicPosition: {x: 585, y: 4}
     flatten: 0
-    isImported: 0
-    isVisible: 0
+    isImported: 1
+    isVisible: 1
   - name: Layer 1
     spriteName: Layer 1
     isGroup: 0
     parentIndex: -1
-    spriteID: b9278736ceacd624897b783838c10217
+    spriteID: 6e7bda4617b46ef4f89da318b23d43c1
     layerID: 2
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
