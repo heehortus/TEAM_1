@@ -110,7 +110,21 @@ public class UnitManager : MonoBehaviour
     public float doBattle(int idx)
     {
         if (!UnitList[idx].valid) return 0;
-        return UnitList[idx].Ability();
+        if (UnitList[idx].tag == "Enemy")
+        {
+            Debug.Log("dwa");
+            if (UnitList[idx].Turn > 0)
+                return UnitList[idx].Ability();
+            else
+            {
+                UnitList[idx].Turn++;
+                return 0;
+            }
+        }
+        else
+        {
+            return UnitList[idx].Ability();
+        }
     }
     public void RemoveUnits()
     {

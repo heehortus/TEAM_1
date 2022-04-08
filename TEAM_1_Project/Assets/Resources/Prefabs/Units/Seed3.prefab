@@ -115,14 +115,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUnitClick: 0
-  coast: 7
-  level: 0
+  coast: 10
+  level: 3
   character: {fileID: 0}
+  skill: {fileID: 0}
   _name: Seed3
   _speed: 3
   _unitCamp: 0
   valid: 1
-  myresource: 3
-  _growth: 3
-  maxLevel: 3
+  stealCount: 0
+  isBackCheck: 0
+  isBoomDamageMiss: 0
+  isSeedStealDamage: 0
+  isBoss: 0
+  myresource: 2
+  _growth: 5
+  maxLevel: 2
+  seedSprite: {fileID: 0}
   currState: 0

@@ -118,11 +118,17 @@ MonoBehaviour:
   coast: 7
   level: 0
   character: {fileID: 0}
+  skill: {fileID: 0}
   _name: Stealer3
   _speed: 11
   _unitCamp: 0
   valid: 1
-  attackpower: 5
+  stealCount: 0
+  isBackCheck: 0
+  isBoomDamageMiss: 0
+  isSeedStealDamage: 0
+  isBoss: 0
+  attackpower: 2
   stealCoast: 5
   isSteal: 0
   isPlayer: 0

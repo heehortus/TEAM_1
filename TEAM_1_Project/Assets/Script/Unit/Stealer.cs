@@ -23,8 +23,6 @@ public class Stealer : Unit
         Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
         level = 1;
-        if(skill != null)
-            skill.unit = this;
     }
 
     private void Update()
@@ -52,11 +50,12 @@ public class Stealer : Unit
     }
 
     private void BackCheck()
-    {
-        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 1);
+    { 
+        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 0);
         target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
         if (target_unit != null)
         {
+            Debug.Log("찾음");
             if (target_unit.GetComponent<Stealer>() == null)
             {
                 if (target_unit.GetComponent<Unit>().valid)
@@ -67,7 +66,7 @@ public class Stealer : Unit
         }
         else if (target_unit == null)
         {
-            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 0);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 1);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit == null)
             {
@@ -109,37 +108,40 @@ public class Stealer : Unit
     public override float Ability()
     {
         float ret = 0;
+        if (skill != null)
+        {
+            skill.unit = this;
+        }
         if (skill != null && _name != "Stealer1")
         {
+            Debug.Log("스킬 실행");
             skill.Skiil();
         }
-        
-        isPlayer = false;
         if (isBackCheck)
         {
-            BackCheck();
+             BackCheck();
         }
         else
         {
-            //Debug.Log("플레이어");
+                //Debug.Log("플레이어");
             isCheck();
         }
         if (stealCount > 0)
         {
-            if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
-            {
-                ret = _attackTime;
-                GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
+        if (target_unit2 == null || target_unit2.GetComponent<Stealer>() != null)
+        {
+            ret = _attackTime;
+            GameManager.effectManager.UseSkill(Define.Effect.stealer, this);
 
-                GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
-            }
-            else
-            {
-                (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
-                ret = _stealTime;
-            }
+            GameManager.sceneManager.getEnemy(_currPlace)._currHP -= attackpower;
         }
-
+        else
+        {
+            (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+            stealCount--;
+            ret = _stealTime;
+        }
+        }
         return ret;
     }
 
