@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
                 gameState = E_GAMESTATE.VICTORY;
                 if (sceneManager.finished) break;
                 sceneManager.finished = true;
-                (sceneManager.Player as UserPlayer).ClearStage();
-                uiManager.ShowVictoryUI();
+                bool isAlreadyCleared = (sceneManager.Player as UserPlayer).ClearStage();
+                uiManager.ShowVictoryUI(isAlreadyCleared);
                 break;
             case 2:
                 gameState = E_GAMESTATE.DEFEAT;
