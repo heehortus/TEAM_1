@@ -13,7 +13,16 @@ public class LoadingSceneController : MonoBehaviour
     public static void LoadScene(string SceneName)
     {
         nextScene = SceneName;
+        PlayBGM(SceneName);
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
+    }
+
+    private static void PlayBGM(string SceneName)
+    {
+        if (SceneName == "LobbyScene")
+        {
+            Audio.PlayBgm("LobbyBgm");
+        }
     }
 
     // Start is called before the first frame update
