@@ -216,11 +216,14 @@ MonoBehaviour:
   isBackCheck: 0
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
+  isBoss: 0
+  Turn: 0
   damage: 5
   growth: 0
   maxDamage: 0
   playermaxCount: 3
   enemymaxCount: 3
+  maxLevel: 3
   currState: 0
 --- !u!95 &8931512892623577846
 Animator:

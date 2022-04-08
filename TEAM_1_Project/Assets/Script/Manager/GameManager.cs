@@ -68,6 +68,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        if (GameData.GetInstance().selectStage.Item2 == 3)
+        {
+            Audio.PlayBgm("BossStageBgm");
+        }
+        else
+        {
+            Audio.PlayBgm("BasicStageBgm");
+        }
         placeManager.Init();
         unitManager.Init();
         inputManager.Init();

@@ -112,9 +112,14 @@ MonoBehaviour:
   isBackCheck: 0
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
+  isBoss: 0
+  Turn: 0
   damage: 3
   growth: 0
   maxDamage: 0
+  playermaxCount: 0
+  enemymaxCount: 0
+  maxLevel: 3
   currState: 0
 --- !u!58 &5031642948544417514
 CircleCollider2D:
