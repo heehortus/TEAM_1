@@ -88,8 +88,8 @@ public class InputManager : MonoBehaviour
             GameManager.uiManager._popupUIs.Push(_uiInfo);
             Image _iamge = _uiInfo.GetComponentInChildren<Image>();
             _iamge.gameObject.transform.position = Input.mousePosition + Vector3.right * GameManager.uiManager._uiInfoOffset;
-            _iamge.sprite = hit.collider.gameObject.GetComponent<Unit>().character.sprite;
-            _iamge.color = hit.collider.gameObject.GetComponent<Unit>().character.color;
+            _iamge.sprite = ResourceManager.LoadSprite("Units/"+hit.collider.gameObject.GetComponent<Unit>()._name);
+            _iamge.color = Color.white;
             GameManager.uiManager.ShowUnitInfo(hit.collider.gameObject, _uiInfo);
         }
     }

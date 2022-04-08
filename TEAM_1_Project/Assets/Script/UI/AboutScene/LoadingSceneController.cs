@@ -23,18 +23,6 @@ public class LoadingSceneController : MonoBehaviour
         {
             Audio.PlayBgm("LobbyBgm");
         }
-
-        if (SceneName == "BattleScene")
-        {
-            if (GameData.GetInstance().selectStage.Item2 == 3)
-            {
-                Audio.PlayBgm("BossStageBgm");
-            }
-            else
-            {
-                Audio.PlayBgm("BasicStageBgm");
-            }
-        }
     }
 
     // Start is called before the first frame update

@@ -9,6 +9,7 @@ public class Boom : Unit, IStoledUnit
     [SerializeField] public int maxDamage;
     [SerializeField] public int playermaxCount;
     [SerializeField] public int enemymaxCount;
+    [SerializeField] public int maxLevel;
     public Define.BoomState currState = Define.BoomState.nothing;
     
     private ParticleSystem particle = null;
@@ -21,6 +22,11 @@ public class Boom : Unit, IStoledUnit
             damage += growth;
             damage = Mathf.Clamp(damage, 0, maxDamage);
         }
+        if(level >= maxLevel)
+        {
+            StartCoroutine(CoAttackedOrUsed(this, _effectTime));
+        }
+        level++;
         return _effectTime;
     }
     public override void Effect()

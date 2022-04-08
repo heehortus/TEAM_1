@@ -8,7 +8,6 @@ public class Seed : Unit, IStoledUnit
     public int _growth;
     public int maxLevel = 3;
     public SpriteRenderer seedSprite;
-    public int Turn = 0;
     float _effectTime = 1f;
 
     public Define.SeedState currState = Define.SeedState.nothing;

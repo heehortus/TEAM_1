@@ -9,6 +9,7 @@ public class EnemyPlayer : Player
     protected override void Awake()
     {
         base.Awake();
+        _currResource = Int32.MaxValue;
         enemyAI = new EnemyAI(this);
         string path = null;
         if (GameData.GetInstance().selectStage.Item2 == 1)
