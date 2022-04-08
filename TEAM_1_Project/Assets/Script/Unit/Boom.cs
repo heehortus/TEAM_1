@@ -5,8 +5,8 @@ using UnityEngine;
 public class Boom : Unit, IStoledUnit
 {
     public int damage;
-    [SerializeField] int growth;
-    [SerializeField] int maxDamage;
+    [SerializeField] public int growth;
+    [SerializeField] public int maxDamage;
     [SerializeField] public int playermaxCount;
     [SerializeField] public int enemymaxCount;
     public Define.BoomState currState = Define.BoomState.nothing;
@@ -16,9 +16,10 @@ public class Boom : Unit, IStoledUnit
     public override float Ability()
     {
         GameManager.effectManager.UseSkill(Define.Effect.boomGetBigger, this);
-        if (damage <= maxDamage)
+        if (damage < maxDamage)
         {
             damage += growth;
+            damage = Mathf.Clamp(damage, 0, maxDamage);
         }
         return _effectTime;
     }

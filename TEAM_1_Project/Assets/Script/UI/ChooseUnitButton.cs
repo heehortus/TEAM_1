@@ -7,7 +7,11 @@ public class ChooseUnitButton : MonoBehaviour
 {
     [SerializeField] int idx;
     public string _unitName; // 버튼에 유닛 이름을 부여해서 player의 유닛 리스트에 해당 유닛이 없으면 소환할 수 없음
-    public int _cost;
+    private bool _isPlayerHaveUnit;
+    private void Awake()
+    {
+        GameData.GetInstance()._unitDic.TryGetValue(_unitName, out _isPlayerHaveUnit);
+    }
 
     private void OnMouseEnter()
     {
@@ -22,8 +26,6 @@ public class ChooseUnitButton : MonoBehaviour
             GameManager.inputManager.e_CLICKERSTATE = InputManager.E_CLICKERSTATE.STANDBY;
             return;
         }
-        bool _isPlayerHaveUnit;
-        GameData.GetInstance()._unitDic.TryGetValue(_unitName, out _isPlayerHaveUnit);
         if (!_isPlayerHaveUnit)
         {
             Debug.Log("아직 획득하지 못한 유닛입니다.");

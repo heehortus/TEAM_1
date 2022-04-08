@@ -10,11 +10,12 @@ public class UI_GetCompensation : MonoBehaviour
     public void PushButton()
     {
         if (pushed) return;
+        SaveManager.Save.SaveInfo();
         pushed = true;
         GameData.GetInstance().noHaveUnit.Remove(unitName);
         GameData.GetInstance()._unitDic[unitName] = true;
 
         Debug.Log(unitName);
-        Destroy(gameObject, 2);
+        Destroy(gameObject);
     }
 }

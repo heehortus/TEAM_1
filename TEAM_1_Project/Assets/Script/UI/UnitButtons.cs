@@ -16,30 +16,21 @@ public class UnitButtons : MonoBehaviour
         var gameData = GameData.GetInstance();
         for(int i = 1; i <= 3; i++)
         {
-            bool _isHave;
+            bool _isHave = true;
             gameData._unitDic.TryGetValue(_seeds[i]._unitName, out _isHave);
-            if (!_isHave)
-            {
-                _seeds[i].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            }
+            _seeds[i].gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = !_isHave;
         }
         for (int i = 1; i <= 3; i++)
         {
-            bool _isHave;
+            bool _isHave = true;
             gameData._unitDic.TryGetValue(_stealers[i]._unitName, out _isHave);
-            if (!_isHave)
-            {
-                _stealers[i].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            }
+            _stealers[i].gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = !_isHave;
         }
         for (int i = 1; i <= 3; i++)
         {
-            bool _isHave;
+            bool _isHave = true;
             gameData._unitDic.TryGetValue(_booms[i]._unitName, out _isHave);
-            if (!_isHave)
-            {
-                _booms[i].gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            }
+            _booms[i].gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = !_isHave;
         }
     }
 

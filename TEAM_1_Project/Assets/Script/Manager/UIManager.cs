@@ -83,36 +83,35 @@ public class UIManager : MonoBehaviour
 
     public void ShowUnitInfo(GameObject unit, GameObject unitInfo)
     {
-        TextMeshProUGUI _text = unitInfo.GetComponentInChildren<TextMeshProUGUI>();
+        Text _text = unitInfo.GetComponentInChildren<Text>();
         if (unit.GetComponent<Boom>() != null)
         {
             Boom _boom = unit.GetComponent<Boom>();
-            _text.text = $"Type : Boom\n" +
-                         $"Name :{_boom._name}\n" +
-                         $"Level :{_boom.level}\n" +
-                         $"Speed :{_boom._speed}\n" +
-                         $"Damage :{_boom.damage}";
+            _text.text = $"타입 : 폭탄\n" +
+                         $"식량소모 :{_boom.coast}\n" +
+                         $"데미지 :{_boom.damage}\n" +
+                         $"성장력 :{_boom.growth}\n" +
+                         $"레벨 :{_boom.level}\n" +
+                         $"속도 :{_boom._speed}\n";
         }
         else if (unit.GetComponent<Seed>() != null)
         {
             Seed _seed = unit.GetComponent<Seed>();
-            _text.text = $"Type : Seed\n" +
-                         $"Name :{_seed._name}\n" +
-                         $"Level :{_seed.level}\n" +
-                         $"Speed :{_seed._speed}\n" +
-                         $"Resource :{_seed.myresource}";
+            _text.text = $"타입 : 씨앗\n" +
+                         $"식량소모 :{_seed.coast}\n" +
+                         $"성장력 :{_seed._growth}\n" +
+                         $"성장턴 :{_seed.level}/{_seed.maxLevel}\n";
         }
         else if (unit.GetComponent<Stealer>() != null)
         {
             Stealer _stealer = unit.GetComponent<Stealer>();
-            _text.text = $"Type : Stealer\n" +
-                         $"Name :{_stealer._name}\n" +
-                         $"Speed :{_stealer._speed}\n" +
-                         $"Level :{_stealer.level}\n" +
-                         $"Power :{_stealer.attackpower}";
+            _text.text = $"타입 : 다람쥐\n" +
+                         $"식량소모 :{_stealer.coast}\n" +
+                         $"훔치기 :{_stealer.stealCount}\n" +
+                         $"공격력 :{_stealer.attackpower}\n";
         }
     }
-    public void ShowVictoryUI()
+    public void ShowVictoryUI(bool isAlreadyCleared)
     {
         GameData gameData = GameData.GetInstance();
         if (gameData.selectStage.Item1==3&& gameData.selectStage.Item2 == 3)
@@ -123,12 +122,11 @@ public class UIManager : MonoBehaviour
         {
             Instantiate(ResourceManager.LoadUI("UI_Victory")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
             
-            
-
             List<string> copy_NoHaveUnit = gameData.noHaveUnit.ToList();
             int cnt = 3;
             if (copy_NoHaveUnit.Count < 3) cnt = copy_NoHaveUnit.Count;
-            if (cnt >= 1)
+
+            if (cnt >= 1 && !isAlreadyCleared)
             {
                 GameObject ug = Instantiate(ResourceManager.LoadUI("UI_GetCompensation"));
                 ug.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
@@ -140,7 +138,10 @@ public class UIManager : MonoBehaviour
                     GameObject cb = Instantiate(ResourceManager.LoadUI("CompensationUnitButton"));
                     cb.transform.SetParent(ug.GetComponent<UI_GetCompensation>().OutLine.transform);
                     cb.GetComponent<CompensationUnitButton>().unitName = copy_NoHaveUnit[rand];
-                    cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
+                    //cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
+
+                    Image img = cb.GetComponentInChildren<Image>();
+                    img.sprite = ResourceManager.LoadSprite($"Units/{copy_NoHaveUnit[rand]}");
 
                     copy_NoHaveUnit.RemoveAt(rand);
                 }
