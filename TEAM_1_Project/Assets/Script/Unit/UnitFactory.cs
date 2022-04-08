@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class UnitFactory 
 {
-    public static GameObject getUnit(string name, PlaceObject _place) {
-
+    public static GameObject MakeUnit(string name,bool isPlayer)
+    {
         GameObject unit = null;
 
         switch (name) {
@@ -64,32 +64,32 @@ public static class UnitFactory
             case "BoomUnit2":
                 if(ResourceManager.LoadUnit("Boom2").GetComponent<Boom>() != null)
                 {
-                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount > 0 && _place.isPlayerPlace)
+                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount > 0 && isPlayer)
                          unit = Object.Instantiate(ResourceManager.LoadUnit("Boom2"));
                     
-                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount <= 0 && _place.isPlayerPlace)
+                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().playermaxCount <= 0 && isPlayer)
                         unit = null;
                     
-                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount > 0 && !_place.isPlayerPlace)
+                    if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount > 0 && !isPlayer)
                         unit = Object.Instantiate(ResourceManager.LoadUnit("Boom2"));
                     
-                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount <= 0 && !_place.isPlayerPlace)
+                    else if (ResourceManager.LoadUnit("Boom2").GetComponent<Boom>().enemymaxCount <= 0 && !isPlayer)
                         unit = null;
                 }
                 break;
             case "BoomUnit3":
                 if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>() != null)
                 {
-                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount > 0 && _place.isPlayerPlace)
+                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount > 0 && isPlayer)
                         unit = Object.Instantiate(ResourceManager.LoadUnit("Boom3"));
 
-                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount <= 0 && _place.isPlayerPlace)
+                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().playermaxCount <= 0 && isPlayer)
                         unit = null;
 
-                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount > 0 && !_place.isPlayerPlace)
+                    if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount > 0 && !isPlayer)
                         unit = Object.Instantiate(ResourceManager.LoadUnit("Boom3"));
 
-                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount <= 0 && !_place.isPlayerPlace)
+                    else if (ResourceManager.LoadUnit("Boom3").GetComponent<Boom>().enemymaxCount <= 0 && !isPlayer)
                         unit = null;
                 }
                 break;
@@ -102,6 +102,12 @@ public static class UnitFactory
             Debug.Log("설치에 실패하였습니다.");
             return null;
         }
+
+        return unit;
+    }
+    public static GameObject getUnit(string name, PlaceObject _place)
+    {
+        var unit = MakeUnit(name,_place.isPlayerPlace);
         if (_place.isPlayerPlace)
         {
             Debug.Log($"Player 진영 {_place.x} , {_place.y} 에 유닛을 설치했습니다.");

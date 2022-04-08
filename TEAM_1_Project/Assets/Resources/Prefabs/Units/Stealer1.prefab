@@ -127,7 +127,7 @@ MonoBehaviour:
   isBackCheck: 1
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
-  attackpower: 15
+  attackpower: 1
   stealCoast: 1
   isSteal: 0
   isPlayer: 0
