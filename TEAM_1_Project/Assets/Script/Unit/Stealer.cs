@@ -15,10 +15,10 @@ public class Stealer : Unit
 
     public Unit target;
     public Vector3 targetPos;
-    private GameObject target_unit;
+    private GameObject target_unit; 
     private GameObject target_unit2;
 
-    private void Start()
+    private void Awake()
     {
         Init();
         //character.sprite = GameManager.resourceManager.LoadSprite("squirrel");
@@ -148,6 +148,10 @@ public class Stealer : Unit
                 catch
                 {
                     Debug.Log("애니메이션이 없습니다.");
+                }
+                if (stealCount == 0)
+                {
+                    StartCoroutine(CoAttackedOrUsed(this, 1.5f));
                 }
                 ret = _stealTime;
             }

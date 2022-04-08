@@ -38,7 +38,7 @@ public class Seed : Unit, IStoledUnit
         GameManager.unitManager.isSteal = true;
     }
     
-    private void Start()
+    private void Awake()
     {
         seedSprite = GetComponent<SpriteRenderer>();
         base.Init();

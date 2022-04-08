@@ -107,6 +107,14 @@ public class SceneManager : MonoBehaviour
         }
         return Enemy;
     }
+    public Player getp()
+    {
+        return Player;
+    }
+    public Player getE()
+    {
+        return Enemy;
+    }
     public Player getEnemy(PlaceObject placeObject) {
         if(placeObject.isPlayerPlace) {
             return Enemy;

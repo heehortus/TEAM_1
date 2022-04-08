@@ -35,14 +35,19 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 		_currPlace = _place;
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
-
     protected void Init()
     {
         character = gameObject.GetComponent<SpriteRenderer>();
-        if (gameObject.tag == "Player")
+        if (_currPlace.isPlayerPlace)
+        {
+            gameObject.tag = "Player";
             character.flipX = false;
-        else if (gameObject.tag == "Enemy")
+        }
+        else
+        {
+            gameObject.tag = "Enemy";
             character.flipX = true;
+        }
         if (skill != null)
         {
             Debug.Log("IF문 실행됨");

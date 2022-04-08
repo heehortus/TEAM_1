@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +8,6 @@ public class EnemyAI
     private Player player;
     private List<string> unitList;
     private int PlaceCount = 1;
-
     public EnemyAI(Player player)
     {
         this.player = player;

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SceneManager _sceneManager;
     [SerializeField] BattleManager _battleManager;
     [SerializeField] EffectManager _effectManager;
-
+    [SerializeField] EnemyPlayer _enemy;
     public static PlaceManager placeManager { get { return m_cInstance._placeManager; } }
     public static UnitManager unitManager { get { return m_cInstance._unitManager; } }
     public static InputManager inputManager { get { return m_cInstance._inputManager; } }
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static SceneManager sceneManager { get { return m_cInstance._sceneManager; } }
     public static BattleManager battleManager { get { return m_cInstance._battleManager; } }
     public static EffectManager effectManager { get { return m_cInstance._effectManager; } }
+    public static EnemyPlayer enemy { get { return m_cInstance._enemy; } }
 
     public enum E_GAMESTATE { GAMING, VICTORY, DEFEAT, STANDBY};
     [SerializeField] public E_GAMESTATE gameState = E_GAMESTATE.GAMING;
