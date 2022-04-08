@@ -122,8 +122,6 @@ public class UIManager : MonoBehaviour
         {
             Instantiate(ResourceManager.LoadUI("UI_Victory")).transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
             
-            
-
             List<string> copy_NoHaveUnit = gameData.noHaveUnit.ToList();
             int cnt = 3;
             if (copy_NoHaveUnit.Count < 3) cnt = copy_NoHaveUnit.Count;
