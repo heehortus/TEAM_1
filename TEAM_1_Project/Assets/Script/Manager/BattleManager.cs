@@ -52,8 +52,7 @@ public class BattleManager : MonoBehaviour
     {
         _isBattle = false;
         Debug.Log("전투 끝!");
-        GameManager.sceneManager.Player.endBattle();
-        GameManager.sceneManager.Enemy.endBattle();
+        GameManager.sceneManager.endBattle();
         GameManager.uiManager.changeTurn();
         GameManager.uiManager.ChangeBattleToPlace();
         GameManager.uiManager.ChangeInfoBar();
