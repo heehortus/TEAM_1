@@ -16,6 +16,6 @@ public class UI_GetCompensation : MonoBehaviour
         GameData.GetInstance()._unitDic[unitName] = true;
 
         Debug.Log(unitName);
-        Destroy(gameObject, 2);
+        Destroy(gameObject);
     }
 }
