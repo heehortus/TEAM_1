@@ -79,6 +79,7 @@ public class SceneManager : MonoBehaviour
 
         if(click_state == InputManager.E_CLICKERSTATE.CREATEUNIT) {
             _unitManager.CreateUnit(placeObject, _inputManager._currSelectedButton._unitName);
+            Audio.PlayEffect("PlaceSound");
         }
         else if(click_state == InputManager.E_CLICKERSTATE.MOVE)
         {

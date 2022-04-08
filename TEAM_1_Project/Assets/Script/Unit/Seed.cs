@@ -20,8 +20,10 @@ public class Seed : Unit, IStoledUnit
             myresource += _growth;
             GameManager.sceneManager.getPlayer(_currPlace)._currResource += myresource;
             StartCoroutine(CoAttackedOrUsed(this, _effectTime));
+            Audio.PlayEffect("RipSound");
             return _effectTime;
         }
+        Audio.PlayEffect("GrowSound");
         level += 1;
         return _effectTime;
     }

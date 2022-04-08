@@ -14,23 +14,11 @@ public class UI_MainScene_Setting : MonoBehaviour
         bgm.onValueChanged.AddListener(Audio.ChangeBgmSound);
         effect.onValueChanged.AddListener(Audio.ChangeEffectSound);
 
-        // tmp
-        Audio.PlayBgm("TestBgm");
     }
 
     public void PushBackButton()
     {
-        // tmp
-        Audio.StopBgm();
-        Audio.StopEffect();
-        //
         Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
-    }
-
-    //tmp
-    public void TestSound()
-    {
-        Audio.PlayEffect("TestEffect");
     }
 }
