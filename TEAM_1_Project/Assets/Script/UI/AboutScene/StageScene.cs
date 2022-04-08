@@ -37,22 +37,26 @@ public class StageScene : MonoBehaviour
     {
         if (!_player.possibleStage1[num]) return;
         _player.selectStage = (1, num);
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("BattleScene");
     }
     public void PushStage2Button(int num)
     {
         if (!_player.possibleStage2[num]) return;
         _player.selectStage = (2, num);
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("BattleScene");
     }
     public void PushStage3Button(int num)
     {
         if (!_player.possibleStage3[num]) return;
         _player.selectStage = (3, num);
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("BattleScene");
     }
     public void PushBackButton()
     {
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("LobbyScene");
     }
     public void PushSettingButton()

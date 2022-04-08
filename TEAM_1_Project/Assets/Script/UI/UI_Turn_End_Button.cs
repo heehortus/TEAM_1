@@ -12,6 +12,7 @@ public class UI_Turn_End_Button : MonoBehaviour
             Debug.Log("전투 중 입니다.");
             return;
         }
+        Audio.PlayEffect("ClickButton");
         GameManager.battleManager.StartBattle();
     }
 

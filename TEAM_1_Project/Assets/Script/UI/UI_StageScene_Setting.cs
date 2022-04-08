@@ -16,6 +16,7 @@ public class UI_StageScene_Setting : MonoBehaviour
     }
     public void PushBackButton()
     {
+        Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
     public void PushMainButton()

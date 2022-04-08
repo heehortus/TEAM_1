@@ -16,15 +16,18 @@ public class UI_BattleScene_Setting : MonoBehaviour
     }
     public void PushBackButton()
     {
+        Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
     public void PushMainButton()
     {
+        Audio.PlayEffect("ClickButton");
         GameObject ui_giveup = Instantiate(ResourceManager.LoadUI("UI_GiveUp"));
         ui_giveup.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
     }
     public void PushExitButton()
     {
+        Audio.PlayEffect("ClickButton");
         Application.Quit();
     }
 }

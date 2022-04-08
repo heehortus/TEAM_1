@@ -16,14 +16,17 @@ public class UI_LobbyScene_Setting : MonoBehaviour
     }
     public void PushBackButton()
     {
+        Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
     public void PushMainButton()
     {
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("LobbyScene");
     }
     public void PushExitButton()
     {
+        Audio.PlayEffect("ClickButton");
         Application.Quit();
     }
 }

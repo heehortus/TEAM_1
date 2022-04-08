@@ -12,10 +12,12 @@ public class LobbyScene : MonoBehaviour
     }
     public void PushCollectionButton()
     {
+        Audio.PlayEffect("ClickButton");
         Instantiate(collections);
     }
     public void PushStartButton()
     {
+        Audio.PlayEffect("ClickButton");
         LoadingSceneController.LoadScene("StageScene");
     }
     public void TmpSaveInfo()

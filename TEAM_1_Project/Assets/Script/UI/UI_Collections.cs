@@ -11,6 +11,7 @@ public class UI_Collections : MonoBehaviour
     public Image[] booms = new Image[3];
     public void PushBackButton()
     {
+        Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
     private void Start()

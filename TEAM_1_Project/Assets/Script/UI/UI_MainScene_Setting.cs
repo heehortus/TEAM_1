@@ -24,7 +24,7 @@ public class UI_MainScene_Setting : MonoBehaviour
         Audio.StopBgm();
         Audio.StopEffect();
         //
-
+        Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
 
