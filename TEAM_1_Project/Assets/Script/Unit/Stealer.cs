@@ -53,10 +53,11 @@ public class Stealer : Unit
 
     private void BackCheck()
     {
-        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 1);
+        target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 0);
         target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
         if (target_unit != null)
         {
+            Debug.Log("찾음");
             if (target_unit.GetComponent<Stealer>() == null)
             {
                 if (target_unit.GetComponent<Unit>().valid)
@@ -67,7 +68,7 @@ public class Stealer : Unit
         }
         else if (target_unit == null)
         {
-            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 0);
+            target_place = GameManager.placeManager.getPlaceObject(!_currPlace.isPlayerPlace, _currPlace.x, 1);
             target_unit = GameManager.unitManager.GetUnit(target_place.GetComponent<PlaceObject>());
             if (target_unit == null)
             {
@@ -136,6 +137,7 @@ public class Stealer : Unit
             else
             {
                 (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                stealCount--;
                 try
                 {
                     var anim = transform.GetChild(0)?.GetComponent<Animator>();

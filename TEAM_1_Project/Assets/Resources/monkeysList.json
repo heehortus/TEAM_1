@@ -1,12 +1,4 @@
-﻿{
-  "stageGeneralUnits" : [
-    "SeedUnit1",
-    "SeedUnit2",
-    "SeedUnit3",
-    "BoomUnit1",
-    "BoomUnit2",
-    "BoomUnit3"
-  ],
+{
   "stageAddUnitList" : [
     {
       "stage" : "1-1",
@@ -23,7 +15,7 @@
     {
       "stage" : "1-3",
       "Units" : [
-        "CheeringMonkey"
+        
       ]
     },
     {
@@ -40,8 +32,8 @@
     },
     {
       "stage" : "2-3",
-      "Units" : [
-        "MartialMonkey"
+      "Units": [
+
       ]
     },
     {
@@ -59,8 +51,7 @@
     {
       "stage" : "3-3",
       "Units" : [
-        "EclipseMonkey",
-        "LastBoss"
+        "EclipseMonkey"
       ]
     }
   ]
