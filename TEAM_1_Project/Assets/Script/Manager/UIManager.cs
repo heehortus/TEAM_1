@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
                          $"공격력 :{_stealer.attackpower}\n";
         }
     }
-    public void ShowVictoryUI()
+    public void ShowVictoryUI(bool isAlreadyCleared)
     {
         GameData gameData = GameData.GetInstance();
         if (gameData.selectStage.Item1==3&& gameData.selectStage.Item2 == 3)
@@ -125,7 +125,8 @@ public class UIManager : MonoBehaviour
             List<string> copy_NoHaveUnit = gameData.noHaveUnit.ToList();
             int cnt = 3;
             if (copy_NoHaveUnit.Count < 3) cnt = copy_NoHaveUnit.Count;
-            if (cnt >= 1)
+
+            if (cnt >= 1 && !isAlreadyCleared)
             {
                 GameObject ug = Instantiate(ResourceManager.LoadUI("UI_GetCompensation"));
                 ug.transform.SetParent(GameManager.sceneManager.UI_Parent.transform);
