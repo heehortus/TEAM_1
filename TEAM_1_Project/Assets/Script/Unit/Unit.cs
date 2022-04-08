@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 {
     [SerializeField] bool isUnitClick;
-	[SerializeField] protected int coast;
+	[SerializeField] public int coast;
 	[SerializeField] public int level;
 	[SerializeField] public SpriteRenderer character;
     [SerializeField] protected Skill skill;
