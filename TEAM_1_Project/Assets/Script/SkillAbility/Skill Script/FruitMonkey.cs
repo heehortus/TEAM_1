@@ -14,10 +14,8 @@ public class FruitMonkey : Skill
             unit.valid = false;
             GameManager.unitManager.DeleteUnit(unit);
             unit.character.enabled = false;
-            if (unit.gameObject.tag == "Player")
-                GameManager.sceneManager.getEnemy(unit._currPlace)._currResource += 1;
-            else if (unit.gameObject.tag == "Enemy")
-                GameManager.sceneManager.getEnemy(unit._currPlace)._currResource += 1;
+            GameManager.sceneManager.getEnemy(unit._currPlace)._currResource += 1;
+            
         }
     }
 }

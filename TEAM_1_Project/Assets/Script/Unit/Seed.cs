@@ -7,7 +7,8 @@ public class Seed : Unit, IStoledUnit
     public int myresource;
     public int _growth;
     public int maxLevel = 3;
-
+    public SpriteRenderer seedSprite;
+    public int Turn = 0;
     float _effectTime = 1f;
 
     public Define.SeedState currState = Define.SeedState.nothing;
@@ -35,12 +36,12 @@ public class Seed : Unit, IStoledUnit
         GameManager.sceneManager.getPlayer(stealer._currPlace)._currResource += myresource;
         if (isSeedStealDamage)
             GameManager.sceneManager.getEnemy(stealer._currPlace)._currHP -= 2;
-        stealCount++;
         GameManager.unitManager.isSteal = true;
     }
     
     private void Start()
     {
+        seedSprite = GetComponent<SpriteRenderer>();
         base.Init();
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7809547604615109980}
   m_Layer: 0
   m_Name: FuckMonkey
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,14 +119,16 @@ MonoBehaviour:
   level: 0
   character: {fileID: 0}
   skill: {fileID: 11400000, guid: f16f2a7609a3d1146814d57bb1315055, type: 2}
-  _name: Stealer1
+  _name: FuckMonkey
   _speed: 15
   _unitCamp: 0
   valid: 1
-  stealCount: 2
+  stealCount: 1
   isBackCheck: 1
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
+  isBoss: 0
+  Turn: 0
   attackpower: 1
   stealCoast: 1
   isSteal: 0

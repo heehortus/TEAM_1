@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1aba226b6bcc4184b82a4d72db0d3255
+guid: 08b119eee78453646a7c1d582f9a3965
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
       y: 4
       width: 255
       height: 205
-    spriteID: add2ce6ebeb6e3348af2719b5640f96c
+    spriteID: d4860d13a7c5a884e9c368eecf964ed4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -176,7 +176,7 @@ ScriptedImporter:
     spriteName: "\uB3C4\uD1A0\uB9AC"
     isGroup: 0
     parentIndex: -1
-    spriteID: add2ce6ebeb6e3348af2719b5640f96c
+    spriteID: d4860d13a7c5a884e9c368eecf964ed4
     layerID: 13
     mosaicPosition: {x: 4, y: 4}
     flatten: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7809547604615109980}
   m_Layer: 0
   m_Name: OneMonkey
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   level: 0
   character: {fileID: 0}
   skill: {fileID: 0}
-  _name: Stealer1
+  _name: OneMonkey
   _speed: 13
   _unitCamp: 0
   valid: 1
@@ -128,6 +128,8 @@ MonoBehaviour:
   isBackCheck: 1
   isBoomDamageMiss: 0
   isSeedStealDamage: 0
+  isBoss: 0
+  Turn: 0
   attackpower: 1
   stealCoast: 1
   isSteal: 0
