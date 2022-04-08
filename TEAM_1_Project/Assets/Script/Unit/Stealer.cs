@@ -136,6 +136,15 @@ public class Stealer : Unit
             else
             {
                 (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                try
+                {
+                    var anim = transform.GetChild(0)?.GetComponent<Animator>();
+                    anim.SetTrigger("attack");
+                }
+                catch
+                {
+                    Debug.Log("애니메이션이 없습니다.");
+                }
                 ret = _stealTime;
             }
         }

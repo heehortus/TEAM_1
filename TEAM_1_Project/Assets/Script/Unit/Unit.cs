@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     [SerializeField] protected Skill skill;
     [SerializeField] public PlaceObject _currPlace { get; private set;}
     public string _name = "TmpName";
+    public int _cost { get; set; }
     public int _speed;
     public Define.UnitCamp _unitCamp;
     public bool valid = true;

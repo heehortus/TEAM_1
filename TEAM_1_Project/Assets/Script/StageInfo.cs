@@ -28,6 +28,11 @@ public static class StageInfo
             {
                 stageEnemyUnitList[i,j].Add(unit);
             }
+
+            foreach (var unit in monkeysData.stageGeneralUnits)
+            {
+                stageEnemyUnitList[i,j].Add(unit);
+            }
         }
         return stageEnemyUnitList;
     }
@@ -42,6 +47,7 @@ public static class StageInfo
 public class MonkeyData
 {
     public StageAddUnitList[] stageAddUnitList;
+    public string[] stageGeneralUnits;
 }
 
 [Serializable]

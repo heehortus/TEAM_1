@@ -20,7 +20,9 @@ public class EnemyAI
     {
         //사용 가능한 유닛 찾기
         var unitManager = GameManager.unitManager;
-        var PlaceUnits = unitList.OrderBy(a => Guid.NewGuid()).Take(PlaceCount);//개수 선택 가능
+        var PlaceUnits = (from a in unitList
+            where unitManager.checkResouceToCreateUnit(player, a, false)
+            select a).OrderBy(a => Guid.NewGuid()).Take(PlaceCount);
         var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false)
             .OrderBy(a => Guid.NewGuid()).Take(PlaceCount);
         var iterator = PlaceList.GetEnumerator();

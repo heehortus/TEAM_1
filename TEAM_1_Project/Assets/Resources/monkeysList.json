@@ -1,4 +1,12 @@
 ﻿{
+  "stageGeneralUnits" : [
+    "SeedUnit1",
+    "SeedUnit2",
+    "SeedUnit3",
+    "BoomUnit1",
+    "BoomUnit2",
+    "BoomUnit3"
+  ],
   "stageAddUnitList" : [
     {
       "stage" : "1-1",

@@ -65,15 +65,13 @@ public class SceneManager : MonoBehaviour
         _currStage.transform.SetParent(UI_Parent.transform);
         _currStage.name = "UI_CurrStage";
     }
-    void InitEnemyPlace() { // 전투 테스트 용도로 작성한 함수입니다. 적 진영에 유닛들 배치하는 함수입니다.
-        var _placeManager = GameManager.placeManager;
 
-        var placeobj = _placeManager.getPlaceObject(false,0,1); // 적 좌표 0,1 가져오기
-        Unit _enemy = _unitManager.CreateUnit(placeobj.GetComponent<PlaceObject>(),"SeedUnit1").GetComponent<Unit>();
-        _enemy._unitCamp = Define.UnitCamp.enemyUnit;
-        
+    public void endBattle()
+    {
+        Player.endBattle();
+        Enemy.endBattle();
+        _currMoveCount = 0;
     }
-
     public void onClickPlaceObject(GameObject Ojbect) {
         PlaceObject placeObject = Ojbect.GetComponent<PlaceObject>();
         if (placeObject.isPlayerPlace == false) return;
