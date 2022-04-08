@@ -138,7 +138,10 @@ public class UIManager : MonoBehaviour
                     GameObject cb = Instantiate(ResourceManager.LoadUI("CompensationUnitButton"));
                     cb.transform.SetParent(ug.GetComponent<UI_GetCompensation>().OutLine.transform);
                     cb.GetComponent<CompensationUnitButton>().unitName = copy_NoHaveUnit[rand];
-                    cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
+                    //cb.GetComponent<CompensationUnitButton>().GetComponentInChildren<Text>().text = copy_NoHaveUnit[rand];
+
+                    Image img = cb.GetComponentInChildren<Image>();
+                    img.sprite = ResourceManager.LoadSprite($"Units/{copy_NoHaveUnit[rand]}");
 
                     copy_NoHaveUnit.RemoveAt(rand);
                 }

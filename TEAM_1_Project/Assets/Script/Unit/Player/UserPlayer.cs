@@ -43,7 +43,6 @@ public class UserPlayer : Player
                 gameData.possibleStage3[1] = true;
             }
         }
-        SaveManager.Save.SaveInfo();
         return ret;
     }
 }
