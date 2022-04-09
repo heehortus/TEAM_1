@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 		_currPlace = _place;
         transform.position = _currPlace.transform.position - Vector3.forward;
 	}
+
     protected void Init()
     {
         character = gameObject.GetComponent<SpriteRenderer>();
@@ -53,6 +54,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
             Debug.Log("IF문 실행됨");
             skill.unit = this;
         }
+        isBackCheck = false;
     }
     public virtual float Ability()
     {

@@ -47,7 +47,7 @@ public class Boom : Unit, IStoledUnit
         GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, stealer, this);
         
         StartCoroutine(CoAttackedOrUsed(this, time));
-        if (!isBoomDamageMiss)
+        if (!stealer.isBoomDamageMiss)
         {
             StartCoroutine(CoAttackedOrUsed(this, time));
             GameManager.sceneManager.getPlayer(stealer._currPlace)._currHP -= damage;

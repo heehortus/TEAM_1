@@ -29,7 +29,7 @@ public class EnemyPlayer : Player
         }
         else if(GameData.GetInstance().selectStage.Item1 == 2 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "수도원숭이/수도원숭이";
+            path = "MartialMonkey";
             skillCheck = true;
         }
         else if(GameData.GetInstance().selectStage.Item1 == 3 && GameData.GetInstance().selectStage.Item2 == 3)

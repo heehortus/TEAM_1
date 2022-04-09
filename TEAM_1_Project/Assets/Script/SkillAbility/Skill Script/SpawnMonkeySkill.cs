@@ -21,7 +21,6 @@ public class SpawnMonkeySkill : Skill
         {
             turn = 0;
         }
-        int PlaceCount = 1;
         Debug.Log("스킬사용");
         Debug.Log(turn);
         if (GameManager.enemy.path == "기본숭이 2/기본 숭이 2")
@@ -34,7 +33,7 @@ public class SpawnMonkeySkill : Skill
             var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false);
             var iterator = PlaceList.GetEnumerator();
             iterator.MoveNext();
-            if (PlaceList == null)
+            if (PlaceList == null || PlaceList.Count == 1)
                 Debug.Log("자리가 없습니다");
             else
             {
@@ -43,10 +42,12 @@ public class SpawnMonkeySkill : Skill
                     Debug.Log("공무원숭이 소환");
                     var item2 = iterator.Current.GetComponent<PlaceObject>();
                     int x = item2.x, y = item2.y;
+                    Debug.Log(x);
+                    Debug.Log(y);
                     var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
                     GameManager.sceneManager.getE()._currHP -= 2;
 
-                    GameManager.unitManager.CreateUnit(placeObject, "OfficialMokey");
+                    GameManager.unitManager.CreateUnit(placeObject, "OfficialMonkey");
 
                 }
                 else
@@ -54,7 +55,6 @@ public class SpawnMonkeySkill : Skill
                     var item2 = iterator.Current.GetComponent<PlaceObject>();
                     int x = item2.x, y = item2.y;
                     var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
-                    GameManager.sceneManager.getp()._currHP -= 2;
                     GameManager.unitManager.CreateUnit(placeObject, "OneMonkey");
                 }
                 turn = GameManager.sceneManager.presentTurn;

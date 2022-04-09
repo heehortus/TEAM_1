@@ -8,5 +8,6 @@ public class OfficialMonkey : Skill
     public override void Skiil()
     {
         unit.isSeedStealDamage = true;
+        GameManager.sceneManager.getp()._currHP -= 2;
     }
 }
