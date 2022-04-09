@@ -33,7 +33,7 @@ public class SpawnMonkeySkill : Skill
             var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false);
             var iterator = PlaceList.GetEnumerator();
             iterator.MoveNext();
-            if (PlaceList == null || PlaceList.Count == 1)
+            if (PlaceList == null || PlaceList.Count == 0)
                 Debug.Log("자리가 없습니다");
             else
             {
