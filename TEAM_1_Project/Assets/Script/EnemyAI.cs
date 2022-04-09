@@ -24,6 +24,11 @@ public class EnemyAI
             select a).OrderBy(a => Guid.NewGuid()).Take(PlaceCount);
         var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false)
             .OrderBy(a => Guid.NewGuid()).Take(PlaceCount);
+        if (GameManager.placeManager.getEmptyPlaceObject(false) == null || GameManager.placeManager.getEmptyPlaceObject(false).Count == 0)
+        {
+            Debug.Log("자리가 없습니다");
+            return;
+        }
         var iterator = PlaceList.GetEnumerator();
         iterator.MoveNext();
         foreach (var item in PlaceUnits)
