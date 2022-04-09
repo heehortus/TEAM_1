@@ -10,44 +10,54 @@ using UnityEngine;
 public class SpawnMonkeySkill : Skill
 {
     int plusTurn = 0;
-    public int turn;
-    bool isBoss;
+    public int turn = 0;
     private void Start()
     {
-        turn = GameManager.sceneManager.presentTurn - 1;
+        turn = GameManager.sceneManager.presentTurn;
     }
     public override void Skiil()
     {
-        int PlaceCount = 1;
-        unit.isBoss = true; 
+        if(GameManager.sceneManager.presentTurn == 1)
+        {
+            turn = 0;
+        }
+        Debug.Log("스킬사용");
         Debug.Log(turn);
-        if (unit._name == "CheeringMonkey")
+        if (GameManager.enemy.path == "기본숭이 2/기본 숭이 2")
             plusTurn = 3;
         else
             plusTurn = 4;
         if (GameManager.sceneManager.presentTurn == turn + plusTurn)
         {
             Debug.Log("숭이 소환!");
-            var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false)
-                .OrderBy(a => Guid.NewGuid()).Take(PlaceCount);
+            var PlaceList = GameManager.placeManager.getEmptyPlaceObject(false);
             var iterator = PlaceList.GetEnumerator();
             iterator.MoveNext();
-            if (unit._name == "LastBoss")
-            {
-                var item2 = iterator.Current.GetComponent<PlaceObject>();
-                int x = item2.x, y = item2.y;
-                var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
-                GameManager.sceneManager.getPlayer(unit._currPlace)._currHP -= 2;
-                GameManager.unitManager.CreateUnit(placeObject, "OfficialMokey");
-                
-            }
+            if (PlaceList == null || PlaceList.Count == 0)
+                Debug.Log("자리가 없습니다");
             else
             {
-                var item2 = iterator.Current.GetComponent<PlaceObject>();
-                int x = item2.x, y = item2.y;
-                var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
-                GameManager.sceneManager.getPlayer(unit._currPlace)._currHP -= 2;
-                GameManager.unitManager.CreateUnit(placeObject, "OneMonkey");
+                if (GameManager.enemy.path == "기본숭이/기본 숭이")
+                {
+                    Debug.Log("공무원숭이 소환");
+                    var item2 = iterator.Current.GetComponent<PlaceObject>();
+                    int x = item2.x, y = item2.y;
+                    Debug.Log(x);
+                    Debug.Log(y);
+                    var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
+                    GameManager.sceneManager.getE()._currHP -= 2;
+
+                    GameManager.unitManager.CreateUnit(placeObject, "OfficialMonkey");
+
+                }
+                else
+                {
+                    var item2 = iterator.Current.GetComponent<PlaceObject>();
+                    int x = item2.x, y = item2.y;
+                    var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
+                    GameManager.unitManager.CreateUnit(placeObject, "OneMonkey");
+                }
+                turn = GameManager.sceneManager.presentTurn;
             }
         }
         

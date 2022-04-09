@@ -39,15 +39,22 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     protected void Init()
     {
         character = gameObject.GetComponent<SpriteRenderer>();
-        if (gameObject.tag == "Player")
+        if (_currPlace.isPlayerPlace)
+        {
+            gameObject.tag = "Player";
             character.flipX = false;
-        else if (gameObject.tag == "Enemy")
+        }
+        else
+        {
+            gameObject.tag = "Enemy";
             character.flipX = true;
+        }
         if (skill != null)
         {
             Debug.Log("IF문 실행됨");
             skill.unit = this;
         }
+        isBackCheck = false;
     }
     public virtual float Ability()
     {

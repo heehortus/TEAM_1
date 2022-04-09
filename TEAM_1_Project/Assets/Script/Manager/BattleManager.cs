@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour
     int _basicallyProvideResource = 1;
 
     public bool _isBattle = false;
+
     public void Init()
     {
         
@@ -34,6 +35,7 @@ public class BattleManager : MonoBehaviour
         BattleLogic();
         for(int i = 0; i < GameManager.unitManager.UnitList.Count; i++)
         {
+            GameManager.enemy.Skill();
             yield return new WaitForSeconds(GameManager.unitManager.doBattle(i));
             GameManager.uiManager.ChangeInfoBar();
         }

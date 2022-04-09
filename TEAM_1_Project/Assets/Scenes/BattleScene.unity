@@ -336,6 +336,9 @@ MonoBehaviour:
   BgmSound: 0
   EffectSound: 0
   MonkeyImage: {fileID: 0}
+  skill: {fileID: 11400000, guid: b68022b66c7d1d148bffdac8a0954f34, type: 2}
+  skillCheck: 0
+  path: 
 --- !u!1 &105809903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,6 +3093,7 @@ MonoBehaviour:
   _sceneManager: {fileID: 867938433}
   _battleManager: {fileID: 61734736}
   _effectManager: {fileID: 291911593}
+  _enemy: {fileID: 92526111}
   gameState: 0
 --- !u!1 &1876657284
 GameObject:

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +8,6 @@ public class EnemyAI
     private Player player;
     private List<string> unitList;
     private int PlaceCount = 1;
-
     public EnemyAI(Player player)
     {
         this.player = player;
@@ -33,7 +32,7 @@ public class EnemyAI
             int x = item2.x, y = item2.y;
             Debug.Log(item);
             var placeObject = GameManager.placeManager.getPlaceObject(false, x, y).GetComponent<PlaceObject>();
-            unitManager.CreateUnit(placeObject, item);
+            unitManager.CreateUnit(placeObject, item).gameObject.tag = "Enemy";
             iterator.MoveNext();
         }
     }

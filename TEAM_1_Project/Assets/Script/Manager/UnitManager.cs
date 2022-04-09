@@ -116,6 +116,7 @@ public class UnitManager : MonoBehaviour
         if (UnitList[idx].tag == "Enemy")
         {
             Debug.Log("dwa");
+            Debug.Log(UnitList[idx].Turn);
             if (UnitList[idx].Turn > 0)
                 return UnitList[idx].Ability();
             else
