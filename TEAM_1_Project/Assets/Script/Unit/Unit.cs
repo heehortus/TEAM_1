@@ -25,6 +25,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
     public bool isSeedStealDamage;
     public bool isBoss;
     public int Turn = 0;
+    public int firstTurn = 0;
     public int CompareTo(Unit other) // 스피드 순서로 정렬하기 위한 함수
     {
         if (_speed == other._speed)

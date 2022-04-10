@@ -18,6 +18,7 @@ public class Stealer : Unit
     private GameObject target_unit;
     private GameObject target_unit2;
     int Playercheck;
+    public bool isfirstSteal = false;
     private void Start()
     {
         Init();
@@ -146,23 +147,32 @@ public class Stealer : Unit
             }
             else
             {
-                (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
-                stealCount--;
-                try
+                if ((target_unit2.GetComponent<Unit>() as IStoledUnit).isFirstCheck())
                 {
-                    Audio.PlayEffect("StealSound");
-                    var anim = transform.GetChild(0)?.GetComponent<Animator>();
-                    anim.SetTrigger("attack");
+                    (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                    stealCount--;
+                    try
+                    {
+                        Audio.PlayEffect("StealSound");
+                        var anim = transform.GetChild(0)?.GetComponent<Animator>();
+                        anim.SetTrigger("attack");
+                    }
+                    catch
+                    {
+                        Debug.Log("애니메이션이 없습니다.");
+                    }
+                    ret = _stealTime;
                 }
-                catch
+                else
                 {
-                    Debug.Log("애니메이션이 없습니다.");
+                    target_unit2 = null;
                 }
-                if(stealCount == 0)
+                isfirstSteal = false;
+
+                if (stealCount == 0)
                 {
-                    StartCoroutine(CoAttackedOrUsed(this,1.5f));
+                    StartCoroutine(CoAttackedOrUsed(this, 1.5f));
                 }
-                ret = _stealTime;
             }
         }
         return ret;

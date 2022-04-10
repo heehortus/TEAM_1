@@ -24,17 +24,17 @@ public class EnemyPlayer : Player
         }
         else if(GameData.GetInstance().selectStage.Item1 == 1 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "기본숭이 2/기본 숭이 2";
+            path = "치어리더 원숭이/치어리더 원숭이";
             skillCheck = true;
         }
         else if(GameData.GetInstance().selectStage.Item1 == 2 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "MartialMonkey";
+            path = "수도원숭이/수도 원숭이";
             skillCheck = true;
         }
         else if(GameData.GetInstance().selectStage.Item1 == 3 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "기본숭이/기본 숭이";
+            path = "여기원숭이/여기원숭이 all";
             skillCheck = true;
         }
         else
