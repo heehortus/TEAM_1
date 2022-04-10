@@ -12,7 +12,7 @@ public class EnemyPlayer : Player
     protected override void Awake()
     {
         base.Awake();
-        _currResource = Int32.MaxValue;
+        //_currResource = Int32.MaxValue;
         enemyAI = new EnemyAI(this);
         if (GameData.GetInstance().selectStage.Item2 == 1)
         {
