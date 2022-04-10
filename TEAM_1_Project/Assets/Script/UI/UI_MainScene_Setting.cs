@@ -21,4 +21,8 @@ public class UI_MainScene_Setting : MonoBehaviour
         Audio.PlayEffect("ClickButton");
         Destroy(gameObject);
     }
+    public void PushResetButton()
+    {
+        SaveManager.Save.ClearInfo();
+    }
 }
