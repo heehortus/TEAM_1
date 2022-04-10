@@ -12,7 +12,7 @@ public class EnemyPlayer : Player
     protected override void Awake()
     {
         base.Awake();
-        _currResource = Int32.MaxValue;
+        //_currResource = Int32.MaxValue;
         enemyAI = new EnemyAI(this);
         if (GameData.GetInstance().selectStage.Item2 == 1)
         {
@@ -29,12 +29,12 @@ public class EnemyPlayer : Player
         }
         else if(GameData.GetInstance().selectStage.Item1 == 2 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "수도원숭이/수도 원숭이";
+            path = "수도원숭이/수도원숭이";
             skillCheck = true;
         }
         else if(GameData.GetInstance().selectStage.Item1 == 3 && GameData.GetInstance().selectStage.Item2 == 3)
         {
-            path = "여기원숭이/여기원숭이 all";
+            path = "여기원숭이/여기원숭이";
             skillCheck = true;
         }
         else
@@ -47,7 +47,6 @@ public class EnemyPlayer : Player
         MonkeyImage.transform.SetParent(transform);
         MonkeyImage.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         MonkeyImage.transform.position = transform.position;
-        ;
     }
     public void Skill()
     {
