@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour, UnitInterface, IComparable<Unit>
 	[SerializeField] public int level;
 	[SerializeField] public SpriteRenderer character;
     [SerializeField] protected Skill skill;
-    [SerializeField] public PlaceObject _currPlace { get; private set;}
+    public PlaceObject _currPlace { get; private set;}
     public string _name = "TmpName";
     public int _cost { get; set; }
     public int _speed;
