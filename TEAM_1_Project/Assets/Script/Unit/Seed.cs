@@ -39,10 +39,6 @@ public class Seed : Unit, IStoledUnit
         GameManager.unitManager.isSteal = true;
         stealer.isfirstSteal = true;
     }
-    public bool isFirstCheck()
-    {
-        return true;
-    }
     private void Start()
     {
         seedSprite = GetComponent<SpriteRenderer>();

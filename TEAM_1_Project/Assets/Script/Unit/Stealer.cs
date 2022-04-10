@@ -147,33 +147,27 @@ public class Stealer : Unit
             }
             else
             {
-                if ((target_unit2.GetComponent<Unit>() as IStoledUnit).isFirstCheck())
-                {
-                    (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
-                    stealCount--;
-                    try
-                    {
-                        Audio.PlayEffect("StealSound");
-                        var anim = transform.GetChild(0)?.GetComponent<Animator>();
-                        anim.SetTrigger("attack");
-                    }
-                    catch
-                    {
-                        Debug.Log("애니메이션이 없습니다.");
-                    }
-                    ret = _stealTime;
-                }
-                else
-                {
-                    target_unit2 = null;
-                }
-                isfirstSteal = false;
 
-                if (stealCount == 0)
+                (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
+                stealCount--;
+                try
                 {
-                    StartCoroutine(CoAttackedOrUsed(this, 1.5f));
+                    Audio.PlayEffect("StealSound");
+                    var anim = transform.GetChild(0)?.GetComponent<Animator>();
+                    anim.SetTrigger("attack");
                 }
+                catch
+                {
+                    Debug.Log("애니메이션이 없습니다.");
+                }
+                ret = _stealTime;
             }
+        
+            if (stealCount == 0)
+            {
+                StartCoroutine(CoAttackedOrUsed(this, 1.5f));
+            }
+
         }
         return ret;
     }

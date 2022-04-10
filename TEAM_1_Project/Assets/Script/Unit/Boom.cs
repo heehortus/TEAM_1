@@ -57,16 +57,6 @@ public class Boom : Unit, IStoledUnit
         GameManager.unitManager.isSteal = true;
         stealer.isfirstSteal = true;
     }
-    public bool isFirstCheck()
-    {
-        if(firstTurn > 0)
-            return true;
-        else
-        {
-            firstTurn++;
-            return false;
-        }
-    }
     private void Start()
     {
         base.Init();
