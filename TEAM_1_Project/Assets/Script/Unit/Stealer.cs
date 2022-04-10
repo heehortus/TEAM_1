@@ -18,6 +18,7 @@ public class Stealer : Unit
     private GameObject target_unit;
     private GameObject target_unit2;
     int Playercheck;
+    public bool isfirstSteal = false;
     private void Start()
     {
         Init();
@@ -146,6 +147,7 @@ public class Stealer : Unit
             }
             else
             {
+
                 (target_unit2.GetComponent<Unit>() as IStoledUnit).getStoled(_stealTime, this);
                 stealCount--;
                 try
@@ -158,12 +160,14 @@ public class Stealer : Unit
                 {
                     Debug.Log("애니메이션이 없습니다.");
                 }
-                if(stealCount == 0)
-                {
-                    StartCoroutine(CoAttackedOrUsed(this,1.5f));
-                }
                 ret = _stealTime;
             }
+        
+            if (stealCount == 0)
+            {
+                StartCoroutine(CoAttackedOrUsed(this, 1.5f));
+            }
+
         }
         return ret;
     }

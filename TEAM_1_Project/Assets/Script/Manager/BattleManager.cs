@@ -40,6 +40,10 @@ public class BattleManager : MonoBehaviour
             GameManager.uiManager.ChangeInfoBar();
         }
         GameManager.unitManager.RemoveUnits();
+        for (int i = 0; i < GameManager.unitManager.UnitList.Count; i++)
+        {
+            GameManager.unitManager.UnitList[i].firstTurn++;
+        }
         EndBattle();
     }
     void BattleLogic()

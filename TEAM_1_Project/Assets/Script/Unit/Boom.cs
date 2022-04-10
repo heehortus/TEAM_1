@@ -11,7 +11,7 @@ public class Boom : Unit, IStoledUnit
     [SerializeField] public int enemymaxCount;
     [SerializeField] public int maxLevel;
     public Define.BoomState currState = Define.BoomState.nothing;
-    
+    int pass = 1;
     private ParticleSystem particle = null;
     float _effectTime = 1f;
     public override float Ability()
@@ -44,8 +44,8 @@ public class Boom : Unit, IStoledUnit
 
     public void getStoled(float time, Stealer stealer)
     {
+
         GameManager.effectManager.UseSkill(Define.Effect.stealerToBoom, stealer, this);
-        
         StartCoroutine(CoAttackedOrUsed(this, time));
         if (!stealer.isBoomDamageMiss)
         {
@@ -55,8 +55,8 @@ public class Boom : Unit, IStoledUnit
         }
         boomAnimation();
         GameManager.unitManager.isSteal = true;
+        stealer.isfirstSteal = true;
     }
-
     private void Start()
     {
         base.Init();

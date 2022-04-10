@@ -9,7 +9,7 @@ public class Seed : Unit, IStoledUnit
     public int maxLevel = 3;
     public SpriteRenderer seedSprite;
     float _effectTime = 1f;
-
+    int pass = 1;
     public Define.SeedState currState = Define.SeedState.nothing;
     public override float Ability()
     {
@@ -30,14 +30,15 @@ public class Seed : Unit, IStoledUnit
 
     public void getStoled(float time, Stealer stealer)
     {
+
         GameManager.effectManager.UseSkill(Define.Effect.stealerToSeed, stealer, this);
         StartCoroutine(CoAttackedOrUsed(this, time));
         GameManager.sceneManager.getPlayer(stealer._currPlace)._currResource += myresource;
         if (isSeedStealDamage)
             GameManager.sceneManager.getEnemy(stealer._currPlace)._currHP -= 2;
         GameManager.unitManager.isSteal = true;
+        stealer.isfirstSteal = true;
     }
-    
     private void Start()
     {
         seedSprite = GetComponent<SpriteRenderer>();
