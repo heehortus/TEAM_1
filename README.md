@@ -1,2 +1,3 @@
 # TEAM_1
-1팀 작업 저장소
+
+GAMPOT Mini Project [겨울잠 전쟁]
